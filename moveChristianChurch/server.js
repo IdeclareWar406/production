@@ -10,6 +10,10 @@ app.use( express.json())
 
  mongoose.connect(`mongodb://localhost:27017/moveChristianChurch`, console.log('connected to db'))
 
+app.use("/api/auth", expressjwt({secret: process.env.SECRET, algorithms:['HS256']}))
+
+app.use("/api/accounts", require('./routes/authRouter.js'))
+
 app.use("/api/users", require("./routes/users.js"))
 
 app.use("/api/events", require("./routes/events.js"))
