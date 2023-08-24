@@ -2,31 +2,29 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const eventsSchema = new Schema({
+const servingSchema = new Schema ({
     title: {
         type: String,
         required: true
     },
-    subject: {
+    imgUrl: {
         type: String,
-        required: true
+        default: ""
     },
     description: {
         type: String,
         required: true
     },
+    editing: {
+        type: Boolean,
+        default: false,
+       
+    },
     authUser: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    },
-    editing: {
-        type: Boolean,
-        default: false,
-        required: true
     }
 })
 
-
-
-module.exports = mongoose.model(`Event`, eventsSchema)
+module.exports = mongoose.model('Serving', servingSchema)

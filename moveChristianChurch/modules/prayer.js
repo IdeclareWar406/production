@@ -10,6 +10,11 @@ const prayerSchema = new Schema({
     request: {
         type: String,
         required: true
+    },
+    editing: {
+        type: Boolean,
+        default: false,
+        required: true
     }
 })
 

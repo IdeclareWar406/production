@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const eventsSchema = new Schema({
+const missionSchema = new Schema({
     title: {
-        type: String,
+        type:String,
         required: true
     },
-    subject: {
+    location: {
         type: String,
         required: true
     },
@@ -15,18 +15,20 @@ const eventsSchema = new Schema({
         type: String,
         required: true
     },
-    authUser: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+    leaders: {
+        type: Array,
+        default: []
     },
     editing: {
         type: Boolean,
         default: false,
+        
+    },
+    authUser: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     }
 })
 
-
-
-module.exports = mongoose.model(`Event`, eventsSchema)
+module.exports = mongoose.model('Mission', missionSchema)

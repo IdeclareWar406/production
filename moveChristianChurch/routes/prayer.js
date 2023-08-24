@@ -27,29 +27,7 @@ prayerRouter.post("/", async(req,res)=>{
     }
 })
 
-prayerRouter.delete("/:prayerId", async(req,res)=>{
-    try{
-       await Prayer.findOneAndDelete({_id:req.params.prayerId})
-        res.status(200)
-        res.send("Request was removed")
-    }
-    catch{
-        res.status(404)
-        res.json({message:"check id or delete method"})
-    }
-})
 
-prayerRouter.put("/:prayerId", async(req,res)=>{
-    try{
-        const updatedObject = await Prayer.findOneAndUpdate({_id: req.params.prayerId}, req.body, {new:true})
-        res.status(200)
-        res.send(updatedObject)
-    }
-    catch{
-        res.status(404)
-        res.json({message:"check id or put method"})
-    }
-})
 
 
 
