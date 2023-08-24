@@ -9,13 +9,29 @@ document.body.style.backgroundColor = "black"
 
  return(<div>
         <div className="homePic">
+            
         <img className="churchLogo" src="src/images/logo.png" width={"600px"}></img>
         </div>
         <div className="motto">
-            <h1>Connect. Grow. Love. Live</h1>
-            <h2 style={{color: "white"}} >Welcome to Move Christian Church, we are so happy you are here!</h2>
-            <h2>We have a Sunday class at 9:30am, worship starts at 10:30am, and weeknight classes at 6:30pm</h2>
-
+            <div className="imgMotto">
+            <h1 className="welcome" >Welcome to Move</h1>
+            <img src="src/images/moveHomePic.jpg" ></img>
+            </div>
+            <h2>Our service times are listed below</h2>
+            <div className="serviceTimes">
+                <div className="days">
+                    <h2>Sunday Morning Study</h2>
+                    <h2>Sunday Service</h2>
+                    <h2>Wednesday Study</h2>
+                </div>
+                <div className="times">
+              <h2>9:30am</h2>
+              <h2>10:30am</h2>
+              <h2>6:30pm</h2>
+                </div>
+                
+            </div>
+            <h2>Check our events page for more information</h2>
             <div className="socialMediaImg">
             <a href="https://www.youtube.com/channel/UC6N06_jMBnAfnEMaDijAozg" target="_blank">
             <img src="https://drive.google.com/uc?export=open&id=1IDZ2LbU56ZLmxh8TKzNu22EvUSeeBP1v" width={"50px"}></img>
