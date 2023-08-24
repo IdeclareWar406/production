@@ -31,6 +31,10 @@ function ApiContextProvider (props){
     })
 
 
+
+
+
+
     function newPrayerInfo(event){
        
         const{name,value} = event.target
@@ -62,6 +66,8 @@ function ApiContextProvider (props){
     }
 
     console.log(newPrayer)
+
+    
     function credentials(event){
         const {name, value} = event.target
         setLogInfo(prevState => {

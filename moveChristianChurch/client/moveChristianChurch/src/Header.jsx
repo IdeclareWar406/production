@@ -4,6 +4,7 @@ import Home from "./components/Home.jsx"
 import About from "./components/About.jsx"
 import Prayer from "./components/Prayer.jsx"
 import Events from "./components/Events.jsx"
+import StaffVolunteerLog from "./components/StaffVolunteerLog.jsx"
 
 export default function Header(){
 
@@ -21,6 +22,7 @@ export default function Header(){
             <Link className="about" to="/about"  element={<About />}>About</Link>
             <Link className="prayer" to="/prayer" element={<Prayer />}>Prayer</Link>
             <Link className="events" to="/events" element={<Events />}>Events</Link>
+            <Link className="login" to="/login" element={<StaffVolunteerLog />} >Log in</Link>
             <a className="ionos" href="https://login.1and1-editor.com/717316849/www.movechristianchurch.com/us?pageId=1373414383" target="_id">IONOS Login</a>
             </div>
         </div>
