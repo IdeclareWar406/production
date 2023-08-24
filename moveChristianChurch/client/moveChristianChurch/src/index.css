@@ -31,6 +31,15 @@
     color:darkred;
     transition: color 250ms linear 0ms
 }
+.events{
+    text-decoration: none;
+    font-size: 25px;
+    color:darkred;
+    transition: color 250ms linear 0ms
+}
+.events:hover{
+    color:gold;
+}
 .prayer:hover{
     color:gold
 }
@@ -135,6 +144,7 @@
     align-items: center;
     color:white;
     border:solid gold 2px;
+    width:500px;
 }
 .displayedPrayers{
     display:flex;
@@ -144,4 +154,62 @@
     color:white;
     position: relative;
     top: 50px;
+}
+.eventTitle{
+    color:white ;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left:35%;
+}
+.eventNav{
+    color:darkred;
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    left:2%;
+    top:100px;
+    width:250px;
+    justify-content: center;
+    align-items: center;
+}
+
+.eventContainer{
+    color:white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid gold 2px;
+}
+.eventParent{
+    display:flex;
+    flex-direction: column;
+   padding:10px;
+    position: relative;
+    left:35%;
+    bottom:120px;
+  height:800px;
+    width:450px;
+}
+.eventGroup{
+    color:darkred;
+    position:relative;
+    bottom:180px;
+    left:3%;
+}
+.student:hover{
+text-decoration: underline;
+}
+.adult:hover{
+    text-decoration:underline;
+}
+.holiday:hover{
+    text-decoration:underline;
+}
+
+.eventFooter{
+    display:flex;
+    width:100%;
+    justify-content: space-evenly;
+    
 }

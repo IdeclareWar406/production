@@ -23,7 +23,45 @@ function ApiContextProvider (props){
         password: ""
     })
 
+    const[newPrayer, setNewPrayer]= React.useState({
+        firstName: "",
+        request: "",
+        displayName: false,
+        editing:false
+    })
 
+
+    function newPrayerInfo(event){
+       
+        const{name,value} = event.target
+        console.log(name)
+        
+        setNewPrayer(prevState=>{
+            if(name === 'displayName'){
+                console.log('is true')
+               const parseValue = JSON.parse(value)
+                console.log(typeof(parseValue))
+                return{
+                    ...prevState,
+                    [name]: parseValue
+                }
+            }
+            else
+            return{
+                ...prevState,
+                [name]: value
+            }
+        })
+    }
+
+    function submitPrayer(event){
+        event.preventDefault()
+        axios.post(`/api/prayer`, newPrayer)
+            .then(res => setPrayerRequest(prevState=> [...prevState,res.data]))
+            .catch(err => console.log(err.res.data.message))
+    }
+
+    console.log(newPrayer)
     function credentials(event){
         const {name, value} = event.target
         setLogInfo(prevState => {
@@ -78,7 +116,9 @@ function ApiContextProvider (props){
             serving: serving,
             missions: missions,
             credentials,
-            signOn
+            signOn,
+            newPrayerInfo,
+            submitPrayer
         }}>{props.children}
         
          </ApiContext.Provider>

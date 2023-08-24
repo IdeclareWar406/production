@@ -24,6 +24,10 @@ const eventsSchema = new Schema({
         type: Boolean,
         default: false,
         required: true
+    },
+    dateRemoved: {
+        type:Date,
+        required:true
     }
 })
 
