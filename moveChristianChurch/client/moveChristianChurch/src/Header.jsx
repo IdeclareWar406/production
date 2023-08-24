@@ -7,10 +7,13 @@ import About from "./components/About.jsx"
 export default function Header(){
 
     return(
-        <div>
-            <div>
-            <Link to="/" element={<Home />} >Home</Link>
-            <Link to="/about" element={<About />}>About</Link>
+        <div className="header">
+            <div className="headerLogo">
+                <img src="src/images/logo.png" width={"200px"}></img>
+            </div>
+            <div className="links">
+            <Link className="home" to="/"  element={<Home />} >Home</Link>
+            <Link className="about" to="/about"  element={<About />}>About</Link>
             </div>
         </div>
     )

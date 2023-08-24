@@ -1,0 +1,74 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    
+    height:200px;
+    padding: 15px;
+}
+.links{
+    
+    width:50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.about{
+    text-decoration: none;
+    font-size: 25px;
+    color:white;
+}
+.home{
+    text-decoration: none;
+    font-size: 25px;
+    color:white;
+    transition: color 250ms linear 0ms
+}
+.home:hover{
+    color:gold;
+}
+.about:hover{
+    color:gold;
+}
+.headerLogo{
+    align-self: center;
+}
+.homePic{
+    position: relative;
+    left:35%;
+    top:100px;
+}
+.motto{
+    position: relative;
+
+    top:200px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.homeFooter{
+    display:flex;
+    position: relative;
+    top:420px;
+   
+    justify-content: space-evenly;
+}
+.directions{
+    position: relative;
+    right:600px;
+    top:70px;
+    color:white;
+    transition: color 250ms linear 0ms
+}
+.directions:hover{
+    color:red
+}
+.socialMediaImg{
+    display: flex;
+    position: relative;
+    top:25px;
+    width:400px;
+    justify-content: space-evenly;
+    
+}
