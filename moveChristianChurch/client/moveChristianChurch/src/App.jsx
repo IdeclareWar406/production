@@ -1,16 +1,20 @@
 import React from "react"
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Home from "./components/Home.jsx"
 import About from "./components/About.jsx"
 import Header from "./Header.jsx"
 import Prayer from "./components/Prayer.jsx"
 import Events from "./components/Events.jsx"
 import StaffVolunteerLog from "./components/StaffVolunteerLog.jsx"
+import { ApiContext } from "./ApiContext.jsx"
+import Admin from "./components/Admin.jsx"
+import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 export default function App(){
-
-
-
+const {user}= React.useContext(ApiContext)
+console.log(user,'user')
+const token = user.token
+console.log(token)
     return(
         <BrowserRouter>
         <Header />
@@ -19,7 +23,10 @@ export default function App(){
           <Route path="/about" element={<About />} />
           <Route path="/prayer" element={<Prayer />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/login" element={<StaffVolunteerLog />} />
+          <Route path="/login" element={token? <Navigate to="/admin" /> : <StaffVolunteerLog />} />
+          <Route path="/admin" element={<ProtectedRoute>
+            <Admin />
+          </ProtectedRoute>} />
         </Routes>
         </BrowserRouter>
     )

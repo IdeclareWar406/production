@@ -5,8 +5,8 @@ import "../index.css"
 
 
 export default function StaffVolunteerLog(){
-
-    const {credentials} = React.useContext(ApiContext)
+document.body.style.backgroundColor ="black"
+    const {credentials, signOn} = React.useContext(ApiContext)
 
 
 
@@ -14,9 +14,10 @@ export default function StaffVolunteerLog(){
         <>
             <div className="loginPage">
                 <img src="../src/images/logo.png" width={"400px"}></img>
-                <form className="loginForm">
+                <form className="loginForm" onSubmit={signOn}>
                 <input type="text" name="username" onChange={credentials} placeholder="username" ></input>
                 <input type="text" name="password" onChange={credentials} placeholder="password"></input>
+                <button className="logInButton">Log in</button>
                 </form>
             </div>
         </>

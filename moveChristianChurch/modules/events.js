@@ -23,7 +23,7 @@ const eventsSchema = new Schema({
     editing: {
         type: Boolean,
         default: false,
-        required: true
+        
     },
     dateRemoved: {
         type:Date,

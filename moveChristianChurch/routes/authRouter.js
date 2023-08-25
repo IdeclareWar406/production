@@ -28,7 +28,7 @@ authRouter.post('/signUp', async(req,res)=>{
 
 authRouter.post("/login", async(req,res)=>{
     try{
-        const foundUser = await User.findOne({username: req.body.username})
+        const foundUser = await User.findOne({username: req.body.username.toLowerCase()})
         if(foundUser){
             foundUser.checkPassword(req.body.password, (err, isMatch)=>{
                 if(err){

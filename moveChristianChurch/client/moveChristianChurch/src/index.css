@@ -66,6 +66,15 @@
 .login:hover{
     color:gold
 }
+.admin{
+    text-decoration: none;
+    font-size: 25px;
+    color:darkred;
+    transition: color 250ms linear 0ms
+}
+.admin:hover{
+    color:gold
+}
 
 .motto{
     position: relative;
@@ -237,4 +246,40 @@ text-decoration: underline;
     width:250px;
     height:80px;
     justify-content: space-evenly;
+}
+.logInButton{
+    width:100px;
+    align-self:center
+}
+.adminWelcome{
+    display:flex;
+    justify-content: center;
+}
+.adminNav{
+    color:darkred;
+    display:flex;
+    flex-direction: column;
+    position: relative;
+    left:3%;
+}
+.adminPrayer{
+    color:white;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+   
+}
+.prayerUpdateForm{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+.prayerFirstNameUpdate{
+    width:200px;
+}
+.prayerText{
+    width:300px;
+    height:100px;
 }

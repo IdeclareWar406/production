@@ -14,7 +14,7 @@ document.body.style.backgroundColor = "black"
         </div>
         <div className="motto">
             <div className="imgMotto">
-            <h1 className="welcome" >Welcome to Move</h1>
+           
             <img src="src/images/moveHomePic.jpg" ></img>
             </div>
             <h2>Our service times are listed below</h2>

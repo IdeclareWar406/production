@@ -14,7 +14,7 @@ const prayerSchema = new Schema({
     editing: {
         type: Boolean,
         default: false,
-        required: true
+        
     },
     displayName: {
         type: Boolean,
