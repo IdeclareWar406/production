@@ -40,6 +40,13 @@ function ApiContextProvider (props){
         request: ""
     })
 
+    const [ eventsUpdate, setEventsUpdate]= React.useState({
+        title: "",
+        description: "",
+        subject: "",
+        dateRemoved: ""
+    })
+
 
 
 console.log(logInfo)
@@ -129,10 +136,88 @@ console.log(prayerUpdate)
 
     function savePrayer(id){
             
-            console.log('save event fired')
+           
         userAxios.put(`/api/auth/prayer/${id}`, prayerUpdate)
             .then(res => setPrayerRequest(prevState=> prevState.map(prayer => prayer._id === id ? res.data: prayer)))
             .catch(err => console.log(err.res.data.message))
+    }
+
+    function adminEventEdit(id){
+        const unchanged = []
+        const filteredEvent = events.filter((event)=>{
+            if(id === event._id){
+                event.editing = true
+                return event
+            }
+            else unchanged.push(event)
+        })
+        setEventsUpdate(prevState=>{
+            return{
+                title:filteredEvent[0].title,
+                description: filteredEvent[0].description,
+                subject: filteredEvent[0].subject
+            }
+        })
+        const joinedEvents = unchanged.concat(filteredEvent)
+        setEvents(joinedEvents)
+    }
+
+    function adminCancelEdit(id){
+        const unchanged = []
+        const filteredEvent = events.filter((event)=>{
+            if(id === event._id){
+                event.editing = false
+                return event
+            }
+            else unchanged.push(event)
+        })
+
+        const joinedEvent = unchanged.concat(filteredEvent)
+        setEvents(joinedEvent)
+    }
+
+    function adminEventEditing(event){
+        const {name,value} = event.target
+        setEventsUpdate(prevState=>{
+            return{...prevState,
+                [name]: value
+            }
+        })
+    }
+    console.log(eventsUpdate)
+
+    function adminEventSave(id){
+        userAxios.put(`/api/auth/eventUpdate/${id}`,eventsUpdate)
+            .then(res=> setEvents(prevState=> prevState.map(events=> events._id === id ? res.data : events)))
+            .catch(err => console.log(err.res.data.message))
+            setEventsUpdate(prevState=>{
+                return{
+                    ...prevState,
+                    title: "",
+                    description: "",
+                    subject: ""
+                }
+            })
+    }
+    function adminEventDelete(id){
+        userAxios.delete(`/api/auth/eventUpdate/${id}`)
+                .then(res=> setEvents(prevState=> prevState.filter(events=> id != events._id)))
+                .catch(err => console.log(err.res.data.message))
+    }
+
+    function adminEventAdd(event){
+        event.preventDefault()
+        userAxios.post(`/api/auth/eventUpdate`, eventsUpdate)
+                .then(res => setEvents(prevState => [...prevState, res.data]))
+                .catch(err => console.log(err.res.data.message))
+                setEventsUpdate(prevState => {
+                    return{
+                        ...prevState,
+                        title: '',
+                        description: '',
+                        subject: ''                    
+                    }
+                })
     }
 
     
@@ -211,6 +296,13 @@ console.log(userState)
             updatePrayerReq,
             savePrayer,
             cancelPrayerEdit,
+            adminEventEdit,
+            adminCancelEdit,
+            adminEventEditing,
+            adminEventSave,
+            adminEventDelete,
+            adminEventAdd,
+            updateEvent:eventsUpdate,
             prayerUpdate: prayerUpdate
         }}>{props.children}
         

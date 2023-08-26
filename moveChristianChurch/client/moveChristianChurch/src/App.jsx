@@ -12,9 +12,9 @@ import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 export default function App(){
 const {user}= React.useContext(ApiContext)
-console.log(user,'user')
+
 const token = user.token
-console.log(token)
+
     return(
         <BrowserRouter>
         <Header />

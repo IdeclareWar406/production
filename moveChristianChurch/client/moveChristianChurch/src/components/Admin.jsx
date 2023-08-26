@@ -4,6 +4,7 @@ import AdminNav from "./AdminNav"
 
 
 export default function Admin(){
+   const options = ['student', 'adult', 'holiday']
     document.body.style.backgroundColor ='black'
 const [renderForm, setRenderForm] = React.useState({
     events: false,
@@ -13,7 +14,7 @@ const [renderForm, setRenderForm] = React.useState({
 })
 
 
-const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cancelPrayerEdit,updatePrayerReq,savePrayer} = React.useContext(ApiContext)
+const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cancelPrayerEdit,updatePrayerReq,savePrayer,adminCancelEdit,adminEventEdit,updateEvent,adminEventEditing,adminEventSave,adminEventDelete,adminEventAdd} = React.useContext(ApiContext)
 
 
 function adminRender(value){
@@ -64,6 +65,17 @@ console.log(value)
 
 }
 
+    
+
+function genOptions(){
+    const generatedOptions = options.map((subject)=>{
+        return(
+            <option>{subject} </option>
+        )
+    })
+    return generatedOptions
+}
+
 console.log(renderForm)
 let reqPrayer
 
@@ -93,21 +105,40 @@ if(renderForm.prayer === true){
         )}
     })}
 
-    const adminEvents = events.map((event)=>{
+let adminEvents
+if(renderForm.events === true){
+
+     adminEvents = events.map((event)=>{
         if(event.editing === false){
             return(
-                <div>
+                <div className="adminEvents">
                     <h2>{event.title} </h2>
                     <h3>{event.description} </h3>
                     <h3>{event.subject} </h3>
                     <div>
-                    <button>Edit</button><button>Delete</button>
+                    <button onClick={()=> adminEventEdit(event._id)}>Edit</button><button onClick={()=> adminEventDelete(event._id)}>Delete</button>
                 </div>
                 </div>
             )
         }
-    })
-    const adminMission = missions.map((mission)=>{
+        else if(event.editing){
+            return(
+                <div className="adminEvents">
+                    <input  type="text" name="title" value={updateEvent.title} onChange={adminEventEditing} ></input>
+                    <textarea className="eventText" type="text" name="description" value={updateEvent.description}onChange={adminEventEditing} ></textarea>
+                    <select value={updateEvent.subject} onChange={adminEventEditing}> {genOptions()} </select>
+                    <div>
+                        <button onClick={()=> adminEventSave(event._id)}>Save</button><button onClick={()=> adminCancelEdit(event._id)}>Cancel</button>
+                    </div>
+                </div>
+            )
+        }
+    })}
+
+    let adminMission
+    if(renderForm.mission === true){
+
+    adminMission = missions.map((mission)=>{
         if(mission.editing === false){
             return(
                 <div>
@@ -120,9 +151,12 @@ if(renderForm.prayer === true){
                 </div>
             )
         }
-    })
+    })}
 
-    const adminServing = serving.map((serve)=>{
+    let adminServing
+
+    if(renderForm.serving === true){
+     adminServing = serving.map((serve)=>{
         if(serve.editing === false){
             return(
                 <div>
@@ -134,7 +168,7 @@ if(renderForm.prayer === true){
                 </div>
             )
         }
-    })
+    })}
 
 
 return(
@@ -143,8 +177,20 @@ return(
         <h1 style={{color:'white'}} >Welcome {user.user.username} </h1>
     </div>
     <AdminNav render={adminRender} />
-    <div>
+   { renderForm.events && <div className="addEvent">
+        Add a new event
+        <form className="newEvent" onSubmit={adminEventAdd}>
+            <input type="text" name="title" placeholder="title" onChange={adminEventEditing} ></input>
+            <textarea placeholder="description" className="newEventText" type="text" name="description" onChange={adminEventEditing}></textarea>
+            <select className="newEventSubject" name="subject" onChange={adminEventEditing}>{genOptions()} </select>
+            <h4>Remove by:</h4>
+            <input type="date" name="dateRemoved" onChange={adminEventEditing}></input> 
+            <button className="eventSubmit">Submit</button>
+        </form>
+    </div>}
+    <div className="adminEventContainer">
     {renderForm.prayer && reqPrayer}
+    {renderForm.events && adminEvents}
     </div>
     </>
 )
