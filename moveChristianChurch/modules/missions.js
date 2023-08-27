@@ -15,7 +15,7 @@ const missionSchema = new Schema({
         type: String,
         required: true
     },
-    leaders: {
+    applied: {
         type: Array,
         default: []
     },

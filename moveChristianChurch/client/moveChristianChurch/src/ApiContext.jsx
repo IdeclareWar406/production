@@ -47,6 +47,12 @@ function ApiContextProvider (props){
         dateRemoved: ""
     })
 
+    const [newMission, setNewMission] = React.useState({
+        title: "",
+        location: "",
+        description: ""
+    })
+
 
 
 console.log(logInfo)
@@ -220,6 +226,35 @@ console.log(prayerUpdate)
                 })
     }
 
+    function missionText(event){
+            const {name,value} = event.target
+            setNewMission(prevState=>{
+                return{...prevState,
+                    [name]: value
+                }
+            })
+        }
+
+     function newMissionTrip(event){
+        console.log(event, 'this fired')
+        event.preventDefault()
+            
+            userAxios.post(`/api/auth/service/mission`, newMission)
+                .then(res=> setMissions(prevState=> [...prevState , res.data]))
+                .catch(err => console.log(err))
+
+               setNewMission(prevState=>{
+                return{
+                    title: '',
+                    location: '',
+                    description: ''
+                }
+               }) 
+        }
+        function beginMissionEdit(id){
+            
+        }
+
     
     function credentials(event){
         const {name, value} = event.target
@@ -229,6 +264,7 @@ console.log(prayerUpdate)
             }
         })
     }
+
 console.log(userState)
 
     function signOn(event){
@@ -302,6 +338,9 @@ console.log(userState)
             adminEventSave,
             adminEventDelete,
             adminEventAdd,
+            missionText,
+            newMissionTrip,
+            newMission: newMission,
             updateEvent:eventsUpdate,
             prayerUpdate: prayerUpdate
         }}>{props.children}

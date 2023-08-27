@@ -1,7 +1,8 @@
 import React from "react"
 import { ApiContext } from "../ApiContext"
 import AdminNav from "./AdminNav"
-
+import NewMission from "./NewMission"
+import MissionTemplate from "./MissionTemplate"
 
 export default function Admin(){
    const options = ['student', 'adult', 'holiday']
@@ -188,9 +189,11 @@ return(
             <button className="eventSubmit">Submit</button>
         </form>
     </div>}
+    {renderForm.mission && <NewMission />}
     <div className="adminEventContainer">
     {renderForm.prayer && reqPrayer}
     {renderForm.events && adminEvents}
+    {renderForm.mission && <MissionTemplate />}
     </div>
     </>
 )
