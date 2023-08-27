@@ -261,6 +261,18 @@ text-decoration: underline;
     flex-direction: column;
     position: relative;
     left:3%;
+    border:solid red 3px;
+    width:180px;
+}
+.removeDate{
+    display: flex;
+
+}
+.dates{
+    height:25px;
+    position: relative;
+    top:35px;
+    left:5px;
 }
 .adminPrayer{
     color:white;
@@ -393,7 +405,7 @@ text-decoration: underline;
 .servingPositionForm{
     display: flex;
     flex-direction: column;
-    border: solid purple 3px;
+  
     align-items: center;
 }
 .servingTitle{

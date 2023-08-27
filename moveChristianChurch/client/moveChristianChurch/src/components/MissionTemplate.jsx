@@ -11,6 +11,7 @@ export default function MissionTemplate(){
             if(!mission.editing){
         return(
             <div className="plannedMissions">
+                
                 <h1>Mission: {mission.title} </h1>
                 <h2>Location: {mission.location} </h2>
                 <h2>Description: {mission.description} </h2>
@@ -22,6 +23,7 @@ export default function MissionTemplate(){
         else if(mission.editing){
             return(
                 <div className="editMission">
+                    <h1>Planned Mission Trips</h1>
                     <input type="text" name="title" onChange={missionText} value={newMission.title}></input>
                     <input type="text" name="location" onChange={missionText} value={newMission.location}></input>
                     <textarea style={{height:'150px', width:'250px'}} name="description" onChange={missionText} value={newMission.description}></textarea>

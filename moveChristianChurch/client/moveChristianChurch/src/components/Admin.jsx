@@ -16,7 +16,11 @@ const [renderForm, setRenderForm] = React.useState({
 })
 
 
-const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cancelPrayerEdit,updatePrayerReq,savePrayer,adminCancelEdit,adminEventEdit,updateEvent,adminEventEditing,adminEventSave,adminEventDelete,adminEventAdd} = React.useContext(ApiContext)
+const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cancelPrayerEdit,updatePrayerReq,savePrayer,adminCancelEdit,adminEventEdit,updateEvent,adminEventEditing,adminEventSave,adminEventDelete,adminEventAdd, showForm, displayForm} = React.useContext(ApiContext)
+
+
+
+
 
 
 function adminRender(value){
@@ -155,32 +159,35 @@ if(renderForm.events === true){
             )
         }
     })}
-
-
+console.log(displayForm,'admin')
+// work on conditional render of the add form
 return(
     <>
     <div className="adminWelcome" >
         <h1 style={{color:'white'}} >Welcome {user.user.username} </h1>
     </div>
     <AdminNav render={adminRender} />
-   { renderForm.events && <div className="addEvent">
+   { renderForm.events && displayForm && <div className="addEvent">
         Add a new event
         <form className="newEvent" onSubmit={adminEventAdd}>
             <input type="text" name="title" placeholder="title" onChange={adminEventEditing} ></input>
             <textarea placeholder="description" className="newEventText" type="text" name="description" onChange={adminEventEditing}></textarea>
             <select className="newEventSubject" name="subject" onChange={adminEventEditing}>{genOptions()} </select>
+            <div className="removeDate">
             <h4>Remove by:</h4>
-            <input type="date" name="dateRemoved" onChange={adminEventEditing}></input> 
+            <input className="dates" type="date" name="dateRemoved" onChange={adminEventEditing}></input> 
+            </div>
             <button className="eventSubmit">Submit</button>
         </form>
     </div>}
-    {renderForm.mission && <NewMission />}
-    {renderForm.serving && <NewPosition />}
+    
+    {renderForm.mission && displayForm && <NewMission />}
+    {renderForm.serving && displayForm && <NewPosition />}
     <div className="adminEventContainer">
     {renderForm.prayer && reqPrayer}
     {renderForm.events && adminEvents}
     {renderForm.mission && <MissionTemplate />}
-    {renderForm.serving && <Serving />}
+    {renderForm.serving &&  <Serving />}
     
     </div>
     </>

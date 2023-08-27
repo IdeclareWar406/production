@@ -59,10 +59,10 @@ function ApiContextProvider (props){
         imgUrl: ""
 
     })
+    const [displayForm, setDisplayForm]= React.useState(false)
 
 
 
-console.log(logInfo)
 
 
     function newPrayerInfo(event){
@@ -118,7 +118,7 @@ console.log(logInfo)
         setPrayerRequest(prevState=> prevState.map(prayer=> id === prayer._id ? filteredPrayer[0]: prayer))
     }
 
-console.log(prayerUpdate)
+
 
     function cancelPrayerEdit(id){
         
@@ -193,7 +193,7 @@ console.log(prayerUpdate)
             }
         })
     }
-    console.log(eventsUpdate)
+    
 
     function adminEventSave(id){
         userAxios.put(`/api/auth/eventUpdate/${id}`,eventsUpdate)
@@ -312,7 +312,7 @@ console.log(prayerUpdate)
                 }
             })
         }
-        console.log(newService)
+        
         function newServing (event){
             event.preventDefault()
             userAxios.post(`/api/auth/service/serving`, newService)
@@ -391,7 +391,7 @@ console.log(prayerUpdate)
         })
     }
 
-console.log(userState)
+
 
     function signOn(event){
         event.preventDefault()
@@ -418,6 +418,10 @@ console.log(userState)
             }
         })
     }
+    function showForm(){
+        console.log('fired')
+        setDisplayForm(prevState=> !prevState)
+    }
 
     function apiData(){
         axios.get(`/api/prayer`)
@@ -441,6 +445,7 @@ console.log(userState)
         apiData()
     },[])
 
+    console.log(displayForm)
 
     return(
         <ApiContext.Provider value={{
@@ -476,6 +481,8 @@ console.log(userState)
             saveServeEdit,
             cancelServeEdit,
             deleteService,
+            showForm,
+            displayForm: displayForm,
             newService:newService,
             newMission: newMission,
             updateEvent:eventsUpdate,

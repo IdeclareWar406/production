@@ -5,9 +5,12 @@ import "../index.css"
 export default function NewPosition(){
 const { serviceChangeHandler, newServing,beginServingEdit, saveServeEdit,cancelServeEdit,deleteService, serving}= React.useContext(ApiContext)
 
+    
 
 
 
+  
+    
     return(
         <div className="newServingPostion">
             <h2 style={{color: 'white'}}>New Position</h2>
@@ -18,4 +21,7 @@ const { serviceChangeHandler, newServing,beginServingEdit, saveServeEdit,cancelS
             </form>
         </div>
     )
+
+
+    
 }
