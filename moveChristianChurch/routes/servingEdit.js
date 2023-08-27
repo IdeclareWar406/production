@@ -10,7 +10,7 @@ servingEdit.post('/serving', async(req,res)=>{
         const newRole = await new Serving(req.body)
         newRole.save()
         res.status(200).send(newRole)
-    } catch (error) {
+    } catch (err) {
         res.status(500)
         res.json({message: 'check post route'})
     }
@@ -20,7 +20,7 @@ servingEdit.delete("/serving/:servingId", async(req,res)=>{
     try {
        await Serving.findOneAndDelete({_id: req.params.servingId})
         res.status(200).send('Entry was removed')
-    } catch (error) {
+    } catch (err) {
         res.status(404)
         res.json({message: 'check the delete route'})
     }
@@ -30,7 +30,7 @@ servingEdit.put("/serving/:servingId", async(req,res)=>{
     try {
         const updatedObject = await Serving.findOneAndUpdate({_id: req.params.servingId}, req.body, {new:true})
         res.status(200).send(updatedObject)
-    } catch (error) {
+    } catch (err) {
         res.status(404)
         res.json({message: 'check update route'})
     }
@@ -43,7 +43,7 @@ servingEdit.post('/mission', async(req,res)=>{
         const newMission = await new Missions(req.body)
         newMission.save()
         res.status(200).send(newMission)
-    } catch (error) {
+    } catch (err) {
         res.status(500)
         res.json({message: 'could not create, check new mission route'})
     }
@@ -53,7 +53,7 @@ servingEdit.delete('/mission/:missionId', async(req,res)=>{
     try {
         await Missions.findOneAndDelete({_id: req.params.missionId})
         res.status(200).send('Entry removed')
-    } catch (error) {
+    } catch (err) {
         res.status(404)
         res.json({message: 'check id or check delete route'})
     }

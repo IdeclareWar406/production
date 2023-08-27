@@ -7,7 +7,7 @@ prayerRouter.delete('/:prayerId',async(req,res)=>{
 try {
     await Prayer.findOneAndDelete({_id: req.params.prayerId})
     res.status(200).send('Entry removed')
-} catch (error) {
+} catch (err) {
     res.status(404)
     res.json({message: 'Id incorrect or delete route issue'})
 }
@@ -17,7 +17,7 @@ prayerRouter.put('/:prayerId',async(req,res)=>{
     try {
         const updatedPrayer = await Prayer.findOneAndUpdate({_id: req.params.prayerId}, req.body, {new:true})
         res.status(200).send(updatedPrayer)
-    } catch (error) {
+    } catch (err) {
         
     }
 })

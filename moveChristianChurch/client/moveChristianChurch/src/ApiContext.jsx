@@ -53,6 +53,13 @@ function ApiContextProvider (props){
         description: ""
     })
 
+    const [newService, setNewService] = React.useState({
+        title: "",
+        description: "",
+        imgUrl: ""
+
+    })
+
 
 
 console.log(logInfo)
@@ -91,13 +98,13 @@ console.log(logInfo)
 
 
     function startEditingPrayer (id){
-        const unChanged = []
+        
         const filteredPrayer = prayerRequest.filter((prayer)=>{
             if(id === prayer._id){
                 prayer.editing = true
                 return prayer
             }
-            else unChanged.push(prayer)
+            
         })
         
         setPrayerUpdate(prevState=>{
@@ -106,29 +113,27 @@ console.log(logInfo)
                 request: filteredPrayer[0].request,
             }
         })
-       const joined = unChanged.concat(filteredPrayer)
        
-        setPrayerRequest(joined)
+       
+        setPrayerRequest(prevState=> prevState.map(prayer=> id === prayer._id ? filteredPrayer[0]: prayer))
     }
 
 console.log(prayerUpdate)
 
     function cancelPrayerEdit(id){
-        console.log(id)
-        const unchanged =[]
+        
         const filteredPrayer = prayerRequest.filter((prayer)=>{
             if(prayer._id === id){
                 
                 prayer.editing = false
                 return prayer
             }
-            else unchanged.push(prayer)
+            
 
         })
-        console.log(filteredPrayer, 'filtered')
-      const joined =  unchanged.concat(filteredPrayer)
+       
       
-      setPrayerRequest(joined)
+      setPrayerRequest(prevState=> prevState.map(prayer=> id === prayer._id ? filteredPrayer[0]: prayer))
     }
     function updatePrayerReq(event){
         const{name,value} = event.target
@@ -149,13 +154,13 @@ console.log(prayerUpdate)
     }
 
     function adminEventEdit(id){
-        const unchanged = []
+        
         const filteredEvent = events.filter((event)=>{
             if(id === event._id){
                 event.editing = true
                 return event
             }
-            else unchanged.push(event)
+            
         })
         setEventsUpdate(prevState=>{
             return{
@@ -164,22 +169,20 @@ console.log(prayerUpdate)
                 subject: filteredEvent[0].subject
             }
         })
-        const joinedEvents = unchanged.concat(filteredEvent)
-        setEvents(joinedEvents)
+        setEvents(prevState=> prevState.map(events=> events._id === id ? filteredEvent[0]: events))
     }
 
     function adminCancelEdit(id){
-        const unchanged = []
+       
         const filteredEvent = events.filter((event)=>{
             if(id === event._id){
                 event.editing = false
                 return event
             }
-            else unchanged.push(event)
+            
         })
-
-        const joinedEvent = unchanged.concat(filteredEvent)
-        setEvents(joinedEvent)
+        setEvents(prevState=> prevState.map(events => id === events._id ? filteredEvent[0]: events))
+        
     }
 
     function adminEventEditing(event){
@@ -195,7 +198,7 @@ console.log(prayerUpdate)
     function adminEventSave(id){
         userAxios.put(`/api/auth/eventUpdate/${id}`,eventsUpdate)
             .then(res=> setEvents(prevState=> prevState.map(events=> events._id === id ? res.data : events)))
-            .catch(err => console.log(err.res.data.message))
+            .catch(err => console.log(err.response.data.message))
             setEventsUpdate(prevState=>{
                 return{
                     ...prevState,
@@ -208,14 +211,14 @@ console.log(prayerUpdate)
     function adminEventDelete(id){
         userAxios.delete(`/api/auth/eventUpdate/${id}`)
                 .then(res=> setEvents(prevState=> prevState.filter(events=> id != events._id)))
-                .catch(err => console.log(err.res.data.message))
+                .catch(err => console.log(err.response.data.message))
     }
 
     function adminEventAdd(event){
         event.preventDefault()
         userAxios.post(`/api/auth/eventUpdate`, eventsUpdate)
                 .then(res => setEvents(prevState => [...prevState, res.data]))
-                .catch(err => console.log(err.res.data.message))
+                .catch(err => console.log(err.response.data.message))
                 setEventsUpdate(prevState => {
                     return{
                         ...prevState,
@@ -252,7 +255,123 @@ console.log(prayerUpdate)
                }) 
         }
         function beginMissionEdit(id){
+            const unchanged = []
+            const filteredMission = missions.filter((mission)=>{
+                if(id === mission._id){
+                    mission.editing = true
+                    return mission
+                }else unchanged.push(mission)
+            })
+            setNewMission(prevState => {
+                return{...prevState,
+                    title:filteredMission[0].title,
+                    location: filteredMission[0].location,
+                    description: filteredMission[0].description
+                }
+            })
+            //proper way to do things, fix the other functions
+            setMissions(prevState => prevState.map(mission=> id === mission._id ? filteredMission[0] : mission))
+        }
+
+        function cancelMissionEdit(id){
             
+            const filteredMission = missions.filter((mission)=>{
+                if(id === mission._id){
+                    mission.editing = false
+                    return mission
+                }
+            })
+           
+           setMissions(prevState => prevState.map(mission=> id === mission._id? filteredMission[0]: mission))
+        }
+
+        function saveMissionEdit(id){
+            userAxios.put(`api/auth/service/mission/${id}`, newMission)
+                    .then(res => setMissions(prevState=> prevState.map(mission=> id === mission._id? res.data: mission)))
+                    .catch(err => console.log(err))
+                    setNewMission(prevState=>{
+                        return{
+                            title: '',
+                            location: '',
+                            description: ''
+                        }
+                    })
+        }
+        function deleteMission(id){
+            userAxios.delete(`/api/auth/service/mission/${id}`)
+                .then(res => setMissions(prevState => prevState.filter(mission=> id != mission._id)))
+                .catch(err => console.log(err))
+        }
+
+        function serviceChangeHandler(event){
+            const {name,value} = event.target
+            setNewService(prevState => {
+                return{
+                    ...prevState,
+                    [name]: value
+                }
+            })
+        }
+
+        function newServing (event){
+            event.preventDefault()
+            userAxios.post(`/api/auth/service/serving`)
+                .then(res=> setServing(prevState=> [...prevState, res.data]))
+                .catch(err => console.log(err.response.data.message))
+        }
+        function beginServingEdit(id){
+            const filteredService = serving.filter((serve)=>{
+                if(id === serve._id){
+                    serve.editing = true
+                    return serve
+                }
+                setNewService(prevState=>{
+                    return{...prevState,
+                        title: filteredService[0].title,
+                        description:filteredService[0].description,
+                        imgUrl: filteredService[0].imgUrl
+                    }
+                })
+            })
+            setServing(prevState => prevState.map(serve=> id === serve._id? filteredService[0] : serve))
+        }
+
+        function cancelServeEdit(id){
+            const filteredService = serving.filter((serve)=>{
+                if(id === serve._id){
+                    serve.editing = false
+                    return serve
+                }
+                setNewService(prevState=>{
+                    return{
+                     title: "",
+                     description: "",
+                     imgUrl: ""
+
+
+                    }
+                })
+            })
+            setServing(prevState=> prevState.map(serve=> id === serve._id ? filteredService[0]: serve))
+        }
+
+        function saveServeEdit(id){
+            userAxios.put(`/api/auth/service/serving/${id}`, newService)
+                .then(res => setServing(prevState=> prevState.map(serve=> id === serve._id ? res.data : serve)))
+                .catch(err => console.log(err.response.data.message))
+                setNewService(prevState=>{
+                    return{
+                     title: "",
+                     description: "",
+                     imgUrl: ""
+                    }
+                })
+        }
+
+        function deleteService(id){
+            userAxios.delete(`/api/auth/service/serving/${id}`)
+                .then(res=> setServing(prevState=> prevState.filter(serve=> id != serve._id)))
+                .catch(err => console.log(err.response.data.message))
         }
 
     
@@ -280,7 +399,7 @@ console.log(userState)
                     token: res.data.token
                 }
             }))
-            .catch(err => console.log(err.res.data.message))
+            .catch(err => console.log(err.response.data.message))
     }
     function logOut(){
         localStorage.removeItem('Token')
@@ -340,6 +459,16 @@ console.log(userState)
             adminEventAdd,
             missionText,
             newMissionTrip,
+            beginMissionEdit,
+            cancelMissionEdit,
+            saveMissionEdit,
+            deleteMission,
+            serviceChangeHandler,
+            newServing,
+            beginServingEdit,
+            saveServeEdit,
+            cancelServeEdit,
+            deleteService,
             newMission: newMission,
             updateEvent:eventsUpdate,
             prayerUpdate: prayerUpdate

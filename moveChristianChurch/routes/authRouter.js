@@ -19,7 +19,7 @@ authRouter.post('/signUp', async(req,res)=>{
             
             res.status(200).send({token, user: newUser.withoutPassword()})
         }
-    } catch (error) {
+    } catch (err) {
         
         res.status(500)
         res.json({message: 'username already exists'})
@@ -53,7 +53,7 @@ authRouter.post("/login", async(req,res)=>{
             throw foundUser
         }
     }
-    catch (error){
+    catch (err){
         res.status(403)
         res.json({message: "username or password does not match"})
     }
