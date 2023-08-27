@@ -6,7 +6,7 @@ export default function MissionTemplate(){
     const{missions , user, missionText, newMission,beginMissionEdit, cancelMissionEdit, saveMissionEdit, deleteMission } = React.useContext(ApiContext)
     
     console.log(missions)
-
+// need a register option and form 
     const scheduledMissions = missions.map((mission)=>{
             if(!mission.editing){
         return(
