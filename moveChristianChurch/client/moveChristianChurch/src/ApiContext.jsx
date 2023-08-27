@@ -312,12 +312,19 @@ console.log(prayerUpdate)
                 }
             })
         }
-
+        console.log(newService)
         function newServing (event){
             event.preventDefault()
-            userAxios.post(`/api/auth/service/serving`)
+            userAxios.post(`/api/auth/service/serving`, newService)
                 .then(res=> setServing(prevState=> [...prevState, res.data]))
                 .catch(err => console.log(err.response.data.message))
+                setNewService(prevState=>{
+                    return{
+                        title: "",
+                     description: "",
+                     imgUrl: ""
+                    }
+                })
         }
         function beginServingEdit(id){
             const filteredService = serving.filter((serve)=>{
@@ -469,6 +476,7 @@ console.log(userState)
             saveServeEdit,
             cancelServeEdit,
             deleteService,
+            newService:newService,
             newMission: newMission,
             updateEvent:eventsUpdate,
             prayerUpdate: prayerUpdate

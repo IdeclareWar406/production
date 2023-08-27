@@ -380,3 +380,34 @@ text-decoration: underline;
     align-items: center;
     justify-content: center;
 }
+.newServingPostion{
+    
+    display:flex;
+    flex-direction: column;
+    width:75%;
+    position: relative;
+    left:13%;
+    bottom:270px;
+    align-items: center;
+}
+.servingPositionForm{
+    display: flex;
+    flex-direction: column;
+    border: solid purple 3px;
+    align-items: center;
+}
+.servingTitle{
+    width:150px;
+}
+.servingDescription{
+    width:350px;
+    height:150px;
+}
+.positionsAvailable{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    border: solid gold 2px;
+    justify-content: space-evenly;
+}

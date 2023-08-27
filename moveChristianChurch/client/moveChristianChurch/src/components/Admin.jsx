@@ -3,7 +3,8 @@ import { ApiContext } from "../ApiContext"
 import AdminNav from "./AdminNav"
 import NewMission from "./NewMission"
 import MissionTemplate from "./MissionTemplate"
-
+import NewPosition from "./NewPosition"
+import Serving from "./Serving.jsx"
 export default function Admin(){
    const options = ['student', 'adult', 'holiday']
     document.body.style.backgroundColor ='black'
@@ -136,23 +137,7 @@ if(renderForm.events === true){
         }
     })}
 
-    let adminMission
-    if(renderForm.mission === true){
-
-    adminMission = missions.map((mission)=>{
-        if(mission.editing === false){
-            return(
-                <div>
-                    <h1>{mission.title} </h1>
-                    <h2>{mission.location} </h2>
-                    <h3>{mission.description} </h3>
-                    <div>
-                    <button>Edit</button><button>Delete</button>
-                </div>
-                </div>
-            )
-        }
-    })}
+   
 
     let adminServing
 
@@ -190,10 +175,13 @@ return(
         </form>
     </div>}
     {renderForm.mission && <NewMission />}
+    {renderForm.serving && <NewPosition />}
     <div className="adminEventContainer">
     {renderForm.prayer && reqPrayer}
     {renderForm.events && adminEvents}
     {renderForm.mission && <MissionTemplate />}
+    {renderForm.serving && <Serving />}
+    
     </div>
     </>
 )

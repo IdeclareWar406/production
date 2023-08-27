@@ -11,9 +11,9 @@ export default function MissionTemplate(){
             if(!mission.editing){
         return(
             <div className="plannedMissions">
-                <h1>{mission.title} </h1>
-                <h2>{mission.location} </h2>
-                <h2>{mission.description} </h2>
+                <h1>Mission: {mission.title} </h1>
+                <h2>Location: {mission.location} </h2>
+                <h2>Description: {mission.description} </h2>
                 {user.token && <div>
                     <button onClick={()=> beginMissionEdit(mission._id)}>Edit</button><button onClick={()=> deleteMission(mission._id)}>Delete</button>
                     </div>}
