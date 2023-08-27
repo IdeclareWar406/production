@@ -11,7 +11,7 @@ export default function Serving(){
             return(
                 <div className="positionsAvailable">
                     <h2>Position: {serve.title} </h2>
-                    <h3>Description: {serve.description} </h3>
+                    <h3 style={{width: "400px"}}>Description: {serve.description} </h3>
                     {user.token && <div className="positionButtons">
                             <button onClick={()=> beginServingEdit(serve._id)}>Edit</button><button onClick={()=>deleteService(serve._id)}>Delete</button>
                         </div>}
@@ -22,7 +22,7 @@ export default function Serving(){
             return(
                 <div className="positionsAvailable">
                     <input type="text" name="title" onChange={serviceChangeHandler} value={newService.title}></input>
-                    <textarea name="description" onChange={serviceChangeHandler}></textarea>
+                    <textarea style={{width: "250px", height: '150px'}} name="description" value={newService.description} onChange={serviceChangeHandler}></textarea>
                     <div className="positionButtons">
                         <button onClick={()=> saveServeEdit(serve._id)}>Save</button><button onClick={()=> cancelServeEdit(serve._id)}>Cancel</button>
                     </div>
