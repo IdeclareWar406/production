@@ -16,7 +16,7 @@ document.body.style.backgroundColor ="black"
                 <img src="../src/images/logo.png" width={"400px"}></img>
                 <form className="loginForm" onSubmit={signOn}>
                 <input type="text" name="username" onChange={credentials} placeholder="username" ></input>
-                <input type="text" name="password" onChange={credentials} placeholder="password"></input>
+                <input type="password" name="password" onChange={credentials} placeholder="password"></input>
                 <button className="logInButton">Log in</button>
                 </form>
             </div>
