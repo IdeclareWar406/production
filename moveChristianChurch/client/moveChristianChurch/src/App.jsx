@@ -8,6 +8,7 @@ import Events from "./components/Events.jsx"
 import StaffVolunteerLog from "./components/StaffVolunteerLog.jsx"
 import { ApiContext } from "./ApiContext.jsx"
 import Admin from "./components/Admin.jsx"
+import Ministries from "./components/Ministries.jsx"
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 export default function App(){
@@ -24,6 +25,7 @@ const token = user.token
           <Route path="/prayer" element={<Prayer />} />
           <Route path="/events" element={<Events />} />
           <Route path="/login" element={token? <Navigate to="/admin" /> : <StaffVolunteerLog />} />
+          <Route path="/ministries" element={<Ministries />} />
           <Route path="/admin" element={<ProtectedRoute>
             <Admin />
           </ProtectedRoute>} />

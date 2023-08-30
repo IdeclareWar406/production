@@ -12,6 +12,7 @@ export default function Serving(){
                 <div className="positionsAvailable">
                     <h2>Position: {serve.title} </h2>
                     <h3 style={{width: "400px"}}>Description: {serve.description} </h3>
+                    <button>Volunteer</button>
                     {user.token && <div className="positionButtons">
                             <button onClick={()=> beginServingEdit(serve._id)}>Edit</button><button onClick={()=>deleteService(serve._id)}>Delete</button>
                         </div>}

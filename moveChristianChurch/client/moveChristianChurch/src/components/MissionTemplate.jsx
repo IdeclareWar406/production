@@ -15,6 +15,7 @@ export default function MissionTemplate(){
                 <h1>Mission: {mission.title} </h1>
                 <h2>Location: {mission.location} </h2>
                 <h2>Description: {mission.description} </h2>
+                <button>Register</button>
                 {user.token && <div>
                     <button onClick={()=> beginMissionEdit(mission._id)}>Edit</button><button onClick={()=> deleteMission(mission._id)}>Delete</button>
                     </div>}

@@ -7,6 +7,7 @@ import Events from "./components/Events.jsx"
 import StaffVolunteerLog from "./components/StaffVolunteerLog.jsx"
 import { ApiContext } from "./ApiContext.jsx"
 import Admin from "./components/Admin.jsx"
+import Ministries from "./components/Ministries.jsx"
 export default function Header(){
 
     const{user,logOut} = React.useContext(ApiContext)
@@ -27,6 +28,7 @@ export default function Header(){
             <Link className="about" to="/about"  element={<About />}>About</Link>
             <Link className="prayer" to="/prayer" element={<Prayer />}>Prayer</Link>
             <Link className="events" to="/events" element={<Events />}>Events</Link>
+            <Link className="prayer" to="/ministries" element={<Ministries />} >Ministries</Link>
            {token? <span onClick={logOut} className="login">Logout</span>: <Link className="login" to="/login" element={ <StaffVolunteerLog />} >Log in</Link> }
            {token && <Link className="admin" to="/admin" element={<Admin />}>Admin</Link>}
            {token && <a className="ionos" href="https://login.1and1-editor.com/717316849/www.movechristianchurch.com/us?pageId=1373414383" target="_id">IONOS Login</a>}

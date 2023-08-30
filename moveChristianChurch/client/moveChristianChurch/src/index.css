@@ -423,3 +423,21 @@ text-decoration: underline;
     border: solid gold 2px;
     justify-content: space-evenly;
 }
+.ministryNavigation{
+    display:flex;
+    flex-direction: column;
+   
+    width:200px;
+    position: relative;
+    left:2%;
+    top:10px;
+}
+
+.ministryRenderContainer{
+    display: flex;
+    flex-direction: column;
+    width:600px;
+    position:relative;
+    left:35%;
+    bottom:250px;
+}
