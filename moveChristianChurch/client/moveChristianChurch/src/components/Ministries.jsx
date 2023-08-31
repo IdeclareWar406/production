@@ -2,8 +2,10 @@ import React from "react"
 import MinistriesNav from "./MinistriesNav"
 import MissionTemplate from "./MissionTemplate"
 import Serving from "./Serving"
+import StudentMinisties from "./StudentMinistry"
+import InfantChildren from "./InfantChildren"
 export default function Ministries(){
-
+document.body.style.backgroundColor = 'black'
 const [displayMission, setDisplayMission] = React.useState(false)
 const[displayServing, setDisplayServing] = React.useState(false)
 const[displayStudent, setDisplayStudent] = React.useState(false)
@@ -91,6 +93,8 @@ const [displayWorship, setDisplayWorship] = React.useState(false)
         <div className="ministryRenderContainer">
         {displayMission && <MissionTemplate />}
         {displayServing && <Serving />}
+        {displayStudent && <StudentMinisties />}
+        {displayChildren && <InfantChildren /> }
         </div>
 
         </div>
