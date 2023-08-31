@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'dancingScript';
+    src: url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@400;600;700&display=swap");
+}
+
 .header{
     position: absolute;
     bottom:87%;
@@ -179,6 +184,11 @@
     flex-direction: column;
     position: relative;
     left:35%;
+    border:solid red 2px;
+}
+.eventHead{
+    position: relative;
+    left:35%;
 }
 .eventNav{
     color:darkred;
@@ -190,6 +200,7 @@
     width:250px;
     justify-content: center;
     align-items: center;
+    
 }
 
 .eventContainer{
@@ -212,8 +223,14 @@
 .eventGroup{
     color:darkred;
     position:relative;
-    bottom:180px;
+    top:70px;
     left:3%;
+
+    width:250px;
+}
+.eventList{
+    display:flex;
+    flex-direction: column;
 }
 .student:hover{
 text-decoration: underline;
@@ -447,4 +464,28 @@ text-decoration: underline;
 .infantChildren{
     color:white;
     
+}
+.mensMinistry{
+    color: white
+}
+.menMove{
+    font-family: 'Dancing Script';
+    font-size: 30px;
+    position: relative;
+    left:25%;
+}
+.womensMinistry{
+    color:white;
+}
+.womenMove{
+    font-family: 'Dancing Script';
+    font-size: 30px;
+    position: relative;
+    left:25%;
+}
+.studentsMove{
+    font-family: 'Dancing Script';
+    font-size: 30px;
+    position: relative;
+    left:25%;
 }

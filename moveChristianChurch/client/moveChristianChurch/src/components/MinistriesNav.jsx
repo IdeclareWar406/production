@@ -12,7 +12,7 @@ export default function MinistriesNav(props){
             <h2 className="prayer" onClick={()=>props.render('children')}>Infant/Children</h2>
             <h2 className="prayer" onClick={()=>props.render('mens')}>Mens</h2>
             <h2 className="prayer" onClick={()=>props.render('women')}>Women</h2>
-            <h2 className="prayer" onClick={()=>props.render('worship')}>Worship</h2>
+            {/* <h2 className="prayer" onClick={()=>props.render('worship')}>Worship</h2> */}
         </div>
     )
 }

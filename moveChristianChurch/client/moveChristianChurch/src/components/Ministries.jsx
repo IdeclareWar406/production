@@ -4,6 +4,8 @@ import MissionTemplate from "./MissionTemplate"
 import Serving from "./Serving"
 import StudentMinisties from "./StudentMinistry"
 import InfantChildren from "./InfantChildren"
+import Mens from "./Mens"
+import Women from "./Women"
 export default function Ministries(){
 document.body.style.backgroundColor = 'black'
 const [displayMission, setDisplayMission] = React.useState(false)
@@ -95,6 +97,8 @@ const [displayWorship, setDisplayWorship] = React.useState(false)
         {displayServing && <Serving />}
         {displayStudent && <StudentMinisties />}
         {displayChildren && <InfantChildren /> }
+        {displayMens && <Mens />}
+        {displayWomen && <Women />}
         </div>
 
         </div>

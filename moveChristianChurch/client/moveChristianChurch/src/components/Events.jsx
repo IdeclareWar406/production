@@ -86,13 +86,16 @@ const [displayHoliday, setDisplayHoliday] = React.useState(false)
     
     return(
         <>
-        <div className="eventTitle">
-            <h1>Current and upcoming events</h1>
-        </div>
+       <div className="eventHead" >
+        <h1 style={{color:'white'}}>Current and Upcoming Events</h1>
+       </div>
+        <div className="eventList">
+        <h1 className="eventGroup">Event Groups</h1>
         <EventRender
             render={renderWhich}
     />
-        <h1 className="eventGroup">Event Groups</h1>
+    </div>
+        
         <div className="eventParent">
             {!displayAdult && !displayHoliday && !displayStudent && allEvents }
             {displayStudent && renderStudentEvent}
