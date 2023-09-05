@@ -86,6 +86,7 @@ const [displayHoliday, setDisplayHoliday] = React.useState(false)
     
     return(
         <>
+        <div className="eventHeadContainer">
        <div className="eventHead" >
         <h1 style={{color:'white'}}>Current and Upcoming Events</h1>
        </div>
@@ -94,6 +95,7 @@ const [displayHoliday, setDisplayHoliday] = React.useState(false)
         <EventRender
             render={renderWhich}
     />
+    </div>
     </div>
         
         <div className="eventParent">

@@ -278,7 +278,7 @@ text-decoration: underline;
     flex-direction: column;
     position: relative;
     left:3%;
-    border:solid red 3px;
+    
     width:180px;
 }
 .removeDate{
@@ -488,4 +488,123 @@ text-decoration: underline;
     font-size: 30px;
     position: relative;
     left:25%;
+}
+.ourMinistries{
+    color:white;
+    align-self:center;
+    font-family: 'Dancing Script';
+}
+.selectMinistry{
+    color:white;
+    align-self:center
+}
+
+@media only screen and (min-width:250px) and (max-width:1900px){
+    .header{
+        bottom: 350px;
+        justify-content: end;
+    }
+    .links{
+        flex-direction: column;
+    }
+    .homePic{
+        display:flex;
+        justify-content: start;
+        position: relative;
+        left:15%;
+    }
+    .churchLogo{
+        width:300px;
+        height: auto;
+    
+    }
+   .ourMotto{
+    width:400px;
+   }
+   .homeFooter{
+    left:10%;
+   }
+   .directions{
+    top:230px;
+    right:26%;
+   }
+   .prayerRequest{
+    width:250px;
+   }
+   .prayers{
+    width:100%;
+   }
+   .eventList{
+    flex-direction: row;
+    justify-content: space-evenly;
+   }
+   .eventNav{
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+    width:300px;
+    top:0px;
+   }
+   .eventGroup{
+    top:0px;
+   }
+   
+   .eventParent{
+    position: relative;
+    top:20px;
+    left:0%;
+   }
+   .eventHead{
+    left:5%;;
+   }
+   .eventFooter{
+   position: relative;
+   left:12%;
+   }
+   .ministryRenderContainer{
+    top:20px;
+    left:15%;
+    width:300px;
+   }
+   .studentImg{
+    width:100%;
+   }
+   .mensImg{
+    width:100%;
+   }
+   .womenImg{
+    width:100%;
+   }
+   .adminEventContainer{
+    position: relative;
+    top:50px;
+    left:25%;
+   }
+   .adminNav{
+    flex-direction: row;
+    width:700px;
+    justify-content: space-evenly;
+    
+   }
+   .addEvent{
+    position: relative;
+    top:20px;
+    left:25%;;
+   }
+   .newMission{
+    position: relative;
+    top:20px;
+    left:38%;;
+   }
+   .newServingPostion{
+    position: relative;
+    top:20px;
+    left:25%;
+   }
+   @media only screen and(min-width:1901) and (max-width:2159){
+    .header{
+        bottom: 350px;
+      
+    }
+   }
 }

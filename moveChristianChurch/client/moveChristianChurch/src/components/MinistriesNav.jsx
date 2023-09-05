@@ -1,11 +1,11 @@
 import React from "react"
-
+import '../index.css'
 
 export default function MinistriesNav(props){
 
 
     return(
-        <div>
+        <div className="ministryNavChild">
             <h2 className="prayer" onClick={()=>props.render('serving')}>Serving </h2>
             <h2 className="prayer" onClick={()=>props.render('mission')}>Missions</h2>
             <h2 className="prayer" onClick={()=>props.render('student')}>Student Ministry</h2>
