@@ -20,6 +20,10 @@ app.use("/api/users", require("./routes/users.js"))
 app.use('/api/service', require('./routes/serving.js'))
 app.use("/api/events", require("./routes/events.js"))
 app.use("/api/prayer", require("./routes/prayer.js"))
+app.use("/api/auth/volunteers", require('./routes/volManage.js'))
+app.use('/api/newvol' , require("./routes/newVolunteer.js"))
+
+
 
 app.use("/", (err,req,res,next)=>{
     res.send({errMsg: err.message})

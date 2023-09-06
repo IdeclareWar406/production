@@ -5,8 +5,12 @@ const userRouter = express.Router()
 userRouter.get("/", async(req,res)=>{
     try{
         const foundAll = await User.find({})
+        const noPass = foundAll.map((user)=>{
+          return  user.withoutPassword()
+            
+        })
         res.status(200)
-        res.send(foundAll)
+        res.send(noPass)
     }
     catch{
         res.status(500)
