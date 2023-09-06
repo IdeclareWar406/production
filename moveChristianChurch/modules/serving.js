@@ -24,6 +24,10 @@ const servingSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
+    },
+    volunteers:{
+        type: Array,
+        default: []
     }
 })
 
