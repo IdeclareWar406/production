@@ -5,6 +5,7 @@ import NewMission from "./NewMission"
 import MissionTemplate from "./MissionTemplate"
 import NewPosition from "./NewPosition"
 import Serving from "./Serving.jsx"
+import NewUser from "./NewUser"
 export default function Admin(){
    const options = ['student', 'adult', 'holiday']
     document.body.style.backgroundColor ='black'
@@ -13,10 +14,11 @@ const [renderForm, setRenderForm] = React.useState({
     prayer:false,
     mission: false,
     serving:false,
+    users: false,
 })
 
 
-const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cancelPrayerEdit,updatePrayerReq,savePrayer,adminCancelEdit,adminEventEdit,updateEvent,adminEventEditing,adminEventSave,adminEventDelete,adminEventAdd, showForm, displayForm} = React.useContext(ApiContext)
+const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cancelPrayerEdit,updatePrayerReq,savePrayer,adminCancelEdit,adminEventEdit,updateEvent,adminEventEditing,adminEventSave,adminEventDelete,adminEventAdd, showForm, displayForm, allUsers,adminUserCancel, adminUserHandleChange, adminUserUpdate, adminUserSave, adminUserDelete,updateUser,deletePrayer} = React.useContext(ApiContext)
 
 
 
@@ -33,7 +35,8 @@ console.log(value)
                 prayer: !prevState.prayer,
                 events: false,
                 mission: false,
-                serving: false
+                serving: false,
+                users:false
             }
         })
     }
@@ -44,7 +47,8 @@ console.log(value)
                 events: !prevState.events,
                 prayer: false,
                 mission: false,
-                serving: false
+                serving: false,
+                users:false
             }
         })
     }
@@ -54,7 +58,8 @@ console.log(value)
                 mission: !prevState.mission,
                 events:false,
                 prayer:false,
-                serving:false
+                serving:false,
+                users:false
             }
         })
     }
@@ -64,11 +69,23 @@ console.log(value)
                 serving: !prevState.serving,
                 mission:false,
                 events:false,
-                prayer:false
+                prayer:false,
+                users:false
             }
         })
     }
 
+    if (value === 'user'){
+        setRenderForm(prevState=> {
+            return{
+                serving:false,
+                mission:false,
+                events: false,
+                prayer:false,
+                users:!prevState.users
+            }
+        })
+    }
 }
 
     
@@ -93,7 +110,7 @@ if(renderForm.prayer === true){
                 <h2>{pray.firstName} </h2>
                 <h3>{pray.request} </h3>
                 <div>
-                    <button onClick={()=>startEditingPrayer(pray._id)}>Edit</button><button>Delete</button>
+                    <button onClick={()=>startEditingPrayer(pray._id)}>Edit</button><button onClick={()=> deletePrayer(pray._id)}>Delete</button>
                 </div>
             </div>
         )}
@@ -160,13 +177,52 @@ if(renderForm.events === true){
         }
     })}
 
+    let userData
+    console.log(allUsers)
+    if(renderForm.users === true){
+    userData = allUsers.map((user)=>{
+        if(user.editing === false){
+            return(
+            <div className="allUsers">
+                <h2> Username: {user.username} </h2>
+                <h2>Name: {user.firstName} {user.lastName} </h2>
+                <h2>Permissions: {user.isAdmin ? "Administrator" : "not authorized"} </h2>
+                {!user.editing&& <div className="userEdit">
+                    <button onClick={()=> adminUserUpdate(user._id)}>Edit</button><button onClick={()=> adminUserDelete(user._id)}>Remove</button>
+                </div> }
+            </div>)
+        }
+        else if(user.editing === true){
+            return(
+                <div className="allUsers">
+                    <input type="text" name="username" placeholder="username" onChange={adminUserHandleChange} value={updateUser.username}></input>
+                   <input type="text" name="firstName" placeholder="First Name" onChange={adminUserHandleChange} value={updateUser.firstName} ></input><input type="text" name="lastName" placeholder="Last Name" onChange={adminUserHandleChange} value={updateUser.lastName}></input>
+                   <input type="text" name="email" placeholder="email" onChange={adminUserHandleChange} value={updateUser.email}></input>
+                   <input type="text" name="phone" placeholder="phone number" onChange={adminUserHandleChange} value={updateUser.phone}></input>
+                   <span>Do not fill out if you are not changing password</span>
+                   <div>
+                   <input type="password" name="currentPassword" placeholder="currentPassword"></input>
+                   <input type="password" name="newPassword" placeholder="New Password"></input>
+                   </div>
+                    <div>
+                   <span>Administrator?</span>  <input type="radio" value={true} name="isAdmin"onChange={adminUserHandleChange} ></input><span>Yes</span> <input type="radio" name="isAdmin" value={false} onChange={adminUserHandleChange}></input><span>No</span>
+                   
+                    </div>
+                    {user.editing&& <div className="userEdit">
+                        <button onClick={()=> adminUserSave(user._id)}>Save</button><button onClick={()=> adminUserCancel(user._id)}>Cancel</button>
+                    </div> }
+                </div>)
+        }
+    })
+    }
+
 // work on conditional render of the add form
 
 
 return(
     <>
     <div className="adminWelcome" >
-        <h1 style={{color:'white'}} >Welcome {user.user.username} </h1>
+        <h1 style={{color:'white'}} >Welcome {user.user.firstName} </h1>
     </div>
     <AdminNav render={adminRender} />
    { renderForm.events && displayForm && <div className="addEvent">
@@ -182,7 +238,7 @@ return(
             <button className="eventSubmit">Submit</button>
         </form>
     </div>}
-    
+    {renderForm.users && displayForm && <NewUser />}
     {renderForm.mission && displayForm && <NewMission />}
     {renderForm.serving && displayForm && <NewPosition />}
     <div className="adminEventContainer">
@@ -190,6 +246,7 @@ return(
     {renderForm.events && adminEvents}
     {renderForm.mission && <MissionTemplate />}
     {renderForm.serving &&  <Serving />}
+    {renderForm.users && userData}
     
     </div>
 

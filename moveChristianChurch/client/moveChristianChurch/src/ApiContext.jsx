@@ -60,9 +60,79 @@ function ApiContextProvider (props){
         imgUrl: ""
 
     })
+
+    const [updateUser, setUpdateUser] = React.useState({
+        username:"",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        isAdmin: "",
+
+    })
     const [displayForm, setDisplayForm]= React.useState(false)
 
     const [volunteers, setVolunteers] = React.useState([])
+
+    const [userData, setUserData] = React.useState([])
+
+    const [newUser, setNewUser] = React.useState({
+        username:"",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+       password:"",
+       verificator: ""
+    })
+const [failedVerification, setFailedVerification] = React.useState(false)
+
+
+    function newUserHandleChange(event){
+        const {name, value} = event.target
+
+        setNewUser(prevState=>{
+            return{
+                ...prevState,
+                [name]: value
+            }
+        })
+    }
+
+    function addNewUser(event){
+        event.preventDefault()
+        if(newUser.password === newUser.verificator){
+            userAxios.post(`/api/accounts/signUp`, newUser)
+                    .then(res => setUserData(prevState=> [...prevState, res.data]), setUserState(prevState =>{
+                        return{
+                            ...prevState,
+                            errMsg: ""
+                        }
+                    }))
+                    .catch(err => setUserState(prevState=>{
+                        return{
+                            ...prevState,
+                            errMsg: err.response.data.message
+                        }
+                    }))
+
+                    setNewUser(prevState=>{
+                        return{
+                            username:"",
+                            firstName: "",
+                            lastName: "",
+                            email: "",
+                            phone: "",
+                           password:"",
+                           verificator: ""  
+                        }
+                    })
+            if(failedVerification === true){
+                setFailedVerification(false)
+            }
+        }
+        else setFailedVerification(true)
+    }
 
 
 
@@ -91,10 +161,17 @@ function ApiContextProvider (props){
     }
 
     function submitPrayer(event){
-        event.preventDefault()
+        
         axios.post(`/api/prayer`, newPrayer)
             .then(res => setPrayerRequest(prevState=> [...prevState,res.data]))
             .catch(err => console.log(err.res.data.message))
+    }
+
+    function deletePrayer(id){
+        
+        userAxios.delete(`/api/auth/prayer/${id}`)
+                .then(res=> setPrayerRequest(prevState=> prevState.filter(prayer=> prayer._id !=id)))
+                .catch(err => console.log(err.response.data.message))
     }
 
 
@@ -384,6 +461,93 @@ function ApiContextProvider (props){
                 .then(res=> setServing(prevState=> prevState.filter(serve=> id != serve._id)))
                 .catch(err => console.log(err.response.data.message))
         }
+        
+        function adminUserUpdate(id){
+            const filteredUser = userData.filter((user)=>{
+                if(id === user._id){
+                    user.editing = true
+                    return user
+                }
+            })
+
+         setUpdateUser(prevState => {
+            return{
+                username: filteredUser[0].username,
+                firstName: filteredUser[0].firstName,
+                lastName: filteredUser[0].lastName,
+                email: filteredUser[0].email,
+                isAdmin: filteredUser[0].isAdmin,
+            }
+         })
+        setUserData(prevState=> prevState.map(user => user._id === id? filteredUser[0]: user ))
+        }
+
+        function adminUserHandleChange(event){
+            const{ name, value} = event.target
+                if(value === "true" || value === "false"){
+                    const toBoolean = JSON.parse(value)
+                    setUpdateUser(prevState=> {
+                        return{
+                            ...prevState,
+                            [name]: toBoolean
+                        }
+                    })
+                }
+        else
+            setUpdateUser(prevState=>{
+                return{
+                    ...prevState,
+                    [name]: value
+                }
+            })
+        }
+console.log(updateUser)
+
+function adminUserCancel(id){
+    const filteredUser = userData.filter((user)=>{
+        if(user._id === id){
+            user.editing = false
+            return user
+        }
+    })
+
+    setUpdateUser(prevState =>{
+        return{
+            username:"",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        isAdmin: "",
+        }
+    })
+    setUserData(prevState=> prevState.map(user => user._id === id ? filteredUser[0]: user))
+}
+
+    function adminUserSave(id){
+        
+
+        userAxios.put(`/api/auth/useredit/${id}`,updateUser)
+                .then(res=> setUserData(prevState=> prevState.map(user=> user._id === id? res.data: user)))
+                .catch(err => console.log(err.response.data.message))
+                setUpdateUser(prevState=> {
+                    return{
+                        username:"",
+                        firstName: "",
+                        lastName: "",
+                        email: "",
+                        phone: "",
+                        isAdmin: "",  
+                    }
+                })
+    }
+
+    function adminUserDelete(id){
+        userAxios.delete(`/api/auth/useredit/${id}`)
+                .then(res => setUserData(prevState=> prevState.filter(user=> user._id != id)))
+                .catch(err => console.log(err.response.data.message))
+    }
+
 
     
     function credentials(event){
@@ -454,6 +618,9 @@ function getVolunteers(){
         axios.get('/api/service/volunteer')
             .then(res => setServing(res.data))
             .catch(err => console.log(err.res.data.message))
+        axios.get(`/api/users`)
+                .then(res => setUserData(res.data))
+                .catch(err => console.log(err.response.data.message))
     }
 
     React.useEffect(()=>{
@@ -477,6 +644,7 @@ function getVolunteers(){
             startEditingPrayer,
             updatePrayerReq,
             savePrayer,
+            deletePrayer,
             cancelPrayerEdit,
             adminEventEdit,
             adminCancelEdit,
@@ -501,7 +669,19 @@ function getVolunteers(){
             newService:newService,
             newMission: newMission,
             updateEvent:eventsUpdate,
-            prayerUpdate: prayerUpdate
+            prayerUpdate: prayerUpdate,
+            allUsers: userData,
+            adminUserUpdate,
+            adminUserDelete,
+            adminUserSave,
+            adminUserHandleChange,
+            adminUserCancel,
+            updateUser: updateUser,
+            newUserHandleChange,
+            addNewUser ,
+            newUser: newUser,
+            passCheck: failedVerification,
+            newPrayer:newPrayer
         }}>{props.children}
         
          </ApiContext.Provider>

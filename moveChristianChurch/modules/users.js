@@ -13,24 +13,32 @@ const userSchema = new Schema({
         type: String,
        required: true
     },
-    // firstName: {
-    //     type: String,
-    //     required: true
-    // },
-    // lastName : {
-    //    type: String,
-    //    required: true
-    // },
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName : {
+       type: String,
+       required: true
+    },
  
-    // email: {
-    //     type: String,
-    //    required: true
-    // },
+    email: {
+        type: String,
+       required: true
+    },
     isAdmin: {
         type:Boolean,
         default: false,
         
-    }
+    },
+    editing: {
+        type: Boolean,
+        default: false
+    },
+    // phone: {
+    //     type: String,
+    //     default: "111111"
+    // }
 })
 
 userSchema.pre('save', function(next){

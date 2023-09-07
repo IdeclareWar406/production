@@ -20,6 +20,7 @@ document.body.style.backgroundColor ="black"
                 <button className="logInButton">Log in</button>
                 </form>
                 {user.errMsg && <h2 style={{color: 'red'}} >{user.errMsg} </h2>}
+               
             </div>
         </>
 

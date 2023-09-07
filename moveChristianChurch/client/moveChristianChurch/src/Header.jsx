@@ -40,7 +40,7 @@ export default function Header(){
             <Link className="events" to="/events" element={<Events />}>Events</Link>
             <Link className="prayer" to="/ministries" element={<Ministries />} >Ministries</Link>
            {token? <span onClick={logOut} className="login">Logout</span>: <Link className="login" to="/login" element={ <StaffVolunteerLog />} >Log in</Link> }
-           {token && <Link className="admin" to="/admin" element={<Admin />}>Admin</Link>}
+           {token && user.user.isAdmin && <Link className="admin" to="/admin" element={<Admin />}>Admin</Link>}
            {token && <a className="ionos" href="https://login.1and1-editor.com/717316849/www.movechristianchurch.com/us?pageId=1373414383" target="_id">IONOS Login</a>}
            <a className="events" href="https://subsplash.com/u/movechristianchurch/give" target="_blank">Giving</a>
             </div>

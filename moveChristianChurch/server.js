@@ -25,6 +25,7 @@ app.use("/api/events", require("./routes/events.js"))
 app.use("/api/prayer", require("./routes/prayer.js"))
 app.use("/api/auth/volunteers", require('./routes/volManage.js'))
 app.use('/api/newvol' , require("./routes/newVolunteer.js"))
+app.use("/api/auth/useredit", require('./routes/userEdit.js'))
 
 
 

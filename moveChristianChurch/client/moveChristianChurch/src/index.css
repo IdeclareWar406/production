@@ -453,6 +453,13 @@ text-decoration: underline;
     border: solid gold 2px;
     justify-content: space-evenly;
 }
+.allUsers{
+    display:flex;
+    flex-direction: column;
+    color:white;
+    border: solid 2px gold;
+    align-items: center;
+}
 .ministryNavigation{
     display:flex;
     flex-direction: column;
@@ -513,6 +520,11 @@ text-decoration: underline;
 .selectMinistry{
     color:white;
     align-self:center
+}
+.newUserForm{
+    display:flex;
+    flex-direction: column;
+    
 }
 
 @media only screen and (min-width:250px) and (max-width:1900px){
