@@ -12,13 +12,7 @@ volunteerRouter.post('/:positionId', async(req,res)=>{
         const newVol = await new Volunteer(req.body)
         newVol.save()
         
-        const foundPosition = await Serving.find({_id:req.params.positionId})
-        const foundVols = await Volunteer.find({position: req.params.positionId})
-        
-        
-        //troubleshoot problem with pushing volunteers into the vol array
-        foundPosition.volunteers.push(foundVols)
-        foundPosition.save()
+      
         res.status(200).send('successfully added')
     }
     catch{

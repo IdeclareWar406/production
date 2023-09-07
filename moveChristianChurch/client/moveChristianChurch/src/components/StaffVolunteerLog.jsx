@@ -6,7 +6,7 @@ import "../index.css"
 
 export default function StaffVolunteerLog(){
 document.body.style.backgroundColor ="black"
-    const {credentials, signOn} = React.useContext(ApiContext)
+    const {credentials, signOn, user} = React.useContext(ApiContext)
 
 
 
@@ -19,6 +19,7 @@ document.body.style.backgroundColor ="black"
                 <input type="password" name="password" onChange={credentials} placeholder="password"></input>
                 <button className="logInButton">Log in</button>
                 </form>
+                {user.errMsg && <h2 style={{color: 'red'}} >{user.errMsg} </h2>}
             </div>
         </>
 

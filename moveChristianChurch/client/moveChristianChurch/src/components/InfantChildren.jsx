@@ -7,7 +7,7 @@ export default function InfantChildredn(){
 
     return(
         <div className='infantChildren'>
-            <h1>Infant & Toddlers</h1>
+            <h1 className='infantTitle'>Infant & Toddlers</h1>
             <h2>Nursery</h2>
             <h3>It is the nursery staff's goal to provide a loving, safe, Christian environmnet for each child so children will find being at church a pleasant experience. Nursery care is available for babies 0-24 months. As a security measuere we run full background checks on all of our volunteers</h3>
             <h2>Help Prevent Spread Of Illness</h2>

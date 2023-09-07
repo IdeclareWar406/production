@@ -7,7 +7,7 @@ const {events} = React.useContext(ApiContext)
 const[displayAdult, setDisplayAdult] = React.useState(false)
 const [displayStudent, setDisplayStudent]= React.useState(false)
 const [displayHoliday, setDisplayHoliday] = React.useState(false)
-    console.log(events)
+    
     document.body.style.backgroundColor ='black'
     function renderWhich(value){
         if(value === 'student'){

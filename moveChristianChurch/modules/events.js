@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
-const eventsSchema = new Schema({
+const eventsSchema =  new Schema( {
     title: {
         type: String,
         required: true
@@ -30,6 +30,7 @@ const eventsSchema = new Schema({
         required:true
     }
 })
+
 
 
 

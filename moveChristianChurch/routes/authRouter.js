@@ -5,6 +5,7 @@ const authRouter = express.Router()
 
 authRouter.post('/signUp', async(req,res)=>{
     try {
+        
         const findUser = await User.findOne({username: req.body.username})
         if(findUser){
             console.log('already exists')

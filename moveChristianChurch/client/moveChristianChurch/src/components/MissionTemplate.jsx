@@ -5,7 +5,7 @@ import "../index.css"
 export default function MissionTemplate(){
     const{missions , user, missionText, newMission,beginMissionEdit, cancelMissionEdit, saveMissionEdit, deleteMission } = React.useContext(ApiContext)
     
-    console.log(missions)
+    
 // need a register option and form 
     const scheduledMissions = missions.map((mission)=>{
             if(!mission.editing){
@@ -16,7 +16,8 @@ export default function MissionTemplate(){
                 <h2>Location: {mission.location} </h2>
                 <h2>Description: {mission.description} </h2>
                 <button>Register</button>
-                {user.token && <div>
+                {user.user.isAdmin && user.token && <div>
+                    <h3>Volunteers {}</h3>
                     <button onClick={()=> beginMissionEdit(mission._id)}>Edit</button><button onClick={()=> deleteMission(mission._id)}>Delete</button>
                     </div>}
             </div>
@@ -39,6 +40,7 @@ export default function MissionTemplate(){
 
     return(
         <div>
+            <h1 className="missionTitle">Missions</h1>
             {scheduledMissions}
         </div>
     )

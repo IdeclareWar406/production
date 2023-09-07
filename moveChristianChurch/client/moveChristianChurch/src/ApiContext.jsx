@@ -14,7 +14,8 @@ function ApiContextProvider (props){
 
     const [userState, setUserState]= React.useState({
         user: JSON.parse(localStorage.getItem('User')) || "",
-        token: localStorage.getItem('Token') || "" 
+        token: localStorage.getItem('Token') || "" ,
+        errMsg: ""
     })
     const [prayerRequest, setPrayerRequest] = React.useState([])
 
@@ -61,6 +62,7 @@ function ApiContextProvider (props){
     })
     const [displayForm, setDisplayForm]= React.useState(false)
 
+    const [volunteers, setVolunteers] = React.useState([])
 
 
 
@@ -315,6 +317,7 @@ function ApiContextProvider (props){
         
         function newServing (event){
             event.preventDefault()
+            if(newService.title != "" && newService.description != ""){
             userAxios.post(`/api/auth/service/serving`, newService)
                 .then(res=> setServing(prevState=> [...prevState, res.data]))
                 .catch(err => console.log(err.response.data.message))
@@ -324,7 +327,8 @@ function ApiContextProvider (props){
                      description: "",
                      imgUrl: ""
                     }
-                })
+                })}
+            
         }
         function beginServingEdit(id){
             const filteredService = serving.filter((serve)=>{
@@ -391,7 +395,11 @@ function ApiContextProvider (props){
         })
     }
 
-
+function getVolunteers(){
+    userAxios.get('/api/auth/volunteers')
+            .then(res => setVolunteers(res.data))
+            .catch(err => console.log(err.response.data.message))
+}
 
     function signOn(event){
         event.preventDefault()
@@ -403,11 +411,18 @@ function ApiContextProvider (props){
                 return{
                     ...prevState,
                     user: res.data.user,
-                    token: res.data.token
+                    token: res.data.token,
+                    errMsg: ""
                 }
             }))
-            .catch(err => console.log(err.response.data.message))
+            .catch(err => setUserState(prevState=> {
+                return{
+                    ...prevState,
+                    errMsg: err.response.data.message
+                }
+            }))
     }
+    
     function logOut(){
         localStorage.removeItem('Token')
         localStorage.removeItem('User')

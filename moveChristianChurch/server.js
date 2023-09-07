@@ -8,7 +8,10 @@ const app = express()
 
 app.use( express.json())
 
- mongoose.connect(`mongodb://localhost:27017/moveChristianChurch`, console.log('connected to db'))
+//  mongoose.connect(`mongodb://localhost:27017/moveChristianChurch`, console.log('connected to db'))
+
+
+mongoose.connect(`mongodb+srv://rsuber406:${process.env.dbPass}@projectcluster.hrowo9w.mongodb.net/`, console.log('connected to db'))
 
 app.use("/api/auth", expressjwt({secret: process.env.SECRET, algorithms:['HS256']}))
 app.use("/api/serving", require('./routes/serving.js'))
