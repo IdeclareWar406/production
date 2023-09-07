@@ -77,7 +77,7 @@ userRouter.put("/:userId", async(req,res)=>{
     try{
         const updatedObject = await User.findOneAndUpdate({_id: req.params.userId}, req.body, {new:true})
         res.status(200)
-        res.send(updatedObject)
+        res.send(updatedObject.withoutPassword())
     }
     catch{
         res.status(404)

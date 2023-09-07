@@ -405,7 +405,7 @@ function getVolunteers(){
         event.preventDefault()
         axios.post(`/api/accounts/login`, logInfo)
             .then(res => setUserState(prevState=>{
-                console.log(res.data , 'userState')
+                getVolunteers()
                 localStorage.setItem('Token', res.data.token)
                 localStorage.setItem('User', JSON.stringify(res.data.user))
                 return{
@@ -460,7 +460,7 @@ function getVolunteers(){
         apiData()
     },[])
 
-    console.log(displayForm)
+    
 
     return(
         <ApiContext.Provider value={{

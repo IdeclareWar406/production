@@ -24,7 +24,7 @@ const token = user.token
           <Route path="/about" element={<About />} />
           <Route path="/prayer" element={<Prayer />} />
           <Route path="/events" element={<Events />} />
-          <Route path="/login" element={token? <Navigate to="/admin" /> : <StaffVolunteerLog />} />
+          <Route path="/login" element={user.user.isAdmin && token? <Navigate to="/admin" /> : <StaffVolunteerLog />} />
           <Route path="/ministries" element={<Ministries />} />
           <Route path="/admin" element={<ProtectedRoute>
             <Admin />

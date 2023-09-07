@@ -15,6 +15,12 @@ export default function Header(){
     const{user,logOut} = React.useContext(ApiContext)
     const token = user.token
 
+    const [mobile, setMobile] = React.useState(false)
+
+    function useMobile(){
+        setMobile(prevState => !prevState)
+    }
+
 
     return(
         <>
@@ -25,7 +31,9 @@ export default function Header(){
                 <img src="src/images/logo.png" width={"200px"}></img>
                 </Link>
             </div>}
-            <div className="links">
+           
+           <div className="links">
+            {/* <h2 className="threeLines">&#8942;</h2> */}
             <Link className="home" to="/"  element={<Home />} >Home</Link>
             <Link className="about" to="/about"  element={<About />}>About</Link>
             <Link className="prayer" to="/prayer" element={<Prayer />}>Prayer</Link>
@@ -36,6 +44,7 @@ export default function Header(){
            {token && <a className="ionos" href="https://login.1and1-editor.com/717316849/www.movechristianchurch.com/us?pageId=1373414383" target="_id">IONOS Login</a>}
            <a className="events" href="https://subsplash.com/u/movechristianchurch/give" target="_blank">Giving</a>
             </div>
+           
         </div>
         </>
     )
