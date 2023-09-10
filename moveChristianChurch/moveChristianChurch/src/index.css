@@ -570,7 +570,7 @@ text-decoration: underline;
     .homeFooter{
        
         position:relative;
-        left:20%;
+        left:10%;
     }
     .links{
         flex-direction: column;
@@ -581,10 +581,14 @@ text-decoration: underline;
         
         position: relative;
         left:0%;
-        bottom:50%;
+        bottom:30%;
        
     
         /* flex-wrap:wrap; */
+    }
+    .ourAddress{
+        position: relative;
+        left:15%;
     }
     
     .serviceTimes{
@@ -608,7 +612,7 @@ text-decoration: underline;
    
    .directions{
     top:230px;
-    right:26%;
+    right:12%;
    }
    .prayerRequest{
     width:250px;
