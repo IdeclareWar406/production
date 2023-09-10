@@ -568,6 +568,7 @@ text-decoration: underline;
         
     }
     .homeFooter{
+       
         position:relative;
         left:20%;
     }
@@ -580,7 +581,7 @@ text-decoration: underline;
         
         position: relative;
         left:0%;
-        bottom:80%;
+        bottom:50%;
        
     
         /* flex-wrap:wrap; */
