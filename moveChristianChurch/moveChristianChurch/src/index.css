@@ -589,7 +589,7 @@ text-decoration: underline;
     }
     .ourAddress{
         position: relative;
-        left:20%;
+        left:25%;
     }
     .ourEmail{
         position: relative;
@@ -616,7 +616,7 @@ text-decoration: underline;
    
    .directions{
     top:230px;
-    right:12%;
+    right:7%;
    }
    .prayerRequest{
     width:250px;
