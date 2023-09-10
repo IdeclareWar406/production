@@ -557,6 +557,10 @@ text-decoration: underline;
         justify-content: start;
         
     }
+    .homeFooter{
+        position:relative;
+        left:15%;
+    }
     .links{
         /* flex-direction: column; */
        padding:10px;
@@ -567,6 +571,7 @@ text-decoration: underline;
     
         flex-wrap:wrap;
     }
+    
     .serviceTimes{
         position:relative;
         left:5%;
@@ -585,9 +590,7 @@ text-decoration: underline;
    .ourMotto{
     width:400px;
    }
-   .homeFooter{
-    left:10%;
-   }
+   
    .directions{
     top:230px;
     right:26%;

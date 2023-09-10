@@ -28,7 +28,7 @@ export default function Header(){
         <div className="header"> 
           {window.innerWidth > 1900 &&  <div className="headerLogo">
                 <Link to="/" element={<Home />}>
-                <img src="/public/images/logo.png" width={"200px"}></img>
+                <img src="/images/logo.png" width={"200px"}></img>
                 </Link>
             </div>}
            

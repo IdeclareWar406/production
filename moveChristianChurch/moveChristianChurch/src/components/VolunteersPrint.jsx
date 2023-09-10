@@ -10,7 +10,7 @@ const {volunteers,user, volunteerHandleChange, beginVolunteerEdit, saveVolunteer
         return(
             <div className="printedVol">
                 <h2>Name: {vol.firstName} {vol.lastName} </h2>
-                <h3>Contact Info: {vol.email} phone: {vol.phone} </h3>
+                <h3>Contact Info: {vol.email}</h3>
                 <h3>phone: {vol.phone}</h3>
                 {user.user.isAdmin && <div className="printedVolButton">
                     <button onClick={()=> beginVolunteerEdit(vol._id)}>Edit</button> <button onClick={()=> deleteVolunteer(vol._id)}>Delete</button>
