@@ -12,7 +12,7 @@ app.use( express.json())
 
 
 
-mongoose.connect(`${process.env.dbAuth}`, console.log('connected to db'))
+mongoose.connect(process.env.dbAuth, {useNewUrlParser:true}, console.log('connected to db'))
 
 app.use("/api/auth", expressjwt({secret: process.env.SECRET, algorithms:['HS256']}))
 app.use("/api/serving", require('./routes/serving.js'))
