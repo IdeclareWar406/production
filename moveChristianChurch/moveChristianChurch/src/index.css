@@ -553,7 +553,7 @@ text-decoration: underline;
 
 @media only screen and (min-width:250px) and (max-width:1900px){
     .header{
-        bottom: 80%;
+        bottom: 70%;
         justify-content: start;
         
     }
@@ -566,6 +566,10 @@ text-decoration: underline;
        
     
         flex-wrap:wrap;
+    }
+    .serviceTimes{
+        position:relative;
+        left:5%;
     }
     .homePic{
         display:flex;
