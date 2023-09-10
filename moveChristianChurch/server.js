@@ -27,7 +27,7 @@ app.use("/api/prayer", require("./routes/prayer.js"))
 app.use("/api/auth/volunteers", require('./routes/volManage.js'))
 app.use('/api/newvol' , require("./routes/newVolunteer.js"))
 app.use("/api/auth/useredit", require('./routes/userEdit.js'))
-app.use(express.static(path.join(__dirname, "client", "moveChristianChurch")))
+app.use(express.static(path.join(__dirname, "moveChristianChurch", "build")))
 
 
 
@@ -36,7 +36,7 @@ app.use("/", (err,req,res,next)=>{
 })
 
 app.get("*", (req,res)=>{
-    res.sendFile(path.join(__dirname, "client", "moveChristianChurch", "index.html"))
+    res.sendFile(path.join(__dirname, "moveChristianChurch", "build", "index.html"))
 });
 
 app.listen(9000, ()=>{
