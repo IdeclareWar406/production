@@ -36,7 +36,7 @@ app.use("/", (err,req,res,next)=>{
 })
 
 app.get("*", (req,res)=>{
-    res.sendFile(path.join(__dirname, "client", "build", "src/index.html"))
+    res.sendFile(path.join(__dirname, "client", "moveChristianChurch", "index.html"))
 });
 
 app.listen(9000, ()=>{
