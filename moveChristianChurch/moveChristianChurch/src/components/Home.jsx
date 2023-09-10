@@ -10,12 +10,12 @@ document.body.style.backgroundColor = "black"
  return(<div>
         <div className="homePic">
             
-        <img className="churchLogo" src="src/images/logo.png" width={"600px"}></img>
+        <img className="churchLogo" src="public/images/logo.png" width={"600px"}></img>
         </div>
         <div className="motto">
             <div className="imgMotto">
            
-            <img className="ourMotto" src="src/images/moveHomePic.jpg" ></img>
+            <img className="ourMotto" src="public/images/moveHomePic.jpg" ></img>
             </div>
             <h2>Our service times are listed below</h2>
             <div className="serviceTimes">
