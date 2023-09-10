@@ -319,7 +319,7 @@ text-decoration: underline;
     color:white;
     align-items: center;
     
-    border:solid gold 1px;
+   
     width:500px;
 }
 .adminEventContainer{
@@ -391,8 +391,12 @@ text-decoration: underline;
 .missionTitle{
     color:white;
     font-family: 'Dancing Script';
-    position: relative;
-    left:35%;
+   
+}
+.missionContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .missionForm{
     display: flex;
@@ -407,7 +411,9 @@ text-decoration: underline;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid gold 2px
+    
+   
+    
     
 }
 .editMission{
@@ -450,14 +456,14 @@ text-decoration: underline;
     flex-direction: column;
     align-items: center;
     color: white;
-    border: solid gold 2px;
-    justify-content: space-evenly;
+   
+    
 }
 .allUsers{
     display:flex;
     flex-direction: column;
     color:white;
-    border: solid 2px gold;
+   
     align-items: center;
 }
 .ministryNavigation{
@@ -536,8 +542,11 @@ text-decoration: underline;
     top:30%;
 }
 .servingVolContainer{
-   
+  
     display: flex;
+   
+   align-items: center;
+   justify-content: center;
 }
 .printedVol{
     color:white;
@@ -551,25 +560,30 @@ text-decoration: underline;
     
 }
 
-@media only screen and (min-width:250px) and (max-width:1900px){
+@media only screen and (min-width:250px) and (max-width:799px){
     .header{
         bottom: 70%;
-        justify-content: start;
+        justify-content: end;
+      
         
     }
     .homeFooter{
         position:relative;
-        left:15%;
+        left:20%;
     }
     .links{
-        /* flex-direction: column; */
+        flex-direction: column;
+       
        padding:10px;
         justify-content: space-between;
-        width:450px;
-        height:50px;
+        width:150px;
+        
+        position: relative;
+        left:0%;
+        bottom:80%;
        
     
-        flex-wrap:wrap;
+        /* flex-wrap:wrap; */
     }
     
     .serviceTimes{
@@ -606,7 +620,7 @@ text-decoration: underline;
     justify-content: space-evenly;
    }
    .eventNav{
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     
     width:300px;
@@ -644,30 +658,55 @@ text-decoration: underline;
    }
    .adminEventContainer{
     position: relative;
-    top:50px;
-    left:25%;
+    bottom:0px;
+    bottom:500px;
+    
+    left:40%;
    }
    .adminNav{
-    flex-direction: row;
+    flex-direction: column;
     width:700px;
     justify-content: space-evenly;
     
    }
    .addEvent{
     position: relative;
-    top:20px;
+    bottom:500px;
     left:25%;;
    }
    .newMission{
     position: relative;
-    top:20px;
-    left:38%;;
+    bottom:500px;
+    left:32%;
    }
    .newServingPostion{
     position: relative;
-    top:20px;
+    bottom:500px;
     left:25%;
    }
+   
+   }
+   @media only screen and (min-width: 800px) and (max-width:1900px){
+    .header{
+        bottom:80%;
+    }
+    .links{
+        
+        flex-direction: column;
+        position: relative;
+        bottom:17%;
+       right:4%;
+       width:100px;
+    }
+    .headerLogo{
+        position: relative;
+        bottom:40%;
+        
+    }
+    .churchLogo{
+        position: relative;
+        right:10%;;
+    }
    @media only screen and(min-width:1901) and (max-width:2159){
     .header{
        position:absolute;

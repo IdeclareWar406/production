@@ -26,7 +26,7 @@ export default function Header(){
         <>
          <img src="https://images.unsplash.com/photo-1599406079829-a91deeb440de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3870&q=80" width={"100%"} height={"400px"}></img>
         <div className="header"> 
-          {window.innerWidth > 1900 &&  <div className="headerLogo">
+          {window.innerWidth > 799 &&  <div className="headerLogo">
                 <Link to="/" element={<Home />}>
                 <img src="/images/logo.png" width={"200px"}></img>
                 </Link>

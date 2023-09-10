@@ -3,6 +3,7 @@ import "../index.css"
 import { ApiContext } from "../ApiContext"
 import VolunteerForm from "./VoluneerForm"
 
+
 export default function Serving(){
 
     const { serviceChangeHandler,beginServingEdit, saveServeEdit,cancelServeEdit,deleteService, serving, user, newService, volPosId, volunteerPosition, volunteers}= React.useContext(ApiContext)
@@ -30,16 +31,21 @@ export default function Serving(){
 
         else return 'Many'
     }
-
+    const path = window.location
+    console.log(path)
+    if(path.pathname == '/admin'){
+        console.log('this is true')
+    }
+    else console.log('path is false')
     const postedRoles = serving.map((serve)=>{
         if(serve.editing === false){
             return(
                 <div className="positionsAvailable">
                     <h2>Position: {serve.title} </h2>
                     <h3 style={{width: "400px"}}>Description: {serve.description} </h3>
-                    <button onClick={()=> volunteerFormRender(serve._id)}>Volunteer</button>
+                  {  path.pathname != "/admin" && <button onClick={()=> volunteerFormRender(serve._id)}>Volunteer</button>}
                     {user.user.isAdmin && <div>
-                        <h3>Volunteers: </h3>
+                 <h3 >Volunteers: </h3>
                         <h3>{servingVol(serve._id)} </h3>
                     </div> }
                     {user.user.isAdmin && <div className="positionButtons">
@@ -63,15 +69,17 @@ export default function Serving(){
 
 
     return(
-        <>
+        
         <div className="servingVolContainer">
-        <div className="servingContainer">
+        <div className="servingContainer" >
         <h1 className="servingHeader">Serving</h1>
         {postedRoles}
         </div>
+        
       {volForm && <VolunteerForm />}
+      
         </div>
-        </>
+    
     )
 
 }

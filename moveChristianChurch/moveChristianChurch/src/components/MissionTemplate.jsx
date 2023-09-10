@@ -28,17 +28,17 @@ function missionVol(id){
         return `${vol.firstName} ${vol.lastName}`
     })   
 }
-
+const path = window.location
 // need a register option and form 
     const scheduledMissions = missions.map((mission)=>{
             if(!mission.editing){
         return(
             <div className="plannedMissions">
                 
-                <h1>Mission: {mission.title} </h1>
-                <h2>Location: {mission.location} </h2>
-                <h2>Description: {mission.description} </h2>
-                <button onClick={()=> volunteerFormRender(mission._id)}>Register</button>
+                <h2>Mission: {mission.title} </h2>
+                <h3>Location: {mission.location} </h3>
+                <h3>Description: {mission.description} </h3>
+             {  path.pathname != "/admin" &&  <button onClick={()=> volunteerFormRender(mission._id)}>Register</button>}
                 {user.user.isAdmin && user.token && <div>
                     <h3>Volunteers {missionVol(mission._id)}</h3>
                     <button onClick={()=> beginMissionEdit(mission._id)}>Edit</button><button onClick={()=> deleteMission(mission._id)}>Delete</button>
@@ -63,11 +63,13 @@ function missionVol(id){
 
     return(
         <div className="servingVolContainer">
-        <div>
+        <div className="missionContainer">
             <h1 className="missionTitle">Missions</h1>
             {scheduledMissions}
         </div>
+
       {volForm &&  <VolunteerForm />}
+
         </div>
     )
 }
