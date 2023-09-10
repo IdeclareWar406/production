@@ -5,7 +5,7 @@ import { ApiContext } from "../ApiContext.jsx"
 export default function NewMission(){
 
 
-const {newMissionTrip, missionText} = React.useContext(ApiContext)
+const {newMissionTrip, missionText, passCheck} = React.useContext(ApiContext)
    
     return(
         <>
@@ -17,6 +17,7 @@ const {newMissionTrip, missionText} = React.useContext(ApiContext)
                 <textarea style={{height: '150px', width: "300px"}} type='text' className="missionText" name="description" placeholder="description" onChange={missionText} ></textarea>
                 <button >Submit</button>
             </form>
+            {passCheck && <h2 style={{color:'red'}}>All fields are required</h2>}
         </div>
         </>
     )

@@ -526,14 +526,46 @@ text-decoration: underline;
     flex-direction: column;
     
 }
+.volunteerForm{
+    display:flex;
+    flex-direction: column;
+    width:300px;
+    align-items: center;
+    
+    position: relative;
+    top:30%;
+}
+.servingVolContainer{
+   
+    display: flex;
+}
+.printedVol{
+    color:white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.printedVolButton{
+    display:flex; 
+    align-items: center;
+    
+}
 
 @media only screen and (min-width:250px) and (max-width:1900px){
     .header{
-        bottom: 350px;
-        justify-content: end;
+        bottom: 80%;
+        justify-content: start;
+        
     }
     .links{
-        flex-direction: column;
+        /* flex-direction: column; */
+       padding:10px;
+        justify-content: space-between;
+        width:450px;
+        height:50px;
+       
+    
+        flex-wrap:wrap;
     }
     .homePic{
         display:flex;
@@ -631,7 +663,9 @@ text-decoration: underline;
    }
    @media only screen and(min-width:1901) and (max-width:2159){
     .header{
-        bottom: 350px;
+       position:absolute;
+      bottom:0%;
+      
       
     }
    

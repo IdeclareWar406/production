@@ -6,6 +6,7 @@ import MissionTemplate from "./MissionTemplate"
 import NewPosition from "./NewPosition"
 import Serving from "./Serving.jsx"
 import NewUser from "./NewUser"
+import VolunteersPrint from "./VolunteersPrint"
 export default function Admin(){
    const options = ['student', 'adult', 'holiday']
     document.body.style.backgroundColor ='black'
@@ -15,10 +16,11 @@ const [renderForm, setRenderForm] = React.useState({
     mission: false,
     serving:false,
     users: false,
+    volunteers: false
 })
 
 
-const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cancelPrayerEdit,updatePrayerReq,savePrayer,adminCancelEdit,adminEventEdit,updateEvent,adminEventEditing,adminEventSave,adminEventDelete,adminEventAdd, showForm, displayForm, allUsers,adminUserCancel, adminUserHandleChange, adminUserUpdate, adminUserSave, adminUserDelete,updateUser,deletePrayer} = React.useContext(ApiContext)
+const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cancelPrayerEdit,updatePrayerReq,savePrayer,adminCancelEdit,adminEventEdit,updateEvent,adminEventEditing,adminEventSave,adminEventDelete,adminEventAdd, showForm, displayForm, allUsers,adminUserCancel, adminUserHandleChange, adminUserUpdate, adminUserSave, adminUserDelete,updateUser,deletePrayer, resetVerification,passCheck,userAxios, assignVolunteers} = React.useContext(ApiContext)
 
 
 
@@ -27,8 +29,9 @@ const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cance
 
 function adminRender(value){
 console.log(value)
-
+resetVerification()
     if(value === 'prayer'){
+
         setRenderForm(prevState=>{
             return{
                 ...prevState,
@@ -36,7 +39,8 @@ console.log(value)
                 events: false,
                 mission: false,
                 serving: false,
-                users:false
+                users:false,
+                volunteers:false
             }
         })
     }
@@ -48,7 +52,8 @@ console.log(value)
                 prayer: false,
                 mission: false,
                 serving: false,
-                users:false
+                users:false,
+                volutneers:false
             }
         })
     }
@@ -59,7 +64,8 @@ console.log(value)
                 events:false,
                 prayer:false,
                 serving:false,
-                users:false
+                users:false,
+                volunteers:false
             }
         })
     }
@@ -70,7 +76,8 @@ console.log(value)
                 mission:false,
                 events:false,
                 prayer:false,
-                users:false
+                users:false,
+                volunteers:false
             }
         })
     }
@@ -82,10 +89,23 @@ console.log(value)
                 mission:false,
                 events: false,
                 prayer:false,
-                users:!prevState.users
+                users:!prevState.users,
+                volunteers:false
             }
         })
     }
+   if(value === 'volunteer'){
+    setRenderForm(prevState=> {
+        return{
+            serving:false,
+            mission:false,
+            events: false,
+            prayer:false,
+            users:false,
+            volunteers:!prevState.volunteers
+        }
+    })
+   }
 }
 
     
@@ -216,8 +236,11 @@ if(renderForm.events === true){
     })
     }
 
-// work on conditional render of the add form
 
+React.useEffect(()=>{
+userAxios.get(`/api/auth/volunteers`)
+        .then(res => assignVolunteers(res.data))
+},[])
 
 return(
     <>
@@ -237,6 +260,7 @@ return(
             </div>
             <button className="eventSubmit">Submit</button>
         </form>
+        {passCheck && <h2 style={{color:'red'}}>All fields are required</h2>}
     </div>}
     {renderForm.users && displayForm && <NewUser />}
     {renderForm.mission && displayForm && <NewMission />}
@@ -247,6 +271,7 @@ return(
     {renderForm.mission && <MissionTemplate />}
     {renderForm.serving &&  <Serving />}
     {renderForm.users && userData}
+    {renderForm.volunteers && <VolunteersPrint />}
     
     </div>
 

@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const mongoose= require('mongoose')
 require('dotenv').config()
 const {expressjwt} = require('express-jwt')
+const path = require('path')
 const app = express()
  app.use(morgan("dev"))
 
@@ -26,12 +27,17 @@ app.use("/api/prayer", require("./routes/prayer.js"))
 app.use("/api/auth/volunteers", require('./routes/volManage.js'))
 app.use('/api/newvol' , require("./routes/newVolunteer.js"))
 app.use("/api/auth/useredit", require('./routes/userEdit.js'))
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 
 
 app.use("/", (err,req,res,next)=>{
     res.send({errMsg: err.message})
 })
+
+app.get("*", (req,res)=>{
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+});
 
 app.listen(9000, ()=>{
     console.log("server is running")

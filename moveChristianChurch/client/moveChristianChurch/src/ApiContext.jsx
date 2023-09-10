@@ -85,8 +85,21 @@ function ApiContextProvider (props){
        password:"",
        verificator: ""
     })
+
+    const [newVolunteer, setNewVolunteer] = React.useState({
+        firstName:"",
+        lastName: "",
+        email: "",
+        phone: ""
+    })
+    const [volunteerPosId, setVolunteerPosId] = React.useState("")
+
 const [failedVerification, setFailedVerification] = React.useState(false)
 
+
+    function resetVerification(){
+        setFailedVerification(false)
+    }
 
     function newUserHandleChange(event){
         const {name, value} = event.target
@@ -102,6 +115,7 @@ const [failedVerification, setFailedVerification] = React.useState(false)
     function addNewUser(event){
         event.preventDefault()
         if(newUser.password === newUser.verificator){
+            if(newUser.password && newUser.firstName && newUser.lastName && newUser.email && newUser.phone&& newUser.username){
             userAxios.post(`/api/accounts/signUp`, newUser)
                     .then(res => setUserData(prevState=> [...prevState, res.data]), setUserState(prevState =>{
                         return{
@@ -129,7 +143,8 @@ const [failedVerification, setFailedVerification] = React.useState(false)
                     })
             if(failedVerification === true){
                 setFailedVerification(false)
-            }
+            }}
+            else setFailedVerification(true)
         }
         else setFailedVerification(true)
     }
@@ -295,6 +310,7 @@ const [failedVerification, setFailedVerification] = React.useState(false)
 
     function adminEventAdd(event){
         event.preventDefault()
+        if(eventsUpdate.title && eventsUpdate.description && eventsUpdate.subject && eventsUpdate.dateRemoved !="" ){
         userAxios.post(`/api/auth/eventUpdate`, eventsUpdate)
                 .then(res => setEvents(prevState => [...prevState, res.data]))
                 .catch(err => console.log(err.response.data.message))
@@ -303,9 +319,11 @@ const [failedVerification, setFailedVerification] = React.useState(false)
                         ...prevState,
                         title: '',
                         description: '',
-                        subject: ''                    
+                        subject: '',
+                        dateRemoved: ""                   
                     }
-                })
+                })}
+            else setFailedVerification(true)
     }
 
     function missionText(event){
@@ -320,7 +338,7 @@ const [failedVerification, setFailedVerification] = React.useState(false)
      function newMissionTrip(event){
         console.log(event, 'this fired')
         event.preventDefault()
-            
+            if(newMission.title && newMission.location && newMission.description !=""){
             userAxios.post(`/api/auth/service/mission`, newMission)
                 .then(res=> setMissions(prevState=> [...prevState , res.data]))
                 .catch(err => console.log(err))
@@ -331,7 +349,8 @@ const [failedVerification, setFailedVerification] = React.useState(false)
                     location: '',
                     description: ''
                 }
-               }) 
+               }) }
+            else setFailedVerification(true)
         }
         function beginMissionEdit(id){
             const unchanged = []
@@ -405,6 +424,7 @@ const [failedVerification, setFailedVerification] = React.useState(false)
                      imgUrl: ""
                     }
                 })}
+                else setFailedVerification(true)
             
         }
         function beginServingEdit(id){
@@ -548,7 +568,124 @@ function adminUserCancel(id){
                 .catch(err => console.log(err.response.data.message))
     }
 
+    function volunteerHandleChange(event){
+        const{name,value} = event.target
 
+        setNewVolunteer(prevState=>{
+            return{
+                ...prevState,
+                [name]: value
+            }
+        })
+    }
+    console.log(newVolunteer)
+console.log(volunteerPosId)
+    function addVolunteer(event){
+        event.preventDefault()
+        if(newVolunteer.firstName && newVolunteer.lastName && newVolunteer.email && newVolunteer.phone && volunteerPosId !=""){
+            console.log('sending')
+            axios.post(`api/newVol/${volunteerPosId}`, newVolunteer)
+                .then(res=> console.log(res.data))
+                .catch(err=> console.log(err.response.data.message))
+
+
+                setNewVolunteer(prevState=>{
+                    return{
+                        firstName:"",
+                        lastName: "",
+                        email: "",
+                        phone: ""
+                    }
+                })
+        }
+        else setFailedVerification(true)
+    }
+
+    function beginVolunteerEdit(id){
+        const foundVol = volunteers.filter((vol)=>{
+            if(id === vol._id){
+                vol.editing = true
+                return vol
+            }
+        })
+        
+        
+        setNewVolunteer(prevState=>{
+            return{
+                     firstName:foundVol[0].firstName,
+                        lastName:foundVol[0].lastName,
+                        email: foundVol[0].email,
+                        phone: foundVol[0].phone
+            }
+        })
+
+        setVolunteers(prevState => prevState.map(vol => vol._id === id ? foundVol[0] : vol))
+    }
+
+    function cancelVolunteerEdit(id){
+        const foundVol = volunteers.filter((vol)=>{
+            if(id === vol._id){
+                vol.editing = false
+                return vol
+            }
+        })
+        setNewVolunteer(prevState => {
+            return{
+                firstName:"",
+                lastName: "",
+                email: "",
+                phone: ""
+            }
+        })
+        setVolunteers(prevState => prevState.map(vol => vol._id === id ? foundVol[0]: vol))
+    }
+
+    function saveVolunteer(id){
+        if(newVolunteer.firstName && newVolunteer.lastName && newVolunteer.email && newVolunteer.phone !=""){
+            userAxios.put(`api/auth/volunteers/${id}`, newVolunteer)
+                    .then(res => setVolunteers(prevState=> prevState.map(vol => id === vol._id ? res.data: vol)), setUserState(prevState=>{
+                        return{
+                            ...prevState,
+                            errMsg:""
+                        }
+                    }))
+                    .catch(err => setUserState(prevState => {
+                        return{
+                            ...prevState,
+                            errMsg: err.response.data.message
+                        }
+                    }))
+        }
+        setNewVolunteer(prevState=>{
+            return{
+                firstName:"",
+                lastName: "",
+                email: "",
+                phone: ""
+            }
+        })
+    }
+
+    function deleteVolunteer(id){
+        userAxios.delete(`/api/auth/volunteers/${id}`)
+                .then(res=> setVolunteers(prevState=> prevState.filter(vol=> vol._id != id), setUserState(prevState => {
+                    return{
+                        ...prevState,
+                        errMsg: ""
+                    }
+                })))
+                .catch(err => setUserState(prevState=> {
+                    return{
+                        ...prevState,
+                        errMsg:err.response.data.message
+                    }
+                }))
+    }
+
+    function volPosId(id){
+        setVolunteerPosId(id)
+    }
+  
     
     function credentials(event){
         const {name, value} = event.target
@@ -586,7 +723,9 @@ function getVolunteers(){
                 }
             }))
     }
-    
+   function assignVolunteers(data){
+       setVolunteers(data)
+   }
     function logOut(){
         localStorage.removeItem('Token')
         localStorage.removeItem('User')
@@ -681,7 +820,20 @@ function getVolunteers(){
             addNewUser ,
             newUser: newUser,
             passCheck: failedVerification,
-            newPrayer:newPrayer
+            newPrayer:newPrayer,
+            resetVerification,
+            volunteerHandleChange,
+            addVolunteer,
+            volPosId,
+            volunteerPosition:volunteerPosId,
+            volunteers: volunteers,
+            userAxios: userAxios,
+            assignVolunteers,
+            beginVolunteerEdit,
+            saveVolunteer,
+            cancelVolunteerEdit,
+            deleteVolunteer,
+            newVolunteer: newVolunteer
         }}>{props.children}
         
          </ApiContext.Provider>

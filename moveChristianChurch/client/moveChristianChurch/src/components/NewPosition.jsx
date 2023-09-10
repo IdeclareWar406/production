@@ -3,7 +3,7 @@ import { ApiContext } from "../ApiContext"
 import "../index.css"
 
 export default function NewPosition(){
-const { serviceChangeHandler, newServing,beginServingEdit, saveServeEdit,cancelServeEdit,deleteService, serving}= React.useContext(ApiContext)
+const { serviceChangeHandler, newServing,beginServingEdit, saveServeEdit,cancelServeEdit,deleteService, serving, passCheck}= React.useContext(ApiContext)
 
     
 
@@ -19,6 +19,7 @@ const { serviceChangeHandler, newServing,beginServingEdit, saveServeEdit,cancelS
                 <textarea className="servingDescription" type="text" name="description" placeholder="description of volunteer position" onChange={serviceChangeHandler}></textarea>
                 <button>Submit</button>
             </form>
+            {passCheck && <h2 style={{color: 'red'}}>All fields are required</h2>}
         </div>
     )
 

@@ -6,7 +6,10 @@ import StudentMinisties from "./StudentMinistry"
 import InfantChildren from "./InfantChildren"
 import Mens from "./Mens"
 import Women from "./Women"
+import { ApiContext } from "../ApiContext"
+
 export default function Ministries(){
+    const{resetVerification} = React.useContext(ApiContext)
 document.body.style.backgroundColor = 'black'
 const [displayMission, setDisplayMission] = React.useState(false)
 const[displayServing, setDisplayServing] = React.useState(false)
@@ -18,6 +21,7 @@ const [displayWorship, setDisplayWorship] = React.useState(false)
 
 
     function renderWhich(value){
+        resetVerification()
         if(value === 'mission'){
             setDisplayMission(prevState=> !prevState)
             setDisplayServing(false)

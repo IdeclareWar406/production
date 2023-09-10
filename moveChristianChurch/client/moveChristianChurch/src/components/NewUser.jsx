@@ -16,7 +16,7 @@ return(
    <input type="password" name="password" placeholder="password" onChange={newUserHandleChange} value={newUser.password}></input>
    <input type='password' name='verificator' placeholder='re-type password' onChange={newUserHandleChange} value={newUser.verificator}></input>
    <button style={{width: "50%", alignSelf: 'center'}}>Submit</button>
-  {passCheck && <h2 style={{color:'red'}}>Passwords do not match</h2>}
+  {passCheck && <h2 style={{color:'red'}}>All fields are required or passwords do not match</h2>}
   {user.errMsg && <h2 style={{color:'red'}}>{user.errMsg} </h2>}
    </form>
    

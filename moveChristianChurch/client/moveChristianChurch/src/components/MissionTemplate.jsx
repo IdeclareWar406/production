@@ -1,11 +1,34 @@
 import React from "react"
 import { ApiContext } from "../ApiContext"
 import "../index.css"
+import VolunteerForm from "./VoluneerForm"
 
 export default function MissionTemplate(){
-    const{missions , user, missionText, newMission,beginMissionEdit, cancelMissionEdit, saveMissionEdit, deleteMission } = React.useContext(ApiContext)
+    const{missions , user, missionText, newMission,beginMissionEdit, cancelMissionEdit, saveMissionEdit, deleteMission, volPosId, volunteerPosition,volunteers } = React.useContext(ApiContext)
     
     
+    const[volForm, setVolForm] = React.useState(false)
+
+    function volunteerFormRender(id){
+        volPosId(id)
+        setVolForm(prevState =>!prevState)
+        if(volunteerPosition === id){
+            volPosId("")
+        }
+    }
+let foundVol = []
+function missionVol(id){
+     foundVol = volunteers.filter((volunteer)=>{
+        if(volunteer.position === id){
+            return volunteer
+        }
+    })
+
+  return  foundVol.map((vol)=>{
+        return `${vol.firstName} ${vol.lastName}`
+    })   
+}
+
 // need a register option and form 
     const scheduledMissions = missions.map((mission)=>{
             if(!mission.editing){
@@ -15,9 +38,9 @@ export default function MissionTemplate(){
                 <h1>Mission: {mission.title} </h1>
                 <h2>Location: {mission.location} </h2>
                 <h2>Description: {mission.description} </h2>
-                <button>Register</button>
+                <button onClick={()=> volunteerFormRender(mission._id)}>Register</button>
                 {user.user.isAdmin && user.token && <div>
-                    <h3>Volunteers {}</h3>
+                    <h3>Volunteers {missionVol(mission._id)}</h3>
                     <button onClick={()=> beginMissionEdit(mission._id)}>Edit</button><button onClick={()=> deleteMission(mission._id)}>Delete</button>
                     </div>}
             </div>
@@ -39,9 +62,12 @@ export default function MissionTemplate(){
 
 
     return(
+        <div className="servingVolContainer">
         <div>
             <h1 className="missionTitle">Missions</h1>
             {scheduledMissions}
+        </div>
+      {volForm &&  <VolunteerForm />}
         </div>
     )
 }

@@ -13,7 +13,7 @@ volunteerRouter.post('/:positionId', async(req,res)=>{
         newVol.save()
         
       
-        res.status(200).send('successfully added')
+        res.status(200).send('Thank you for volunteering')
     }
     catch{
         res.status(500)

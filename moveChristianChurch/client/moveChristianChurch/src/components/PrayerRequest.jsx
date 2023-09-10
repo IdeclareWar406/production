@@ -30,9 +30,10 @@ const [failedSend, setFailedSend] = React.useState(false)
             <div>
             <input type="radio" name="displayName" value={true} onChange={newPrayerInfo} ></input><span style={{color:'white'}} >Yes</span>
             <input type="radio" name="displayName" value={false} onChange={newPrayerInfo} ></input><span style={{color:'white'}} >No</span>
-            {failedSend && <h2 style={{color:'red'}}>failed to send</h2>}
+            
             </div>
             <button>Submit</button>
+            {failedSend && <h2 style={{color:'red'}}>All fields are required</h2>}
         </form>
         </div>
         </>
