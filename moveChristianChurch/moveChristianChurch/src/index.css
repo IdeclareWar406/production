@@ -568,9 +568,10 @@ text-decoration: underline;
         
     }
     .homeFooter{
-       
+       width:100%;
         position:relative;
         left:10%;
+        
     }
     .links{
         flex-direction: column;
@@ -588,9 +589,12 @@ text-decoration: underline;
     }
     .ourAddress{
         position: relative;
+        left:20%;
+    }
+    .ourEmail{
+        position: relative;
         left:15%;
     }
-    
     .serviceTimes{
         position:relative;
         left:5%;
