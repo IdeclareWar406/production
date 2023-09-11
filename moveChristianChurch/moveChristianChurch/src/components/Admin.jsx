@@ -247,7 +247,7 @@ return(
     <div className="adminWelcome" >
         <h1 style={{color:'white'}} >Welcome {user.user.firstName} </h1>
     </div>
-    <AdminNav render={adminRender} />
+    
    { renderForm.events && displayForm && <div className="addEvent">
         Add a new event
         <form className="newEvent" onSubmit={adminEventAdd}>
@@ -262,24 +262,32 @@ return(
         </form>
         {passCheck && <h2 style={{color:'red'}}>All fields are required</h2>}
     </div>}
+    <div className="variousAdds">
     {renderForm.users && displayForm && <NewUser />}
     {renderForm.mission && displayForm && <NewMission />}
     {renderForm.serving && displayForm && <NewPosition />}
+    </div>
     <div className="adminEventContainer">
+<div>
+<AdminNav render={adminRender} />
+</div>
+
+     <div>
     {renderForm.prayer && reqPrayer}
     {renderForm.events && adminEvents}
     {renderForm.mission && <MissionTemplate />}
     {renderForm.serving &&  <Serving />}
     {renderForm.users && userData}
     {renderForm.volunteers && <VolunteersPrint />}
-    
+    </div>
+   
     </div>
 
 
-    {/* <div className="homeFooter">
-            <h2 style={{color: "white"}} > Our location is 1501 Whispering Pines Rd, Albany, GA</h2><a  className="directions" href="https://www.google.com/maps/place/Move+Christian+Church/@31.605381,-84.185001,15z/data=!4m6!3m5!1s0x88f27bf5efc37f83:0x8436521efbd5f2d!8m2!3d31.6054188!4d-84.1845076!16s%2Fg%2F1tp0fhnr?entry=ttu" target="_blank">Directions</a> 
-            <h2 style={{color:"white"}} >Email us at staff@movechristianchurch.com with any questions you may have</h2>
-        </div> */}
+    <div className="homeFooter">
+            <h2 className="ourAddress" style={{color: "white"}} > Our location is 1501 Whispering Pines Rd, Albany, GA</h2><a  className="directions" href="https://www.google.com/maps/place/Move+Christian+Church/@31.605381,-84.185001,15z/data=!4m6!3m5!1s0x88f27bf5efc37f83:0x8436521efbd5f2d!8m2!3d31.6054188!4d-84.1845076!16s%2Fg%2F1tp0fhnr?entry=ttu" target="_blank">Directions</a> 
+            <h2  className="ourEmail" style={{color:"white"}} >Email us at staff@movechristianchurch.com with any questions you may have</h2>
+        </div>
     </>
 )
 

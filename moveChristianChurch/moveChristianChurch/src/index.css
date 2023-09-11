@@ -213,18 +213,16 @@
 }
 .eventParent{
     display:flex;
-    flex-direction: column;
+   justify-content: space-between;
    padding:10px;
     position: relative;
-    left:34%;
-    bottom:240px;
+
   height:800px;
-    width:450px;
 }
 .eventGroup{
     color:darkred;
     position:relative;
-    top:70px;
+   bottom:24%;
     left:3%;
 
     width:250px;
@@ -324,12 +322,12 @@ text-decoration: underline;
 }
 .adminEventContainer{
     display:flex;
-    flex-direction: column;
+    justify-content: space-between;
   align-items: center;
  
   position: relative;
   left:12%;
-  bottom:200px;
+  
   width:75%;
 }
 .eventTitle{
@@ -347,10 +345,16 @@ text-decoration: underline;
     flex-direction: column;
     align-items: center;
     position: relative;
-  
+    
    width:75%;
    left:12%;
-    bottom:230px;
+   
+}
+.variousAdds{
+    display: flex;
+    position: relative;
+    top:25%;
+    
 }
 .newEvent{
     display:flex;
@@ -359,6 +363,7 @@ text-decoration: underline;
     height:250px;
     width:350px;
     justify-content: space-evenly;
+    border:solid gold 1px;
     
    
 }
@@ -380,7 +385,7 @@ text-decoration: underline;
     align-items: center;
     color:white;
     position: relative;
-    bottom:250px;
+    
     width:50%;
     height:400px;
     position: relative;
@@ -429,7 +434,7 @@ text-decoration: underline;
     width:75%;
     position: relative;
     left:13%;
-    bottom:270px;
+    
     align-items: center;
 }
 .servingPositionForm{
@@ -472,17 +477,17 @@ text-decoration: underline;
    
     width:200px;
     position: relative;
-    left:2%;
+   right:3%;
     top:10px;
 }
 
 .ministryRenderContainer{
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     width:600px;
     position:relative;
-    left:35%;
-    bottom:250px;
+   left:10%;
+  
 }
 .studentMinistries{
     color:white;
@@ -578,15 +583,20 @@ text-decoration: underline;
        
        padding:10px;
         justify-content: space-between;
-        width:150px;
+        width:100px;
         
         position: relative;
-        left:0%;
+       right:3%;
         bottom:10%;
        
-    
-        /* flex-wrap:wrap; */
+        height: 250px;
+        transition: background-color 250ms linear 0ms
+        
     }
+    .links:hover{
+        background-color:gray
+    }
+    
     .ourAddress{
         position: relative;
         left:25%;
@@ -648,8 +658,9 @@ text-decoration: underline;
     left:5%;;
    }
    .eventFooter{
-   position: relative;
-   left:12%;
+    width:100%;
+    position:relative;
+    left:10%;
    }
    .ministryRenderContainer{
     top:20px;
@@ -680,7 +691,7 @@ text-decoration: underline;
    }
    .addEvent{
     position: relative;
-    bottom:500px;
+   
     left:25%;;
    }
    .newMission{
@@ -703,9 +714,15 @@ text-decoration: underline;
         
         flex-direction: column;
         position: relative;
-        bottom:17%;
+       top:45%;
        right:4%;
        width:100px;
+       
+       height: 250px;
+       transition: background-color 250ms linear 0ms
+    }
+    .links:hover{
+        background-color: gray;
     }
     .headerLogo{
         position: relative;
