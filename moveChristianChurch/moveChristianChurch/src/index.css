@@ -209,20 +209,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid gold 2px;
+   border:solid white 2px;
+   width:400px;
 }
 .eventParent{
     display:flex;
-   justify-content: space-between;
+   justify-content: space-evenly;
    padding:10px;
     position: relative;
+    left:15%;
+
+width:50%;
 
   height:800px;
 }
 .eventGroup{
     color:darkred;
     position:relative;
-   bottom:24%;
+   bottom:14%;
     left:3%;
 
     width:250px;
@@ -322,7 +326,7 @@ text-decoration: underline;
 }
 .adminEventContainer{
     display:flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
   align-items: center;
  
   position: relative;
@@ -483,10 +487,10 @@ text-decoration: underline;
 
 .ministryRenderContainer{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width:600px;
     position:relative;
-   left:10%;
+   left:35%;
   
 }
 .studentMinistries{
@@ -651,6 +655,7 @@ text-decoration: underline;
    
    .eventParent{
     position: relative;
+    justify-content: space-between;
     top:20px;
     left:0%;
    }
@@ -666,6 +671,7 @@ text-decoration: underline;
     top:20px;
     left:15%;
     width:300px;
+    justify-content: space-between;
    }
    .studentImg{
     width:100%;
@@ -680,6 +686,7 @@ text-decoration: underline;
     position: relative;
     bottom:0px;
     bottom:500px;
+    justify-content: space-between;
     
     left:40%;
    }
@@ -733,6 +740,25 @@ text-decoration: underline;
         position: relative;
         right:10%;;
     }
+    .eventParent{
+        position: relative;
+        justify-content: space-between;
+        top:20px;
+        left:0%;}
+
+    .adminNav{
+            flex-direction: column;
+            width:700px;
+            justify-content: space-evenly;
+            
+           }
+     .ministryRenderContainer{
+            top:20px;
+            left:15%;
+            width:300px;
+            justify-content: space-between;
+     }
+
    @media only screen and(min-width:1901) and (max-width:2159){
     .header{
        position:absolute;
