@@ -21,7 +21,7 @@ document.body.style.backgroundColor = "black"
             <div className="serviceTimes">
                 <div className="days">
                     <h2>Sunday Morning Study</h2>
-                    <h2>Sunday Service</h2>
+                    <h2>Sunday Gathering</h2>
                     <h2>Wednesday Study</h2>
                 </div>
                 <div className="times">
