@@ -568,6 +568,22 @@ text-decoration: underline;
     align-items: center;
     
 }
+.aboutBody{
+    display:flex;
+   justify-content: space-evenly;
+}
+.displayedAbout{
+    color:white;
+    display:flex;
+    flex-direction: column;
+    width:600px;
+    
+}
+.aboutTitle{
+    align-self: center;
+    font-family: 'Dancing Script';
+    font-size:25px;
+}
 
 @media only screen and (min-width:250px) and (max-width:799px){
     .header{
