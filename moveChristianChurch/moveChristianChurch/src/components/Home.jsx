@@ -34,14 +34,14 @@ document.body.style.backgroundColor = "black"
             <h2>Check our events page for more information</h2>
             <div className="socialMediaImg">
             <a href="https://www.youtube.com/channel/UC6N06_jMBnAfnEMaDijAozg" target="_blank">
-            <img src="https://drive.google.com/uc?export=open&id=1IDZ2LbU56ZLmxh8TKzNu22EvUSeeBP1v" width={"50px"}></img>
+            <img src="/images/youtube.png" width={"50px"}></img>
             </a>
             <a href="https://www.facebook.com/movechristian.church" target="_blank">
-            <img src="https://drive.google.com/uc?export=open&id=1YQx2xs9Hp2tzNBJGQU3YiM0eWlK53jGK" width={"50px"}></img>
+            <img src="/images/facebook.png" width={"50px"}></img>
             </a>
 
             <a href="https://www.instagram.com/movechristianchurch/" target="_blank">
-                <img src="https://drive.google.com/uc?export=open&id=1xr2nYe2uCaNWaKjkBS5TCz1QZ5FchzEc" width={"50px"}></img>
+                <img src="/images/instagram.png" width={"50px"}></img>
             </a>
             </div>
 
