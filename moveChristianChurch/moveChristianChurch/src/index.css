@@ -592,7 +592,7 @@ text-decoration: underline;
 @media only screen and (min-width:250px) and (max-width:799px){
     .header{
         bottom: 70%;
-        justify-content: start;
+        justify-content: end;
       
         
     }
