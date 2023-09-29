@@ -13,6 +13,11 @@ import Contact from "./components/Contact.jsx"
 export default function App(){
 const {user} = React.useContext(ApiContext)
 
+
+
+
+
+
     return(
      <BrowserRouter>
      <Header />

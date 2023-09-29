@@ -42,7 +42,7 @@
 body{
    
     background-repeat: no-repeat;
-    background: linear-gradient( 0deg,black ,navy, darkblue, white) fixed;
+    background: linear-gradient( 180deg,black ,navy, darkblue, white) fixed;
 }
 .outsideLink{
     font-size: 25px;
@@ -123,7 +123,7 @@ body{
 .loginContainer{
     color:white;
     position: relative;
-    top:300px;;
+   
     display:flex;
     flex-direction: column;
     align-items: center;

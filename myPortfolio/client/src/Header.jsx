@@ -8,6 +8,7 @@ import { ApiContext } from './ApiContext.jsx'
 import Admin from './components/Admin.jsx'
 import ClientView from './components/ClientView.jsx'
 import About from './components/About.jsx'
+import StarParticle from './components/StarParticle.jsx'
 export default function Header(){
 
     const{user, signOut} = React.useContext(ApiContext)
@@ -128,6 +129,7 @@ export default function Header(){
          <Link className='home' to='/about' >About</Link>
            </div>
         </div>
+        <StarParticle />
         </>
     )
 }

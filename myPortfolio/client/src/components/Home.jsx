@@ -10,6 +10,7 @@ const{yourName, nameHandler,user} = React.useContext(ApiContext)
 
 
 
+
    const [showInput, setShowInput] = React.useState(true)
 
    function inputBar(){
