@@ -1,0 +1,264 @@
+.header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+   
+    height:200px;
+}
+
+.homeContainer{
+    color: white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top:100px;
+}
+.homeTitle{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:600px; 
+}
+.homeBody{
+    display:flex;
+    justify-content: space-evenly;
+    padding: 15px;
+    margin:5px;
+    position: relative;
+    top:150px;
+   
+    width:100%;
+}
+.homeInfo{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.homeImg{
+    display:flex;
+    flex-direction: column;
+}
+body{
+   
+    background-repeat: no-repeat;
+    background: linear-gradient( 0deg,black ,navy, darkblue, white) fixed;
+}
+.outsideLink{
+    font-size: 20px;
+    color: darkred;
+    text-decoration: none;
+    transition: color 500ms linear 0ms
+}
+.outsideLink:hover{
+    color:gold
+}
+.links{
+   
+    width:50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.home{
+    font-size:25px;
+    padding: 6px 15px;
+    color:darkred;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 700;
+}
+.home:hover{
+    background-color:darkgray;
+}
+.llcName{
+    display:flex;
+    color:darkred;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight:700;
+    
+}
+.llcName:hover{
+    background-color: darkgray;
+}
+.landingBody{
+    background-color:black;
+    width:500px;
+   
+}
+.landingContainer{
+    color:white;
+    position: relative;
+    top:200px;
+    height:750px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
+.landingTextArea{
+    width:200px;
+    height:150px;
+}
+.landingTextContainer{
+    display:flex;
+    flex-direction: column;
+}
+.signUpForm{
+    width:200px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+   
+
+}
+.loginContainer{
+    color:white;
+    position: relative;
+    top:300px;;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.questionBody{
+    background-color: darkgray;
+}
+.footer{
+    content: '';
+    height:200px;
+    background: linear-gradient( to top, black,);
+    color:white;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top:100%;
+    width:100%;
+    
+    
+}
+.adminBody{
+    color:white;
+    display:flex;
+    justify-content: space-between;
+    position: relative;
+    
+   
+  
+    
+}
+.adminRenderTemplate{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:white solid 2px;
+    background-color: gray;
+  
+  
+}
+.adminNavTemplate{
+    color:black;
+    background-color: whitesmoke;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+   width:150px;
+   height: 100%;
+   border: solid green 3px;
+}
+.adminRender{
+    display: flex;
+    flex-direction: column;
+    height:100%;
+    
+}
+.clientViewBody{
+    
+    display:flex;
+    justify-content: space-between;
+}
+.renderedProject{
+    color:white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.clientTitle{
+    color:white;
+    position: relative;
+    top:200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aboutContainer{
+    color:white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    position: relative;
+    left:35%;
+    line-height: 1.5;
+}
+.contact{
+    text-decoration: none;
+    color:white;
+    font-size:25px;
+}
+.contactBody{
+    color:white;
+    display: flex;
+    flex-direction: column;
+   
+    align-items: center;
+}
+.contactForm{
+    display: flex;
+     flex-direction: column;
+     width:200px;
+     align-items: center;
+}
+.profileData{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.newProjectForm{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.finalProjectRender{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (min-width:250px) and (max-width:799px){
+    .links{
+        flex-direction: column;
+        
+    }
+    .homeBody{
+        flex-direction: column;
+        align-items: center;
+    }
+    .homeTitle{
+        width:70%;
+    }
+    .homeSubcontent{
+        position: relative;
+        top:100px;
+        width:60%;
+    }
+   .clientViewBody{
+    flex-direction: column;
+   }
+   .clientTitle{
+    align-items: center;
+   }
+}
