@@ -30,7 +30,7 @@ const [userUpdate, setUserUpdate] = React.useState({
     phone: ""
 })
 
-console.log(userUpdate, 'userUpdate')
+
 function renderWhich(value){
     setRender(prevState=>{
         if(value === 'users'){
@@ -144,7 +144,7 @@ function deleteUser(id){
             .catch(err => console.log(err.response.data.message))
 }
 
-console.log(users)
+
 const renderedUser = users.map((user)=>{
     return(
        <UserTemplate key={user._id}

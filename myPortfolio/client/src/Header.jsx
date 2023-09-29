@@ -26,7 +26,7 @@ export default function Header(){
  const selectedStyle = { backgroundColor: 'purple'}
 
   function selectedPage(){
-    console.log('fired')
+   
     if(path.pathname === '/'){
       setLinkBackground(prevState=>{
         return{

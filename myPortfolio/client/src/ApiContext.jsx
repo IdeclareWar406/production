@@ -278,6 +278,14 @@ function setFirstName(name){
                     ...prevState,
                     serverRes: res.data
                 }
+            }), setContactInfo(prevState =>{
+                return{
+                    ...prevState,
+                    firstName: "",
+                    lastName:"", 
+                     email: "",
+                     phone: "",
+                }
             }))
             .catch(err => console.log(err.respone.data.message))
     }
@@ -287,7 +295,7 @@ function setFirstName(name){
    
 
 
-console.log(projectIdea)
+
 
 
     return(

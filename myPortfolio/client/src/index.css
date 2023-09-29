@@ -27,7 +27,7 @@
     margin:5px;
     position: relative;
     top:150px;
-   
+   left:10%;
     width:100%;
 }
 .homeInfo{
@@ -45,13 +45,16 @@ body{
     background: linear-gradient( 0deg,black ,navy, darkblue, white) fixed;
 }
 .outsideLink{
-    font-size: 20px;
+    font-size: 25px;
     color: darkred;
     text-decoration: none;
-    transition: color 500ms linear 0ms
+    transition: color 500ms linear 0ms;
+    padding:6px 15px;
+    border-radius: 20px;;
 }
 .outsideLink:hover{
-    color:gold
+    color:gold;
+    background-color: darkgray;
 }
 .links{
    
@@ -76,7 +79,7 @@ body{
     text-decoration: none;
     font-size: 25px;
     font-weight:700;
-    
+    border-radius: 20px;
 }
 .llcName:hover{
     background-color: darkgray;
