@@ -2,6 +2,7 @@ import React from 'react'
 import "../index.css"
 import { ApiContext } from '../ApiContext'
 import Footer from "../Footer.jsx"
+
 export default function Home (){
 document.body.style.background = 'linear-gradient(90deg, black, darkblue, darkpurple)'
 
