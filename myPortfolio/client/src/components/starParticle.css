@@ -17,7 +17,7 @@
     height: 2px;
     border-radius: 25%;
     opacity: 1;
-    animation: move 10s ease-in-out 200ms infinite alternate-reverse both;
+    animation: move 20s ease-in-out 200ms infinite alternate-reverse both;
   }
   .particle:hover{
     background-color: orangered
@@ -25,12 +25,13 @@
   
   @keyframes move {
     0% {
-      opacity: 1;
-      transform: translateY(0) translateX(0);
+        opacity: 0;
+        transform: translateY(-100vh) translateX(100vw);
+     
     }
     100% {
-      opacity: 0;
-      transform: translateY(-100vh) translateX(100vw);
+        opacity: 1;
+        transform: translateY(0) translateX(0);
     }
   }
 
