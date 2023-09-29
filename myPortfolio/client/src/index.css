@@ -136,8 +136,8 @@ body{
     display:flex;
     align-items: center;
     justify-content: space-evenly;
-    position: absolute;
-    top:100%;
+    position:relative ;
+    top:500px;
     width:100%;
     
     
