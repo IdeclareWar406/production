@@ -5,7 +5,7 @@ import Footer from '../Footer.jsx'
 
 export default function Contact(){
 
-const{contactInfo, sendContactInfo, contactInfoHandle} = React.useContext(ApiContext)
+const{contactInfo, sendContactInfo, contactInfoHandle, user} = React.useContext(ApiContext)
 
 const [verificator, setVerificator] = React.useState(false)
 
@@ -95,6 +95,7 @@ React.useEffect(()=>{
                     <h2>CAPTCHA {checkHuman} </h2>
                    {!isHuman && <input type='text' name='textCheck' placeholder='your response' onChange={textCheckHandle}></input>}
                     <button style={{width: "100px"}} >Submit</button>
+                    {user.serverRes && <h2>{user.serverRes} </h2>}
                     {verificator && <h2 style={{color: 'red'}}>Ensure all areas are filled out</h2>}
                     {humanFail && <h2 style={{color: 'red'}}>CAPTCHA check failed</h2>}
                 </form>
