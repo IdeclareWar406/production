@@ -48,7 +48,7 @@ body{
 }
 .outsideLink{
     font-size: 25px;
-    color: darkred;
+    color: white;
     text-decoration: none;
     transition: color 350ms linear 0ms;
     padding:6px 15px;
@@ -57,7 +57,7 @@ body{
 }
 .outsideLink:hover{
     color:gold;
-    background-color: darkgray;
+    background-color: rgb(68, 3, 68);
 }
 .links{
    
@@ -68,26 +68,26 @@ body{
 .home{
     font-size:25px;
     padding: 6px 15px;
-    color:darkred;
+    color:white;
     text-decoration: none;
     border-radius: 20px;
     font-weight: 700;
     transition: color 350ms linear 0ms;
 }
 .home:hover{
-    background-color:darkgray;
+    background-color:rgb(68, 3, 68);;
     color:gold;
 }
 .llcName{
     display:flex;
-    color:darkred;
+    color:white;
     text-decoration: none;
     font-size: 25px;
     font-weight:700;
     border-radius: 20px;
 }
 .llcName:hover{
-    background-color: darkgray;
+    background-color: rgb(68, 3, 68);
 }
 .landingBody{
     background-color:black;
