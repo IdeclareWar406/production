@@ -123,7 +123,7 @@ export default function Header(){
            <div className='links'>
            <Link className='home'  to="/" element={<Home />} >Home</Link>
          {user.token ? <span className='home' onClick={signOut}>Sign Out</span> : <Link className='home' to="/login" element={<SignUpLog />}>Log in/Sign Up</Link>}
-           <Link className='home' to="/landingpage" onClick={selectedPage}  element={<LandingPage />} >Signup and Project</Link>
+           <Link className='home' to="/landingpage" onClick={selectedPage}  element={<LandingPage />} >Project Submission</Link>
           {user.user.isAdmin && <Link className='home' to="/admin" onClick={selectedPage}  element={<Admin />} >Admin</Link>}
          {user.token && !user.user.isAdmin && <Link className='home' to="/profile" onClick={selectedPage}  element={<ClientView />}>Profile</Link>}
          <Link className='home' to='/about' >About</Link>

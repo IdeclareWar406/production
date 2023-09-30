@@ -32,7 +32,10 @@ React.useEffect(()=>{
 
 
     return(<>
-    
+    <div className='homeHeader'>
+    <h2>Specializing in custom website development and management. Affordable rates, contact link below</h2>
+    <h1>Suber Cyber Development LLC</h1>
+    </div>
     <div className='homeContainer'>
     <div className='homeTitle'>
         <h2>{yourName.yourName || user.user.firstName  ? `Welcome, ${yourName.yourName || user.user.firstName}` : "Welcome, please enter your name for a personalized experience"} </h2>
@@ -45,7 +48,7 @@ React.useEffect(()=>{
      <div className='homeBody'>
         <div className='homeInfo'>
             <div>
-        <h2>Completed projects</h2>
+        <h2> Examples of websites I have completed</h2>
         <a className='outsideLink' target='_blank' href='https://mcctest.onrender.com' >Move Christian Church</a>
             </div>
         </div>
@@ -60,7 +63,7 @@ React.useEffect(()=>{
             <li>Express.js</li>
             <li>Vanillia JavaScript</li>
           </ul>
-          </div> With these popular frameworks and databases I can develop complex applications to make your website work for you. </h2>
+          </div> With these popular frameworks and databases I can develop complex applications to make your website work for you and your business. </h2>
         
     </div>
       

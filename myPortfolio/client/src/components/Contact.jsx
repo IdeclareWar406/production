@@ -93,7 +93,7 @@ React.useEffect(()=>{
                     <input type='email' name='email' placeholder='email'  onChange={contactInfoHandle} value={contactInfo.email}></input>
                     <input type='phone' name='phone' placeholder='phone number'  onChange={contactInfoHandle} value={contactInfo.phone}></input>
                     <h2>CAPTCHA {checkHuman} </h2>
-                   {!isHuman && <input type='text' name='textCheck' placeholder='your response' onChange={textCheckHandle}></input>}
+                   {!isHuman && <input type='text' name='textCheck' placeholder='fill with letters shown above' onChange={textCheckHandle}></input>}
                     <button style={{width: "100px"}} >Submit</button>
                     {user.serverRes && <h2>{user.serverRes} </h2>}
                     {verificator && <h2 style={{color: 'red'}}>Ensure all areas are filled out</h2>}

@@ -167,7 +167,7 @@ body{
   
 }
 .adminNavTemplate{
-    color:white;
+    color:black;
     background-color: whitesmoke;
     display:flex;
     flex-direction: column;
@@ -214,11 +214,11 @@ body{
 }
 .contact{
     text-decoration: none;
-    color: black;
+    color: white;
     font-size:25px;
 }
 .contactBody{
-    color: black;
+    color: white;
     display: flex;
     flex-direction: column;
    
@@ -241,6 +241,15 @@ body{
     align-items: center;
 }
 .finalProjectRender{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.homeHeader{
+    color:white;
+    position: absolute;
+    top:35%;
+    left:31%;
     display: flex;
     flex-direction: column;
     align-items: center;
