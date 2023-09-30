@@ -7,7 +7,7 @@ export default function Header(){
 
     return(
         <>
-        <img src='images/20230525_135529.jpg' height={'600px'} width={'100%'}></img>
+        <img src='images/20230525_135529.jpg' height={'1000px'} width={'100%'}></img>
     <div className='headerContainer'>
         <div className='logoChild'>
             <Link to='/'><img src='images/beachHavenLogo.png'></img></Link>

@@ -30,9 +30,15 @@
 }
 body{
     background-color: navy;
-    color:white;
+  
 }
 .homeBody{
-    background-color:white;
-    height:600px;
+  position:absolute;
+  top:43%;
+ background-color: black;
+ color:whitesmoke;
+ 
+ height:500px;
+ width:100%;
+ 
 }
