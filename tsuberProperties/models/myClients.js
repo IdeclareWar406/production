@@ -7,21 +7,26 @@ const clientSchema = new Schema({
         type: String,
         required: true
     },
-    lastName: {
-        type: String,
-        required: true
-    },
-    email: {
-        type:String,
-        required: true
-    },
-    phone: {
-        type: String,
-        required: true
-    },
+
+    // lastName: {
+    //     type: String,
+    //     required: true
+    // },
+    // email: {
+    //     type:String,
+    //     required: true
+    // },
+    // phone: {
+    //     type: String,
+    //     required: true
+    // },
     propertyDetail:{
         type:String,
-        required: true
+        default: 'I am seeking a home and did not fill this out. Please call me or send an email'
+    },
+    activity: {
+        type: String,
+        default: 'Begining search'
     }
 })
 
