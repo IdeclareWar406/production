@@ -17,7 +17,7 @@
     height: 2px;
     border-radius: 25%;
     opacity: 1;
-    animation: move 20s ease-in-out 200ms infinite alternate-reverse both;
+    animation: move 20s ease-in-out 200ms 2 alternate-reverse both;
   }
   .particle:hover{
     background-color: orangered
