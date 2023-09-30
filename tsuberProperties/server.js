@@ -12,7 +12,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 
 mongoose.connect(process.env.dbAuth, {useNewUrlParser: true}, console.log('connected to db'))
-
+app.use('/auth' ,expressjwt({secret: process.env.SECRET, algorithms:['HS256']}))
 app.use('/api/profile' , require('./routes/authRouter.js'))
 
 
