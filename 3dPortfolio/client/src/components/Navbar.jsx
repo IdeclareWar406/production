@@ -7,7 +7,7 @@ import {logo, menu, close} from '../assets'
 
 
 
-const Navbar = () => {
+function Navbar() {
 
 const [active, setActive] =React.useState('')
 const [toggle, setToggle] = React.useState(false)
