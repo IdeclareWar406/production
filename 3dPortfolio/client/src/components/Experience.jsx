@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Experience = () => {
+function Experience () {
   return (
     <div>Experience</div>
   )
