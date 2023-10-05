@@ -4,6 +4,7 @@ const app = express()
 const nodeMailer = require('nodemailer')
 require('dotenv').config()
 app.use(morgan('dev'))
+const path = require('path')
 
 app.use(express.json())
 
@@ -40,6 +41,10 @@ app.post('/api/email', (req,res)=>{
 
 app.use('/',(err,res,req,next)=>{
         res.send({errMsg: err.message})
+})
+app.use(express.static(path.join(__dirname, 'client', 'dist')))
+app.get("*", (req,res)=>{
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'))
 })
 
 

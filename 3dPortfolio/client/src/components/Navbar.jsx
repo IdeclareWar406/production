@@ -31,7 +31,7 @@ const [toggle, setToggle] = React.useState(false)
               className={`${active === link.title ? 'text-white': 'text-secondary'} hover:text-white text-[18px] font-medium cursor-pointer`}
               onClick={()=> setActive(link.title)}
             >
-              <a href={`${link.id}`}>{link.title} </a>
+              <a href={`#${link.id}`}>{link.title} </a>
             </li>
           ))}
         </ul>
@@ -50,7 +50,7 @@ const [toggle, setToggle] = React.useState(false)
               className={`${active === link.title ? 'text-white': 'text-secondary'} hover:text-white text-[18px] font-medium cursor-pointer font-poppins font-medium cursor-pointer text-[16px]`}
               onClick={()=> {setToggle(!toggle); setActive(link.title)}}
             >
-              <a href={`${link.id}`}>{link.title} </a>
+              <a href={`#${link.id}`}>{link.title} </a>
             </li>
           ))}
         </ul>
