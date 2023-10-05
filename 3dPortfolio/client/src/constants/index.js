@@ -104,11 +104,11 @@ import {
   
   const experiences = [
     {
-      title: "React.js Developer",
+      title: "Full-Stack Developer",
       company_name: "Move Christian Church",
       icon: movecc,
       iconBg: "#383E56",
-      date: "August- 2023, September 2023",
+      date: "August- 2023, Present",
       points: [
         "Developing and maintaining web applications using React.js and other related technologies.",
         "Implementing responsive design and ensuring cross-browser compatibility.",
