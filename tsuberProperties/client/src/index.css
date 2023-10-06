@@ -52,3 +52,7 @@ body{
  width:100%;
  
 }
+.homeListing{
+position: absolute;
+top:124%;
+}
