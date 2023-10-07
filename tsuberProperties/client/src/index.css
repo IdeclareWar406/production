@@ -27,21 +27,18 @@
     text-decoration: none;
     font-size: 25px;
     color:black;
-    transition: color 350ms linear 0ms;
+   
     
     height:30px;
 }
 .home:hover{
-    color:orangered
+    text-decoration: underline;
 }
 .logoChild{
     position: relative;
     left:5%;
 }
-body{
-    background-color: navy;
-  
-}
+
 .homeBody{
   position:absolute;
   top:43%;

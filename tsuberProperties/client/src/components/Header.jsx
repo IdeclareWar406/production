@@ -16,7 +16,8 @@ const {user, signOut} = React.useContext(ApiContext)
         <div className='links mt-[40px] font-bold'>
             <Link className='home' to='/'>Home</Link>
             <Link className='home' to='/about' >About</Link>
-            <Link className='home' onClick={user.token && signOut} to='/login'>{user.token? 'Sign Out' : 'Log in'} </Link>
+           {user.token && <Link className='home' onClick={signOut} to='/'>Sign Out</Link>}
+           {!user.token && <Link className='home' to='/login'>Log in</Link>}
           { user.token && user.user.isAdmin && <Link className='home' to='/admin' >Admin</Link>}
         </div>
 

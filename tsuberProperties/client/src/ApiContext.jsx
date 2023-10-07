@@ -67,10 +67,18 @@ function signIn(event){
             }
         })
 }
+// setting state back to nothing is what allows the instant swap back to showing unauthorized. If I use initUser it has this odd lag as if it thinks there is data in local storage stil
 function signOut (){
     localStorage.removeItem('Token')
     localStorage.removeItem('User')
-    setUser(initUser)
+    setUser(prevState=>{
+        return{
+            token: "",
+            user:  "",
+            errMsg: "",
+            serverMsg: ""
+        }
+    })
 }
 function signOnChange(event){
     const {name,value} = event.target
