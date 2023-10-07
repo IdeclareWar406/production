@@ -13,11 +13,11 @@ app.use(express.json())
 
 mongoose.connect(process.env.dbAuth, {useNewUrlParser: true}, console.log('connected to db'))
 
-app.use('/auth' ,expressjwt({secret: process.env.SECRET, algorithms:['HS256']}))
+app.use('/api/auth' ,expressjwt({secret: process.env.SECRET, algorithms:['HS256']}))
 app.use('/api/profile' , require('./routes/authRouter.js'))
 app.use('/api/newclient', require('./routes/clientRouter.js'))
 app.use('/api/auth/clients', require('./routes/clientEditRouter.js'))
-app.use('/api/editOfficer', require('./routes/loanOfficerEdit.js'))
+app.use('/api/auth/editOfficer', require('./routes/loanOfficerEdit.js'))
 app.use('/api/officers', require('./routes/loanOfficerGet.js'))
 
 

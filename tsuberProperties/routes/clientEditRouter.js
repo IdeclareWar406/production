@@ -11,6 +11,7 @@ clientRouter.get('/', async(req,res)=>{
         res.status(200).send(foundAll)
         
     } catch (err) {
+        console.log(err)
         res.status(500)
         res.json({message: err})
     }
