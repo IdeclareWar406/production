@@ -3,8 +3,8 @@ import { ApiContext } from '../ApiContext'
 import LoanOriginator from './LoanOriginator'
 
 export default function Home(){
-
-
+const {newUserHandle, sendNewUser, newUser} = React.useContext(ApiContext)
+console.log(newUser)
     return(
         <>
         <div className='fixed w-full h-full z-[-1] flex flex-col ' >
@@ -21,18 +21,20 @@ export default function Home(){
             <p className='mt-[15px] text-[20px]' >Tracy Suber | Beach Haven Realty</p> 
             <p className='mt-[15px] text-[20px]'>Making your dreams come true</p>
             </div>
-           <div className='flex flex-col '>
+           <div className='flex flex-col z-1'>
             
-            <form className='opacity-100 mr-[35px] flex flex-col ' style={{opacity: 1}}>
+            <form className='opacity-100 mr-[35px] flex flex-col z-1 ' onSubmit={sendNewUser} style={{opacity: 1}}>
                 <h2>Contact Me:</h2>
-                <p>What is your first name</p>
-                <input className='rounded' type='text' name='firstName' placeholder='first name' ></input>
-                <p>What is your last name</p>
-                <input className='rounded' type='text' name='lastName' placeholder='last name' ></input>
-                <p>What is your email</p>
-                <input className='rounded' type='email' name='email' placeholder='email'></input>
-                <p >What is your phone number</p>
-                <input className='rounded' type='phone' name='phone' placeholder='phone'></input>
+                <p>What is your first name.</p>
+                <input className='rounded text-black font-bold' type='text' name='firstName'  onChange={newUserHandle} placeholder='first name' ></input>
+                <p>What is your last name.</p>
+                <input className='rounded text-black font-bold' type='text' name='lastName' value={newUser.lastName} onChange={newUserHandle} placeholder='last name' ></input>
+                <p>What is your email.</p>
+                <input className='rounded text-black font-bold' type='email' name='email' value={newUser.email} onChange={newUserHandle} placeholder='email'></input>
+                <p >What is your phone number.</p>
+                <input className='rounded text-black font-bold' type='text' name='phone' value={newUser.phone} onChange={newUserHandle} placeholder='phone'></input>
+                <p>Tell me about the property you are looking for.</p>
+                <textarea className='text-black font-bold' name='propertyDetail' placeholder='Tell me about your dream property' onChange={newUserHandle} value={newUser.propertyDetail}></textarea>
                 <button className='mt-5 bg-stone-400 rounded font-bold '><p >Send</p></button>
             </form>
            </div>

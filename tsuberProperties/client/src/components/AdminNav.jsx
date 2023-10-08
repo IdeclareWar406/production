@@ -4,7 +4,7 @@ export default function AdminNav(props){
     const {renderWhich} = props
 
     return(
-        <div className='ml-5 text-[25px] font-bold flex flex-col justify-evenly h-[200px]' style={{border:'solid red 2px'}}>
+        <div className='ml-5 text-[25px] font-bold flex flex-col justify-evenly h-[200px] h-auto min-h-[500px]' >
             <h1 className='hover:underline' onClick={()=> renderWhich('customers')}>Customers</h1>
             <h1 className='hover:underline' onClick={()=> renderWhich('loan')}>Loan Officers</h1>
         </div>

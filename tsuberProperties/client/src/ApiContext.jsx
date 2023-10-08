@@ -1,10 +1,10 @@
 import axios from 'axios'
 import React from 'react'
-
+// Incredibly important to bury the get token in the userAxios method. Will not work correctly otherwise.
 const ApiContext = React.createContext()
-const token = localStorage.getItem('Token')
 const userAxios = axios.create()
         userAxios.interceptors.request.use(config=>{
+            const token = localStorage.getItem('Token')
             console.log('token', token)
             config.headers.Authorization = `Bearer ${token}`
             return config
@@ -27,6 +27,48 @@ function ApiContextProvider(props){
     })
     const [customers, setCustomers] = React.useState([])
 
+    const[newUser, setNewUser] = React.useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        propertyDetail: ""
+    })
+
+function newUserHandle(event){
+    const{name,value} = event.target
+    setNewUser(prevState=>{
+        return{
+            ...prevState,
+            [name]: value
+        }
+    })
+}
+
+function sendNewUser(event){
+    event.preventDefault()
+    if(newUser.firstName && newUser.lastName && newUser.email && newUser.phone != ""){
+        axios.post('/api/newclient',newUser)
+            .then(res=> setCustomers(prevState=> [...prevState, res.data]))
+            .catch(err => console.log(err))
+        setNewUser(prevState=>{
+            return{
+                firstName: "",
+                lastName: "",
+                email: "",
+                phone: "",
+                propertyDetail: ""
+            }
+        })
+    }
+}
+
+
+function adminApiCall(){
+    userAxios.get('/api/auth/clients')
+            .then(res=> setCustomers(res.data))
+            .catch(err => console.log(err))
+}
 
 function apiCall(){
     // input mlo data and property data when I can get access
@@ -52,7 +94,7 @@ function signIn(event){
                 user: res.data.user,
                 errMsg: ""
             }
-        }),adminData())
+        }),)
         .catch(err => setUser(prevState=>{
             return{
                 ...prevState,
@@ -111,6 +153,12 @@ React.useEffect(()=>{
             signOnChange,
             signIn,
             signOut,
+            newUserHandle,
+            sendNewUser,
+            newUser: newUser,
+            customers: customers,
+            adminData
+           
         }}>
             {props.children}
         </ApiContext.Provider>
