@@ -5,6 +5,7 @@ require('dotenv').config()
 const {expressjwt} = require('express-jwt')
 const path = require('path')
 const app = express()
+
  app.use(morgan("dev"))
 
 app.use( express.json())

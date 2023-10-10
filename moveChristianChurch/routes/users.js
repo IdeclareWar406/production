@@ -2,6 +2,9 @@ const express = require('express')
 const User = require("../modules/users.js")
 const userRouter = express.Router()
 
+
+
+
 userRouter.get("/", async(req,res)=>{
     try{
         const foundAll = await User.find({})
@@ -9,6 +12,9 @@ userRouter.get("/", async(req,res)=>{
           return  user.withoutPassword()
             
         })
+       
+       
+        
         res.status(200)
         res.send(noPass)
     }

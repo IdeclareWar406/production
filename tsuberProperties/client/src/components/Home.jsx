@@ -4,6 +4,8 @@ import LoanOriginator from './LoanOriginator'
 
 export default function Home(){
 const {newUserHandle, sendNewUser, newUser} = React.useContext(ApiContext)
+
+
 console.log(newUser)
     return(
         <>
