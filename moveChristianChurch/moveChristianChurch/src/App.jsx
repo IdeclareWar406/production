@@ -10,6 +10,7 @@ import { ApiContext } from "./ApiContext.jsx"
 import Admin from "./components/Admin.jsx"
 import Ministries from "./components/Ministries.jsx"
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+import ContactUs from "./components/ContactUs.jsx"
 
 export default function App(){
 const {user}= React.useContext(ApiContext)
@@ -29,6 +30,7 @@ const token = user.token
           <Route path="/admin" element={<ProtectedRoute>
             <Admin />
           </ProtectedRoute>} />
+          <Route path="/contactus" element={<ContactUs />}/>
         </Routes>
         </BrowserRouter>
     )

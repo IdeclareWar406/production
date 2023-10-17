@@ -596,6 +596,37 @@ text-decoration: underline;
 .forgotPass:hover{
     color:blue;
 }
+.contactUs{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:5%;
+    color:white
+}
+.contactForm{
+    display: flex;
+    flex-direction: column;
+    
+}
+.contactName{
+    width:250px;
+}
+.contactQuestion{
+    height:150px;
+}
+.contactSubmit{
+    width:70px;
+    align-self:center;
+    margin-top:15px;
+    border:none;
+    background-color: white;
+    padding: 10px;
+    border-radius:10px; 
+    transition: background-color 300ms linear 0ms
+}
+.contactSubmit:hover{
+    background-color:cornflowerblue
+}
 @media only screen and (min-width:250px) and (max-width:799px){
     .header{
         bottom: 70%;
@@ -634,7 +665,7 @@ text-decoration: underline;
     .threeLines{
         position: absolute;
         top:0%;
-        left:83%;
+        left:75%;
         margin-left: 15px;
        
         display:flex;
@@ -642,7 +673,7 @@ text-decoration: underline;
     }
     .mobileButton{
         transition:border 350ms linear 0ms
-        
+
     }
     .mobileButton:hover{
         border: solid white 2px

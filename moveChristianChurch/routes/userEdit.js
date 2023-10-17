@@ -43,7 +43,7 @@ userEditRouter.delete("/:userId", async(req,res)=>{
 
 userEditRouter.put("/:userId", async(req,res)=>{
     try{
-        console.log(req.body)
+       
         const updatedObject = await User.findOneAndUpdate({_id: req.params.userId}, req.body, {new:true})
         res.status(200)
         res.send(updatedObject.withoutPassword())
@@ -55,7 +55,7 @@ userEditRouter.put("/:userId", async(req,res)=>{
 })
 userEditRouter.post('/emailCheck', async(req,res)=>{
     try {
-        console.log(req.body)
+        
         const newPin = []
         const numbers = [0,1,2,3,4,5,6,7,8,9]
         const foundEmail = await User.findOne({email: req.body.email})
@@ -69,7 +69,7 @@ userEditRouter.post('/emailCheck', async(req,res)=>{
         if(foundEmail){
        foundEmail.pin = newPin.join('')
        foundEmail.save()
-        console.log(foundEmail, 'email')
+        
         let mailDetails = {
             from:process.env.email,
             to:foundEmail.email,
@@ -78,6 +78,7 @@ userEditRouter.post('/emailCheck', async(req,res)=>{
         }
 
         mailTransporter.sendMail(mailDetails, function(err,data){
+
             if(err){
                 console.log(err)
             }
@@ -92,15 +93,15 @@ userEditRouter.post('/emailCheck', async(req,res)=>{
     }
 })
 userEditRouter.post("/resetPass" ,async(req,res)=>{
-    try {console.log(req.body)
+    try {
         const foundUser = await User.findOne({email: req.body.email})
         if(foundUser){
-            console.log(foundUser)
+            
         if (foundUser.pin === req.body.pin){
-            console.log('this is true')
+           
             foundUser.password = req.body.password
             foundUser.pin = ""
-            console.log(foundUser.password)
+            
             foundUser.save()
             const token = jwt.sign(foundUser.withoutPassword(), process.env.SECRET)
             res.status(200).send({token, user:foundUser.withoutPassword()})
