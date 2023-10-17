@@ -620,9 +620,9 @@ text-decoration: underline;
       height:250px;
       width:100px;
       
-        position: relative;
+        position: absolute;
        left:3%;;
-      top:35%;
+      top:0%;
        
        
         transition: background-color 250ms linear 0ms
@@ -631,7 +631,29 @@ text-decoration: underline;
     .links:hover{
         background-color:gray
     }
+    .threeLines{
+        position: absolute;
+        top:0%;
+        left:83%;
+        margin-left: 15px;
+       
+        display:flex;
+        flex-direction: column;
+    }
+    .mobileButton{
+        transition:border 350ms linear 0ms
+        
+    }
+    .mobileButton:hover{
+        border: solid white 2px
+    }
     
+    .mobileLinks{
+        background-color :black;
+        display:flex;
+        flex-direction: column;
+
+    }
     .ourAddress{
         position: relative;
         left:25%;

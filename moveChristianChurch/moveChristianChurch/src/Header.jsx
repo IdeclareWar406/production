@@ -21,7 +21,7 @@ export default function Header(){
         setMobile(prevState => !prevState)
     }
 
-
+    if(window.innerWidth > 799){
     return(
         <>
          <img className="headerPhoto" src="https://images.unsplash.com/photo-1599406079829-a91deeb440de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3870&q=80" ></img>
@@ -47,6 +47,27 @@ export default function Header(){
            
         </div>
         </>
-    )
+    )}
+    else if(window.innerWidth < 799){
+        return (
+            <>
+             <img className="headerPhoto" src="https://images.unsplash.com/photo-1599406079829-a91deeb440de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3870&q=80" ></img>
+             <div className="threeLines" style={{color: 'white'}}>
+             {mobile ? <h1 className="mobileButton" onClick={useMobile}>&#9747;</h1> :  <h1 className="mobileButton" onClick={useMobile}>&#9776;</h1>}
+             {mobile &&<div className="mobileLinks">
+                <Link onClick={useMobile} className="home" to="/"  element={<Home />} >Home</Link>
+            <Link onClick={useMobile} className="about" to="/about"  element={<About />}>About</Link>
+            <Link onClick={useMobile} className="prayer" to="/prayer" element={<Prayer />}>Prayer</Link>
+            <Link onClick={useMobile} className="events" to="/events" element={<Events />}>Events</Link>
+            <Link onClick={useMobile} className="prayer" to="/ministries" element={<Ministries />} >Ministries</Link>
+           {token? <span onClick={logOut} className="login">Logout</span>: <Link onClick={useMobile} className="login" to="/login" element={ <StaffVolunteerLog />} >Log in</Link> }
+           {token && user.user.isAdmin && <Link onClick={useMobile} className="admin" to="/admin" element={<Admin />}>Admin</Link>}
+           {token && <a onClick={useMobile} className="ionos" href="https://login.1and1-editor.com/717316849/www.movechristianchurch.com/us?pageId=1373414383" target="_id">IONOS</a>}
+           <a onClick={useMobile} className="events" href="https://subsplash.com/u/movechristianchurch/give" target="_blank">Giving</a>
+                </div>}
+             </div>
+            </>
+        )
+    }
     
 }
