@@ -665,19 +665,13 @@ text-decoration: underline;
     .threeLines{
         position: absolute;
         top:0%;
-        left:75%;
+        left:65%;
         margin-left: 15px;
        
         display:flex;
         flex-direction: column;
     }
-    .mobileButton{
-        transition:border 350ms linear 0ms
-
-    }
-    .mobileButton:hover{
-        border: solid white 2px
-    }
+    
     
     .mobileLinks{
         background-color :black;
