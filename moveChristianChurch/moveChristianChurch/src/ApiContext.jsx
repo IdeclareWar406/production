@@ -736,6 +736,26 @@ function getVolunteers(){
             }
         })
     }
+
+    function forgotPassword(credentials){
+     
+        if(credentials.email && credentials.pin && credentials.password != ""){
+            console.log('context is true')
+        axios.post('/api/useredit/resetPass', credentials)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err.response.data.message))
+    }
+
+        else if(credentials.email){
+            console.log('this is true')
+            axios.post('/api/useredit/emailCheck',credentials)
+                .then(res => console.log(res.data))
+                .catch(err => console.log(err.response.data.message))
+        }
+       
+        
+    }
+
     function showForm(){
         console.log('fired')
         setDisplayForm(prevState=> !prevState)
@@ -833,7 +853,8 @@ function getVolunteers(){
             saveVolunteer,
             cancelVolunteerEdit,
             deleteVolunteer,
-            newVolunteer: newVolunteer
+            newVolunteer: newVolunteer,
+            forgotPassword
         }}>{props.children}
         
          </ApiContext.Provider>

@@ -39,6 +39,10 @@ const userSchema = new Schema({
     //     type: String,
     //     default: "111111"
     // }
+    pin: {
+        type:String,
+        default: ""
+    }
 })
 
 userSchema.pre('save', function(next){
@@ -62,6 +66,7 @@ userSchema.methods.checkPassword = function(passwordAttempt, callback){
 userSchema.methods.withoutPassword = function(){
     const user = this.toObject()
     delete user.password
+    delete user.pin
     return user
 }
 
