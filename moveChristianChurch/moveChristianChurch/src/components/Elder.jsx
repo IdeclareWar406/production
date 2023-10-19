@@ -15,7 +15,7 @@ const {beginElderUpdate, handleElderUpdate, submitElderUpdate, elderRemove, canc
             <>
             <div style={{color: 'white'}}  key={elder._id}>
                 <h2>Elder - {elder.name} </h2>
-                <h2>Elder Since - {elder.elderSince} </h2>
+               
                 {path.pathname === '/admin' && <div key={elder._id}>
                     <button onClick={()=> beginElderUpdate(elder._id)}>Edit</button>  <button onClick={()=> elderRemove(elder._id)}>Delete</button>
                     </div>}

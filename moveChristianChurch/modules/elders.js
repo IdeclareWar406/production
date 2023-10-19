@@ -9,7 +9,7 @@ const elderSchema= new Schema({
     },
     elderSince: {
         type:Date,
-        default: Date.now()
+        default: ''
     },
     editing:{
         type:Boolean,
