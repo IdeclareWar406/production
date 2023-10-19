@@ -17,6 +17,7 @@ export default function AdminNav(props){
             <h2 className="prayer"  onClick={()=> props.render('serving')}>Serving</h2>
             <h2 className="prayer" onClick={()=> props.render('user')}>Users</h2>
             <h2 className="prayer" onClick={()=> props.render('volunteer')}>Volunteers</h2>
+            <h2 className="prayer" onClick={()=> props.render('elders')}>Elders</h2>
         </div>
     )
 

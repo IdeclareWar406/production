@@ -7,7 +7,7 @@ export default function Prayer(){
 
     const {prayer} = React.useContext(ApiContext)
 
-    console.log(prayer)
+   
 
 
 
@@ -15,7 +15,7 @@ export default function Prayer(){
     if(prayer.length > 0){
     prayers = prayer.map((request)=>{
         return(
-            <div className="prayers">
+            <div key={request._id} className="prayers">
                 {request.displayName ? <h2>Name: {request.firstName} </h2> : <h2>A follower of Christ</h2>}
                 <h3>{request.request} </h3>
             </div>

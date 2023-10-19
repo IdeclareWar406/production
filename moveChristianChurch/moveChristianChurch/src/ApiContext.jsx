@@ -95,7 +95,11 @@ function ApiContextProvider (props){
     const [volunteerPosId, setVolunteerPosId] = React.useState("")
 
 const [failedVerification, setFailedVerification] = React.useState(false)
-
+const [yourElders, setYourElders] = React.useState([])
+const [elderUpdate, setElderUpdate] = React.useState({
+    name: "",
+    elderSince: ""
+})
 
     function resetVerification(){
         setFailedVerification(false)
@@ -521,7 +525,7 @@ const [failedVerification, setFailedVerification] = React.useState(false)
                 }
             })
         }
-console.log(updateUser)
+
 
 function adminUserCancel(id){
     const filteredUser = userData.filter((user)=>{
@@ -578,8 +582,8 @@ function adminUserCancel(id){
             }
         })
     }
-    console.log(newVolunteer)
-console.log(volunteerPosId)
+    
+
     function addVolunteer(event){
         event.preventDefault()
         if(newVolunteer.firstName && newVolunteer.lastName && newVolunteer.email && newVolunteer.phone && volunteerPosId !=""){
@@ -756,6 +760,76 @@ function getVolunteers(){
         
     }
 
+    function beginElderUpdate(id){
+        const filtered = yourElders.filter((elder)=>{
+                if(elder._id === id){
+                    return elder.editing = true
+                }
+
+        })
+        setElderUpdate(prevState =>{
+            return{
+                ...prevState,
+                name:filtered[0].name,
+                elderSince: filtered[0].elderSince
+            }
+        })
+        setYourElders(prevState => prevState.map(elder => elder._id === id ? filtered[0] : elder))
+    }
+    function handleElderUpdate(event){
+        const {name,value} = event.target
+        setElderUpdate(prevState => {
+            return{
+                ...prevState,
+                [name]: value
+            }
+        })
+    }
+
+    function submitElderUpdate(id){
+        if(elderUpdate.name && elderUpdate.elderSince != ""){
+            userAxios.put(`/api/auth/elderedit/${id}`, elderUpdate)
+                    .then(res => setYourElders(prevState => prevState.map(elder => elder._id === id ? res.data : elder)))
+                    .catch(err => console.log(err.response.data.message))
+        }
+    }
+
+    function cancelElderUpdate(id){
+
+        const filtered = yourElders.filter((elder)=>{
+            if(elder._id === id){
+                elder.editing = false
+                return elder
+            }
+        })
+
+       
+        setElderUpdate(prevState=> {
+            return{
+                ...prevState,
+                name: "",
+                elderSince: ''
+            }
+        })
+        
+        setYourElders(prevState => prevState.map(elder => elder._id === id ? filtered[0] : elder))
+    }
+
+    function newElder(event){
+        event.preventDefault()
+        if(elderUpdate.name != ""){
+            userAxios.post('/api/auth/elderedit', elderUpdate)
+                        .then(res => setYourElders(prevState => [...prevState , res.data]))
+                        .catch(err => console.log(err.response.data.message))
+        }
+    }
+
+    function elderRemove (id){
+        userAxios.delete(`/api/auth/elderedit/${id}`)
+                    .then(res => setYourElders(prevState => prevState.filter(elder => elder._id != id )))
+                    .catch(err => console.log(err.response.data.message))
+    }
+
     function showForm(){
         console.log('fired')
         setDisplayForm(prevState=> !prevState)
@@ -764,21 +838,24 @@ function getVolunteers(){
     function apiData(){
         axios.get(`/api/prayer`)
             .then(res => setPrayerRequest(res.data))
-            .catch(err => console.log(err.res))
+            .catch(err => console.log(err.response))
 
         axios.get('/api/events')
             .then(res=> setEvents(res.data))
-            .catch(err => console.log(err.res.data.message))
+            .catch(err => console.log(err.response.data.message))
         
         axios.get('/api/service/missions')
             .then(res => setMissions(res.data))
-            .catch(err => console.log(err.res.data.message))
+            .catch(err => console.log(err.response.data.message))
 
         axios.get('/api/service/volunteer')
             .then(res => setServing(res.data))
-            .catch(err => console.log(err.res.data.message))
+            .catch(err => console.log(err.response.data.message))
         axios.get(`/api/users`)
                 .then(res => setUserData(res.data))
+                .catch(err => console.log(err.response.data.message))
+        axios.get('/api/elders')
+                .then(res => setYourElders(res.data))
                 .catch(err => console.log(err.response.data.message))
     }
 
@@ -854,7 +931,15 @@ function getVolunteers(){
             cancelVolunteerEdit,
             deleteVolunteer,
             newVolunteer: newVolunteer,
-            forgotPassword
+            forgotPassword,
+            yourElders:yourElders,
+            elderRemove,
+            beginElderUpdate,
+            handleElderUpdate,
+            submitElderUpdate,
+            newElder,
+            cancelElderUpdate,
+            elderUpdate: elderUpdate
         }}>{props.children}
         
          </ApiContext.Provider>

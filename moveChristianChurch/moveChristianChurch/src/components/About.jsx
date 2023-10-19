@@ -5,9 +5,11 @@ import AtMove from "./AtMove.jsx"
 import OurBeliefs from "./OurBeliefs.jsx"
 import GrowInChrist from "./GrowInChrist"
 import OurLeadership from "./OurLeadership"
+import { ApiContext } from "../ApiContext"
 
 export default function About(){
 document.body.style.backgroundColor = "black"
+const {yourElders} = React.useContext(ApiContext)
     const [aboutRender, setAboutRender] = React.useState({
         atMove: true,
         ourBeliefs: false,
@@ -65,7 +67,7 @@ document.body.style.backgroundColor = "black"
 
 
     }
-    console.log(aboutRender)
+    
 
     return(
      <div>
@@ -77,7 +79,7 @@ document.body.style.backgroundColor = "black"
         { aboutRender.atMove &&   <AtMove />}
         {aboutRender.ourBeliefs && <OurBeliefs />}
         {aboutRender.growInChrist && <GrowInChrist />}
-        {aboutRender.ourLeadership && <OurLeadership />}
+        {aboutRender.ourLeadership && <OurLeadership elders={yourElders} />}
             </div>
         </div>
         <div className="homeFooter">

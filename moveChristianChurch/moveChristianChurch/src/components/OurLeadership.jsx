@@ -1,8 +1,9 @@
 import React from 'react'
+import Elder from './Elder'
 
 
-export default function OurLeadership(){
-
+export default function OurLeadership(props){
+    console.log(props.elders)
 
     return(
         <div className='displayedAbout'>
@@ -13,9 +14,7 @@ export default function OurLeadership(){
             <h3>Freddie has previously served our church, in its earlier years, as the lead minister.  He now serves as pastor to our seniors, and hosts an in-depth bible study on Sunday mornings.  Freddy was married to his late wife, Wendy for 50+ years.  He is a real blessing to Move Christian Church. </h3>
             <h2>Youth Pastor - Dalton Smith</h2>
             <h3>Dalton has been working with our youth since August of 2019. He has one daughter, and loves the Lord!</h3>
-            <h2>Elder - Larry Petty</h2>
-            <h2>Elder - Eric Sims</h2>
-            <h2>Elder - Erick Hazen</h2>
+           <Elder elder={props.elders} />
         </div>
     )
 }

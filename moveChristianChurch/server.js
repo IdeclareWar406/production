@@ -30,6 +30,8 @@ app.use('/api/newvol' , require("./routes/newVolunteer.js"))
 app.use("/api/auth/useredit", require('./routes/userEdit.js'))
 app.use('/api/useredit' , require('./routes/userEdit.js'))
 app.use('/api/contactemail', require('./routes/contactEmail.js'))
+app.use('/api/auth/elderedit', require('./routes/elderRouteEdit.js'))
+app.use('/api/elders', require('./routes/elderRoute.js'))
 app.use(express.static(path.join(__dirname, "moveChristianChurch", "dist")))
 
 

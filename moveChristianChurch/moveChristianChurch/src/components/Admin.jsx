@@ -7,6 +7,8 @@ import NewPosition from "./NewPosition"
 import Serving from "./Serving.jsx"
 import NewUser from "./NewUser"
 import VolunteersPrint from "./VolunteersPrint"
+import Elder from "./Elder"
+import NewElder from "./NewElder"
 export default function Admin(){
    const options = ['student', 'adult', 'holiday']
     document.body.style.backgroundColor ='black'
@@ -16,11 +18,12 @@ const [renderForm, setRenderForm] = React.useState({
     mission: false,
     serving:false,
     users: false,
-    volunteers: false
+    volunteers: false,
+    elders: false
 })
 
 
-const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cancelPrayerEdit,updatePrayerReq,savePrayer,adminCancelEdit,adminEventEdit,updateEvent,adminEventEditing,adminEventSave,adminEventDelete,adminEventAdd, showForm, displayForm, allUsers,adminUserCancel, adminUserHandleChange, adminUserUpdate, adminUserSave, adminUserDelete,updateUser,deletePrayer, resetVerification,passCheck,userAxios, assignVolunteers} = React.useContext(ApiContext)
+const {user,prayer,events,missions,serving,prayerUpdate,startEditingPrayer,cancelPrayerEdit,updatePrayerReq,savePrayer,adminCancelEdit,adminEventEdit,updateEvent,adminEventEditing,adminEventSave,adminEventDelete,adminEventAdd, showForm, displayForm, allUsers,adminUserCancel, adminUserHandleChange, adminUserUpdate, adminUserSave, adminUserDelete,updateUser,deletePrayer, resetVerification,passCheck,userAxios, assignVolunteers, yourElders} = React.useContext(ApiContext)
 
 
 
@@ -40,7 +43,8 @@ resetVerification()
                 mission: false,
                 serving: false,
                 users:false,
-                volunteers:false
+                volunteers:false,
+                elders:false
             }
         })
     }
@@ -53,7 +57,8 @@ resetVerification()
                 mission: false,
                 serving: false,
                 users:false,
-                volutneers:false
+                volutneers:false,
+                elders: false
             }
         })
     }
@@ -65,7 +70,8 @@ resetVerification()
                 prayer:false,
                 serving:false,
                 users:false,
-                volunteers:false
+                volunteers:false,
+                elders: false
             }
         })
     }
@@ -77,7 +83,8 @@ resetVerification()
                 events:false,
                 prayer:false,
                 users:false,
-                volunteers:false
+                volunteers:false,
+                elders: false
             }
         })
     }
@@ -90,7 +97,8 @@ resetVerification()
                 events: false,
                 prayer:false,
                 users:!prevState.users,
-                volunteers:false
+                volunteers:false,
+                elders: false
             }
         })
     }
@@ -102,7 +110,21 @@ resetVerification()
             events: false,
             prayer:false,
             users:false,
-            volunteers:!prevState.volunteers
+            volunteers:!prevState.volunteers,
+            elders: false
+        }
+    })
+   }
+   if(value === 'elders'){
+    setRenderForm(prevState=>{
+        return {
+            serving:false,
+            mission:false,
+            events: false,
+            prayer:false,
+            users:false,
+            volunteers:false,
+            elders: true
         }
     })
    }
@@ -198,7 +220,7 @@ if(renderForm.events === true){
     })}
 
     let userData
-    console.log(allUsers)
+    
     if(renderForm.users === true){
     userData = allUsers.map((user)=>{
         if(user.editing === false){
@@ -266,6 +288,8 @@ return(
     {renderForm.users && displayForm && <NewUser />}
     {renderForm.mission && displayForm && <NewMission />}
     {renderForm.serving && displayForm && <NewPosition />}
+    {renderForm.elders && displayForm && <NewElder />}
+    
     </div>
     <div className="adminEventContainer">
 <div>
@@ -279,6 +303,7 @@ return(
     {renderForm.serving &&  <Serving />}
     {renderForm.users && userData}
     {renderForm.volunteers && <VolunteersPrint />}
+    {renderForm.elders && <Elder elder={yourElders} />}
     </div>
    
     </div>
