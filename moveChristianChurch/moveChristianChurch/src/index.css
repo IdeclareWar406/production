@@ -665,11 +665,12 @@ text-decoration: underline;
     .threeLines{
         position: absolute;
         top:0%;
-        left:65%;
+        left:10%;
         margin-left: 15px;
        
         display:flex;
         flex-direction: column;
+        cursor: pointer;
     }
     
     
