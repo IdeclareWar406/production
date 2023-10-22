@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-
+import App from './App'
+import { ApiContextProvider } from './ApiContext'
 
 const container  = document.getElementById('root')
 const root = ReactDOM.createRoot(container)
-root.render()
+root.render(<ApiContextProvider>
+    <App />
+</ApiContextProvider>)

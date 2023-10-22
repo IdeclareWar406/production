@@ -14,6 +14,14 @@ const statesSchema = new Schema({
     totalSenate: {
         type: Number,
         default: 0
+    },
+    reps: {
+        type: Array,
+        default: []
+    },
+    senate: {
+        type: Array,
+        default: []
     }
 })
 

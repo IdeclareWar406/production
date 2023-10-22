@@ -27,6 +27,10 @@ const electedSchema = new Schema({
     phone: {
         type:String,
         required: true
+    },
+    office: {
+        type:String,
+        required:true
     }
 })
 
