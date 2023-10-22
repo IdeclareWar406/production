@@ -26,7 +26,7 @@ repRouter.post("/auth/newRep", async(req,res)=>{
     }
 })
 
-repRouter.delete("/auth/:repId", async(req,res)=>{
+repRouter.delete("/auth/reps/:repId", async(req,res)=>{
     try {
         await Reps.findOneAndDelete({_id:req.params.repId})
         res.status(200).send('entry removed')
@@ -35,11 +35,12 @@ repRouter.delete("/auth/:repId", async(req,res)=>{
         res.json({message: "could not find"})
     }
 })
-repRouter.put('/auth/:repId',async(req,res)=>{
+repRouter.put('/auth/reps/:repId',async(req,res)=>{
     try {
         const updatedRep = await Reps.findOneAndUpdate({_id: req.params.repId}, req.body, {new:true})
         res.status(200).send(updatedRep)
     } catch (err) {
+        console.log(err)
         res.status(404)
         res.json({message: "could not find id"})
     }

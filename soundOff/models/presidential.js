@@ -12,10 +12,10 @@ const presidentialSchema = new Schema({
         default: false
     },
     majorIssues: {
-        type: String,
-        default: "none"
+        type: Array,
+        default: []
     },
-    runningIssues: {
+    summary: {
         type: String,
         required: true
     }

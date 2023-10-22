@@ -19,7 +19,7 @@ app.use('/api/profile', require('./routes/authRouter.js'))
 app.use('/api/states', require('./routes/states.js'))
 app.use('/api/auth/statesEdit', require('./routes/statesEdit.js'))
 app.use('/api', require('./routes/electedOfficial.js'))
-
+app.use('/api', require('./routes/presidential.js'))
 app.use("/", (err,req,res,next)=>{
     res.send({errMsg: err.message})
 })
