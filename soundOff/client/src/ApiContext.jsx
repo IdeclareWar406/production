@@ -76,8 +76,7 @@ const [reps, setReps] = React.useState([])
       
     }
 
-    console.log(presidents, 'Presidents')
-    console.log(reps, "reps")
+    
 
     React.useEffect(()=>{
         apiPull()

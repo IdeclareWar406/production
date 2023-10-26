@@ -28,7 +28,7 @@ export default function Representatives(){
      
      setFiltered(filteredNames)
     }
-    console.log(filtered, 'filter')
+    
 
     function updateSearch(name){
         setFilteredRep(prevState =>{
@@ -56,7 +56,7 @@ export default function Representatives(){
 
   
 
-   console.log(filteredRep)
+   
 
 
     
@@ -78,12 +78,8 @@ export default function Representatives(){
    return(
     <>
     <div className="absolute top-1/4 flex flex-col text-[25px] text-white left-1/4 opacity-75 hover:opacity-100">
-        <div className="flex flex-col bg-black">
-            <h1>Below are your listed Representatives. Click on their names to expand their information. Alternatively, search for your reps below</h1>
-            {displayedReps}
-        </div>
 
-        <div className="flex flex-col items-center mt-10 bg-black ">
+    <div className="flex flex-col items-center mt-10 bg-black ">
             <h1>Search for your representative by name or by state.</h1>
             <form className="flex flex-col w-[200px] items-center rounded">
                 <input className="text-black" type="text" name="repName" placeholder="Search Representatives" onChange={handleFindRep} value={filteredRep.repName}></input>
@@ -92,6 +88,12 @@ export default function Representatives(){
             <div>{printSearch()} </div>
            
         </div>
+        <div className="flex flex-col bg-black mt-5">
+            <h1>Below are your listed Representatives. Click on their names to expand their information. Alternatively, search for your reps above</h1>
+            {displayedReps}
+        </div>
+
+       
        
     </div>
 
