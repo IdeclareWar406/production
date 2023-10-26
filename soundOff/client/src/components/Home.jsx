@@ -1,6 +1,8 @@
 import React from 'react'
 import Footer from './Footer'
 import { ApiContext } from '../ApiContext'
+
+
 export default function Home(props){
 const {sendUpdateRequest, updateRequestHandle, updateRequest} = React.useContext(ApiContext)
 const {user} = props
