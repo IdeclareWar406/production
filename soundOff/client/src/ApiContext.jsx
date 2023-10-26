@@ -26,6 +26,8 @@ const [presidents, setPresidents] = React.useState([])
 
 const [states, setStates] = React.useState([])
 
+const [reps, setReps] = React.useState([])
+
     function updateRequestHandle(event){
         const{name, value} = event.target
         setUpdateRequest(prevState =>{
@@ -67,14 +69,18 @@ const [states, setStates] = React.useState([])
               .then(res => setPresidents(res.data))
               .catch(err => console.log(err.response.data.message))
        
-        axios.get('/api/states')
-               .then(res => setStates(res.data))
+        axios.get('/api/reps')
+               .then(res => setReps(res.data))
                .catch(err => console.log(err.response.data.message))
+        
+      
     }
 
+    console.log(presidents, 'Presidents')
+    console.log(reps, "reps")
 
     React.useEffect(()=>{
-        // apiPull()
+        apiPull()
     },[])
 
 
@@ -84,7 +90,7 @@ const [states, setStates] = React.useState([])
             updateRequestHandle,
             sendUpdateRequest,
             updateRequest: updateRequest,
-            states: states,
+            reps:reps,
             presidents: presidents
         }}>
             {props.children}

@@ -4,10 +4,21 @@ const Reps = require('../models/electedOfficial.js')
 
 const repRouter = express.Router()
 
+let hotData
+
+let isUpdated = false
+
 repRouter.get('/reps', async(req,res)=>{
     try {
+        if(!isUpdated){
         const foundAll = await Reps.find({})
-        res.status(200).send(foundAll)
+        hotData = foundAll
+        isUpdated = true
+        res.status(200).send(foundAll)}
+            else if(isUpdated){
+                res.status(200).send(hotData)
+            }
+
     } catch (err) {
         console.log(err)
         res.status(500)
@@ -18,6 +29,7 @@ repRouter.get('/reps', async(req,res)=>{
 repRouter.post("/auth/newRep", async(req,res)=>{
     try {
         const newRep = new Reps(req.body)
+        isUpdated = false
         newRep.save()
         res.status(200).send(newRep)
     } catch (err) {
@@ -29,6 +41,7 @@ repRouter.post("/auth/newRep", async(req,res)=>{
 repRouter.delete("/auth/reps/:repId", async(req,res)=>{
     try {
         await Reps.findOneAndDelete({_id:req.params.repId})
+        isUpdated = false
         res.status(200).send('entry removed')
     } catch (err) {
         res.status(404)
@@ -38,6 +51,7 @@ repRouter.delete("/auth/reps/:repId", async(req,res)=>{
 repRouter.put('/auth/reps/:repId',async(req,res)=>{
     try {
         const updatedRep = await Reps.findOneAndUpdate({_id: req.params.repId}, req.body, {new:true})
+        isUpdated = false
         res.status(200).send(updatedRep)
     } catch (err) {
         console.log(err)

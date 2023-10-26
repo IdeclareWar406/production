@@ -8,15 +8,15 @@ const electedSchema = new Schema({
         required: true
     },
     state: {
-        type:Schema.Types.ObjectId,
-        ref: 'State',
+        type:String,
+        default: "",
         required: true
     },
     majorIssues: {
         type: String,
         required: true
     },
-    ranIssues: {
+    summary: {
         type: String,
         required: true
     },

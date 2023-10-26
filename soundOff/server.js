@@ -17,8 +17,8 @@ mongoose.connect(process.env.dbAuth, {useNewUrlParser: true},
 app.use('/api/auth', expressjwt({secret: process.env.SECRET, algorithms:['HS256']}))
 
 app.use('/api/profile', require('./routes/authRouter.js'))
-app.use('/api/states', require('./routes/states.js'))
-app.use('/api/auth/statesEdit', require('./routes/statesEdit.js'))
+
+
 app.use('/api', require('./routes/electedOfficial.js'))
 app.use('/api', require('./routes/presidential.js'))
 app.use('/api', require("./routes/updateRequest.js"))
