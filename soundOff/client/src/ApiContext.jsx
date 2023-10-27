@@ -19,7 +19,10 @@ const [updateRequest, setUpdateRequest] = React.useState({
     email: "",
     info: ""
 })
-
+const [authorization, setAuthorization] = React.useState({
+    username: "",
+    password: ""
+})
 
 
 const [presidents, setPresidents] = React.useState([])
@@ -63,6 +66,58 @@ const [reps, setReps] = React.useState([])
                 }
             })
     }
+    
+    function credentials(event){
+        const {name,value} = event.target
+        setAuthorization(prevState => {
+            return{
+                ...prevState,
+                [name]: value
+            }
+        })
+    }
+
+
+    function signOn(event){
+        event.preventDefault()
+        axios.post('/api/profile/login', authorization)
+                .then(res => setUserState(prevState => {
+                    localStorage.setItem('Token', res.data.token)
+                    localStorage.setItem('User', JSON.stringify(res.data.user))
+                    return{
+                        ...prevState,
+                        token: res.data.token,
+                        user: res.data.user
+                    }
+                }))
+                .catch(err => setUserState(prevState =>{
+                    return{
+                        ...prevState,
+                        errMsg: err.response.data.message
+                    }
+                }))
+
+            setAuthorization(prevState => {
+                return{...prevState,
+                    username: "",
+                    password: ""
+                }
+            })
+    }
+
+    function signOut(){
+        localStorage.removeItem('Token')
+        localStorage.removeItem('User')
+        setUserState(prevState => {
+            return{
+                ...prevState,
+                token: "",
+                user: {},
+                errMsg: "",
+                serverMsg: ""
+            }
+        })
+    }
 
     function apiPull(){
         axios.get('/api/candidates')
@@ -90,7 +145,10 @@ const [reps, setReps] = React.useState([])
             sendUpdateRequest,
             updateRequest: updateRequest,
             reps:reps,
-            presidents: presidents
+            presidents: presidents,
+            signOn,
+            credentials,
+            signOut
         }}>
             {props.children}
 

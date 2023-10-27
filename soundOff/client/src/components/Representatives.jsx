@@ -66,11 +66,15 @@ export default function Representatives(){
 
     const displayedReps = reps.map((rep)=>{
         return(
+            <>
+            <Link key={rep._id} to={`/reps/${rep._id}`}>
             <div key={rep._id} className="flex flex-col text-[20px] text-white justify-center items-center mt-10 border-solid border-white ">
               
                 <h2 >{rep.name} </h2>
                 <h2>{rep.state} </h2>
             </div>
+            </Link>
+            </>
         )
     })
 

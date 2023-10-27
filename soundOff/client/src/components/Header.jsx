@@ -1,11 +1,11 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { ApiContext } from "../ApiContext"
 
 
-
-export default function Header (props){
-    const {user} = props.user
-
+export default function Header (){
+    const {user, signOut} = React.useContext(ApiContext)
+    
     const [useMobile, setUseMobile] = React.useState(false)
 
     function showLinks(){
@@ -28,7 +28,7 @@ export default function Header (props){
             <Link className="decoration-none text-[25px] hover:text-red-700 hover:bg-white rounded  " to='/senate'>Senators</Link>
             <Link className="decoration-none text-[25px] hover:text-red-700 hover:bg-white rounded " to="/president">Presidential</Link>
            {user.token && <Link className="decoration-none text-[25px] hover:text-red-700 hover:bg-white rounded " to='/admin'>Admin</Link>}
-            <Link className="decoration-none text-[25px] hover:text-red-700 hover:bg-white rounded ">{user.token ? "Logout" : "Login"} </Link>
+            <Link className="decoration-none text-[25px] hover:text-red-700 hover:bg-white rounded " to={'/login'} onClick={(user.token? signOut : "")} >{user.token ? "Logout" : "Login"} </Link>
             </div>
         </div>
         </>
@@ -45,7 +45,7 @@ export default function Header (props){
         <Link className="decoration-none text-[25px] hover:text-red-700 hover:bg-white rounded  " to='/senate'>Senators</Link>
         <Link className="decoration-none text-[25px] hover:text-red-700 hover:bg-white rounded " to="/president">Presidential</Link>
         {user.token && <Link className="decoration-none text-[25px] hover:text-red-700 hover:bg-white rounded " to='/admin'>Admin</Link>}
-        <Link className="decoration-none text-[25px] hover:text-red-700 hover:bg-white rounded ">{user.token ? "Logout" : "Login"} </Link>
+        <Link to={'/login'} className="decoration-none text-[25px] hover:text-red-700 hover:bg-white rounded " onClick={user.token? signOut : ''} >{user.token ? "Logout" : "Login"} </Link>
          </div> }
         </div>
         </>)
