@@ -3,7 +3,7 @@ const Elder = require('../modules/elders.js')
 
 const elderRouter = express.Router()
 
-elderRouter.post('/', async(req,res)=>{
+elderRouter.post('/auth/elderedit/', async(req,res)=>{
     try {
         const newElder = new Elder(req.body)
         newElder.save()
@@ -15,7 +15,7 @@ elderRouter.post('/', async(req,res)=>{
 })
 
 
-elderRouter.put('/:elderId',async (req,res)=>{
+elderRouter.put('/auth/elderedit/:elderId',async (req,res)=>{
     try {
         console.log(req.params.elderId)
         const updatedElder = await Elder.findOneAndUpdate({_id: req.params.elderId}, req.body, {new:true})
@@ -27,7 +27,7 @@ elderRouter.put('/:elderId',async (req,res)=>{
     }
 })
 
-elderRouter.delete("/:elderId", async(req,res)=>{
+elderRouter.delete("/auth/elderedit/:elderId", async(req,res)=>{
     try {
        await Elder.findOneAndDelete({_id: req.params.elderId})
         res.status(200).send('Entry removed')

@@ -30,8 +30,8 @@ app.use('/api/newvol' , require("./routes/newVolunteer.js"))
 app.use("/api/auth/useredit", require('./routes/userEdit.js'))
 app.use('/api/useredit' , require('./routes/userEdit.js'))
 app.use('/api/contactemail', require('./routes/contactEmail.js'))
-app.use('/api/auth/elderedit', require('./routes/elderRouteEdit.js'))
-app.use('/api/elders', require('./routes/elderRoute.js'))
+// app.use('/api/auth/elderedit', require('./routes/elderRouteEdit.js'))
+app.use('/api/', require('./routes/elderRoute.js'))
 app.use(express.static(path.join(__dirname, "moveChristianChurch", "dist")))
 
 
@@ -43,6 +43,8 @@ app.use("/", (err,req,res,next)=>{
 app.get("*", (req,res)=>{
     res.sendFile(path.join(__dirname, "moveChristianChurch", "dist", "index.html"))
 });
+
+
 
 app.listen(9000, ()=>{
     console.log("server is running")

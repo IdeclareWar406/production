@@ -818,14 +818,14 @@ function getVolunteers(){
     function newElder(event){
         event.preventDefault()
         if(elderUpdate.name != ""){
-            userAxios.post('/api/auth/elderedit', elderUpdate)
+            userAxios.post('/api/auth/elders/elderedit', elderUpdate)
                         .then(res => setYourElders(prevState => [...prevState , res.data]))
                         .catch(err => console.log(err.response.data.message))
         }
     }
 
     function elderRemove (id){
-        userAxios.delete(`/api/auth/elderedit/${id}`)
+        userAxios.delete(`/api/elders/auth/elderedit/${id}`)
                     .then(res => setYourElders(prevState => prevState.filter(elder => elder._id != id )))
                     .catch(err => console.log(err.response.data.message))
     }
