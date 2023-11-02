@@ -43,10 +43,10 @@ console.log(newUser)
            </div>
            <div className='bg-white absolute top-2/3 mt-[90px] z-1 w-full h-auto min-h-[200px] hover:opacity-100 opacity-80 flex justify-evenly items-center text-black'>
             <div className='flex flex-col justify-center items-center'>
-            <h1 className='text-[32px] font-bold'>Current Listings</h1>
+            <h1 className='text-[32px] font-bold'>Information about Panama City Beach</h1>
             </div>
             <div className='flex flex-col justify-center items-center '>
-            <h1 className='text-[32px] font-bold'>Sold Listings</h1>
+            <h1 className='text-[32px] font-bold'>Rosemary Beach</h1>
             </div>
         </div>
         <div className='w-full h-1/4 bg-black hover:opacity-100 opacity-70 h-auto min-h-[200px] homeListing mt-[20px] text-white flex flex-col items-center '>
