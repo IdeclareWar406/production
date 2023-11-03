@@ -18,7 +18,7 @@ console.log(newUser)
             <div className='flex flex-col justify-center items-center ml-10 p-2'>
                 <img src='images/selfie.jpg' width={"250px"} height={'250px'}></img>
                 <div className='flex inline-block'>
-                <h1 className='text-[20px]'>Beach Haven Realtor&#174; Tracy Suber</h1>
+                <h1 className='text-[20px]'>Beach Haven Realty | Tracy Suber</h1>
                 </div>
                 
             </div>
