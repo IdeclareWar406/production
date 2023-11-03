@@ -31,6 +31,8 @@ import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 import movecc from './movecc.jpg'
 import moveHome from './moveHome.png'
+import tsuberProperties from './tsuberProperties.jpg'
+import beachHavenLogo from './beachHavenLogo.png'
 
 export {
   logo,
@@ -62,5 +64,7 @@ export {
   jobit,
   tripguide,
   movecc,
-  moveHome
+  moveHome,
+  tsuberProperties,
+  beachHavenLogo
 };

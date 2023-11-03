@@ -24,7 +24,9 @@ import {
     tripguide,
     threejs,
     movecc,
-    moveHome
+    moveHome,
+    tsuberProperties,
+    beachHavenLogo
   } from "../assets";
   
   export const navLinks = [
@@ -115,6 +117,19 @@ import {
          "Solo Full-Stack project implementing user-authentication to secure data given to the church"
       ],
     },
+
+    {
+      title: "Full-Stack Developer",
+      company_name: "Freelance | Real Estate Agent",
+      icon: beachHavenLogo,
+      iconBg: "#383E56",
+      date: "October - 2023",
+      points: [
+        "Developed application for real estate agent to store their customers, add new customers, give information about the area.",
+        "Implemented a responsive design and ensured cross-browser compatibility.",
+        "Implemented security measures to keep user data safe and secure."
+      ]
+    }
    
  
    
@@ -169,6 +184,28 @@ import {
       image: moveHome,
       source_code_link: "https://github.com/IdeclareWar406/production/tree/main/moveChristianChurch",
     },
+
+    {
+      name: "Real Estate Agent Site",
+      description: "Application to keep track of customer information and to add new customers with built in emailer",
+      tags:[
+        {
+          name: "react",
+          color: "blue-text-gradient"
+        },
+        {
+          name: "mongodb",
+          color: "green-text-gradient"
+        },
+        {
+          name: "node",
+          color: "pink-text-gradient"
+        }
+      ]
+      ,
+      image: tsuberProperties,
+      source_code_link: "https://github.com/IdeclareWar406/production/tree/main/tsuberProperties"
+    }
     
    
   ];
