@@ -77,3 +77,10 @@ top:124%;
         height: 100%;
     }
 }
+
+@media only screen and (min-width:800px) and (max-width:1200px){
+    .footer{
+        position: absolute;
+        top:150%;
+    }
+}

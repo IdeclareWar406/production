@@ -87,7 +87,7 @@ console.log(newUser)
             </div>
         </div>
         { window.innerWidth > 799 &&
-        <div className='w-full h-1/4 bg-black hover:opacity-100 opacity-70 h-auto min-h-[200px] homeListing mt-[20px] text-white flex flex-col items-center '>
+        <div className= 'footer w-full h-1/4 bg-black hover:opacity-100 opacity-70 h-auto min-h-[200px] homeListing mt-[20px] text-white flex flex-col items-center '>
         <div className='flex flex-col justify-center items-center'>
             <h1 className='mt-[30px] text-[32px]'>Need Financing?</h1>
            
