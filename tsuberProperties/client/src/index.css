@@ -61,7 +61,7 @@ top:124%;
     }
     .secondHomeContainer{
         position: absolute;
-        top:105%;
+        top:125%;
     }
     .home{
         font-size: 15px;
@@ -71,5 +71,9 @@ top:124%;
         align-items: center;
        
         width: 100px;
+    }
+    .loginImg{
+        width:100%;
+        height: 100%;
     }
 }

@@ -15,10 +15,11 @@ const {login, signOnChange,signIn,user } = React.useContext(ApiContext)
 
     return(
         <>
-       <div>
-        <img src='images/20230525_133649_01.jpg'/>
+        <div>
+       <div >
+        <img className='loginImg fixed' src='images/20230525_133649_01.jpg '/>
        </div>
-        <div className={`flex flex-col justify-center items-center absolute top-1/2 w-full ` } >
+        <div className={`flex flex-col justify-center items-center absolute top-1/4 w-full ` } >
             <h1 className='text-[20px] text-black font-bold'>Realtor Log in  </h1>
             <form onSubmit={signIn} className='flex flex-col mt-[10px]'  style={{ width: '300px'}}>
                 <input className='rounded' name='username' type='text' value={login.username} placeholder='username' onChange={signOnChange} />
@@ -26,6 +27,7 @@ const {login, signOnChange,signIn,user } = React.useContext(ApiContext)
                 <button className='text-black font-bold bg-stone-300 mt-5 rounded'>Log in</button>
                 {user.errMsg && <h2 style={{color:'red'}}>{user.errMsg} </h2>}
             </form>
+        </div>
         </div>
         </>
     )
