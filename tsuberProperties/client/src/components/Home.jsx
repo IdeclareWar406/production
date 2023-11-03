@@ -14,7 +14,7 @@ console.log(newUser)
            
         </div>
         <div className='w-full h-full flex flex-col'>
-        <div className='absolute h-quto top-[200px]  z-1 bg-black w-full h-1/4 text-white hover:opacity-100 opacity-70 flex  justify-between items-center h-auto' >
+        <div className='homeContainer absolute h-quto top-[200px]  z-1 bg-black w-full h-1/4 text-white hover:opacity-100 opacity-70 flex  justify-between items-center h-auto' >
             <div className='flex flex-col justify-center items-center ml-10 p-2'>
                 <img src='images/selfie.jpg' width={"250px"} height={'250px'}></img>
                 <div className='flex inline-block'>
@@ -24,7 +24,7 @@ console.log(newUser)
             </div>
             <div className='flex flex-col justify-center items-center'>
             <h1 className='text-[32px] ml-[15px]'>Welcome to Panama City Beach</h1>
-            <p className='mt-[15px] text-[20px]' >Tracy Suber | Beach Haven Realty</p> 
+          { window.innerWidth > 799 && <p className='mt-[15px] text-[20px]' >Tracy Suber | Beach Haven Realty</p> }
             <p className='mt-[15px] text-[20px]'>Making your dreams come true</p>
             <p className='mt-[15px] text-[20px]'>Call: 229-456-5370</p>
             </div>
@@ -46,7 +46,7 @@ console.log(newUser)
             </form>
            </div>
            </div>
-           <div className='bg-white absolute top-2/3 mt-[90px] z-1 w-full h-auto min-h-[200px] hover:opacity-100 opacity-80 flex justify-evenly items-center text-black flex-wrap'>
+           <div className='secondHomeContainer bg-white absolute top-2/3 mt-[90px] z-1 w-full h-auto min-h-[200px] hover:opacity-100 opacity-80 flex justify-evenly items-center text-black flex-wrap'>
             <div className='flex flex-col justify-center items-center'>
             <h1 className='text-[32px] font-bold'>Panama City Beach</h1>
             <div className='bg-black p-5'>

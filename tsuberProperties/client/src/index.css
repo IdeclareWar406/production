@@ -53,3 +53,23 @@
 position: absolute;
 top:124%;
 }
+
+@media only screen and (min-width:250px) and (max-width:799px){
+    .homeContainer{
+        flex-direction: column;
+    
+    }
+    .secondHomeContainer{
+        position: absolute;
+        top:105%;
+    }
+    .home{
+        font-size: 15px;
+    }
+    .links{
+        justify-content: center;
+        align-items: center;
+       
+        width: 100px;
+    }
+}
