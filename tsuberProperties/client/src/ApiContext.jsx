@@ -62,6 +62,92 @@ function sendNewUser(event){
         })
     }
 }
+function checkDelete(id){
+    console.log(id, "check delete")
+    const filtered = customers.filter((customer)=>{
+        if(id === customer._id){
+            return customer.deleteCheck = true
+        }
+    })
+
+    setCustomers(prevState => prevState.map(customer => customer._id === id? filtered[0]: customer))
+}
+
+function cancelDelete(id){
+
+    const filteredCancel = customers.filter((customer)=>{
+        if(customer._id === id){
+         customer.deleteCheck = false
+         return customer
+        }
+    })
+    console.log(filteredCancel[0], "filtered")
+    setCustomers(prevState => prevState.map(customer => customer._id === id? filteredCancel[0] : customer))
+}
+
+function deleteCustomer(id){
+    userAxios.delete(`/api/auth/clients/${id}`)
+            .then(res => setCustomers(prevState => prevState.filter(customer => customer._id != id)))
+            .catch(err => console.log(err.response.data.message))
+}
+
+function beginCustomerEdit(id){
+    const filteredEdit = customers.filter((customer)=>{
+        if(id === customer._id){
+            customer.editing = true
+            return customer
+        }
+    })
+    setNewUser(prevState => {
+        return{
+            ...prevState,
+            firstName: filteredEdit[0].firstName,
+            lastName: filteredEdit[0].lastName,
+            email: filteredEdit[0].email,
+            phone: filteredEdit[0].phone,
+            propertyDetail: filteredEdit[0].propertyDetail
+        }
+    })
+
+    setCustomers(prevState => prevState.map(customer => customer._id === id? filteredEdit[0] : customer))
+}
+
+function handleCustomerEdit(event){
+    const {name, value} = event.target 
+    setNewUser(prevState => {
+        return{
+            ...prevState,
+            [name]:value
+        }
+    })
+}
+
+function saveCustomerEdit(id){
+    userAxios.put(`/api/auth/clients/${id}`)
+            .then(res => setCustomers(prevState => prevState.map(customer => customer._id === id? res.data : customer)))
+            .catch(err => console.log(err.response.data.message))
+}
+
+function cancelCustomerEdit(id){
+    const filteredCancel = customers.filter((customer)=>{
+        if(customer._id === id){
+            customer.editing = false
+            return customer
+        }
+    })
+
+    setNewUser(prevState => {
+        return{
+            firstName: "",
+                lastName: "",
+                email: "",
+                phone: "",
+                propertyDetail: ""
+        }
+    })
+
+    setCustomers(prevState => prevState.map(customer => customer._id === id ? filteredCancel[0]: customer))
+}
 
 
 function adminApiCall(){
@@ -157,7 +243,14 @@ React.useEffect(()=>{
             sendNewUser,
             newUser: newUser,
             customers: customers,
-            adminData
+            adminData,
+            checkDelete,
+            cancelDelete,
+            deleteCustomer,
+            beginCustomerEdit,
+            handleCustomerEdit,
+            saveCustomerEdit,
+            cancelCustomerEdit
            
         }}>
             {props.children}

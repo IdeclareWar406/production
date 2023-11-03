@@ -43,10 +43,22 @@ console.log(newUser)
            </div>
            <div className='bg-white absolute top-2/3 mt-[90px] z-1 w-full h-auto min-h-[200px] hover:opacity-100 opacity-80 flex justify-evenly items-center text-black'>
             <div className='flex flex-col justify-center items-center'>
-            <h1 className='text-[32px] font-bold'>Information about Panama City Beach</h1>
+            <h1 className='text-[32px] font-bold'>Panama City Beach</h1>
+            <div className='bg-black p-5'>
+                <a href='https://www.pcbfl.gov/' target='_blank'>
+                <img src='images/20230525_133649_01.jpg' width={"400px"} height={"400px"}></img>
+                <h1 className='text-white'>If you would like to learn more about the area click here</h1>
+                </a>
+            </div>
             </div>
             <div className='flex flex-col justify-center items-center '>
             <h1 className='text-[32px] font-bold'>Rosemary Beach</h1>
+            <div className='bg-black p-5 flex flex-col items-center cursor-pointer'>
+                <a href='https://www.rosemarybeachfl.org/'>
+                <img className='relative left-1/4' src='images/rosemaryBeach.jpg' width={"200px"} height={"250px"}></img>
+                <h1 className='text-white'>If you would like to learn more about the area click here</h1>
+                </a>
+            </div>
             </div>
         </div>
         <div className='w-full h-1/4 bg-black hover:opacity-100 opacity-70 h-auto min-h-[200px] homeListing mt-[20px] text-white flex flex-col items-center '>

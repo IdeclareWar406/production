@@ -27,6 +27,14 @@ const clientSchema = new Schema({
     activity: {
         type: String,
         default: 'Begining search'
+    },
+    editing: {
+        type: Boolean,
+        default: false,
+    },
+    deleteCheck: {
+        type: Boolean,
+        default: false
     }
 })
 
