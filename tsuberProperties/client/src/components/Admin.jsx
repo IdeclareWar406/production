@@ -1,11 +1,11 @@
 import React from 'react'
 import AdminNav from './AdminNav'
-import LoanOriginator from './LoanOriginator'
+
 import { ApiContext } from '../ApiContext'
 import CustomerTemplate from './CustomerTemplate'
 
 export default function Admin(){
-    const{adminData} = React.useContext(ApiContext)
+    const{adminData , user} = React.useContext(ApiContext)
 
     const [render, setRender] = React.useState({
         customers:true,
@@ -43,6 +43,10 @@ export default function Admin(){
         
         {/* below is the body render. above is the image background */}
         {/* write an if statment giving us what we would like based on screen size */}
+        <div className='absolute top-1/4 left-1/2 text-[32px]'>
+            <h1>Welcome, {user.user.firstName} {user.user.lastName} </h1>
+            
+        </div>
         <div className={`z-[1] absolute top-1/2 text-[36px] w-full flex justify-between items-center bg-white h-auto min-h-[500px] opacity-70 hover:opacity-100 `}> 
         <div className='h-auto min-h-[500px]' style={{border: 'solid black 3px'}}>
             <AdminNav renderWhich={renderWhich} />

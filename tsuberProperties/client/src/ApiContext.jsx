@@ -225,9 +225,7 @@ function adminData(){
 }
 console.log(customers, 'customers')
 
-React.useEffect(()=>{
-    apiCall()
-},[])
+
 
 
 

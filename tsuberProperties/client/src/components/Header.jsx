@@ -9,13 +9,14 @@ const {user, signOut} = React.useContext(ApiContext)
         <>
         
     <div className='headerContainer'>
-        <div className='logoChild mt-[20px] '>
-            <Link to='/'><img src='images/beachHavenLogo.png' style={{width: '250px'}} ></img></Link>
-        
+        <div className='logoChild mt-[20px] flex flex-col '>
+            <Link to='/'><img src='images/beachHavenLogo.png' style={{width: '350px'}} ></img></Link>
+                <p>Address: 50 Somersault Ln </p>
+                <p>Watersound, FL, 32413</p>
         </div>
         <div className='links mt-[40px] font-bold'>
             <Link className='home' to='/'>Home</Link>
-            <Link className='home' to='/about' >About</Link>
+           
            {user.token && <Link className='home' onClick={signOut} to='/'>Sign Out</Link>}
            {!user.token && <Link className='home' to='/login'>Log in</Link>}
           { user.token && user.user.isAdmin && <Link className='home' to='/admin' >Admin</Link>}
