@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 const {expressjwt} = require('express-jwt')
-
+const path = require('path')
 
 const app = express()
 app.use(morgan('dev'))
@@ -19,11 +19,15 @@ app.use('/api/newclient', require('./routes/clientRouter.js'))
 app.use('/api/auth/clients', require('./routes/clientEditRouter.js'))
 app.use('/api/auth/editOfficer', require('./routes/loanOfficerEdit.js'))
 app.use('/api/officers', require('./routes/loanOfficerGet.js'))
-
+app.use(express.static(path.join(__dirname, "client", "dist")))
 
 
 app.use('/', (err, req, res, next)=>{
     res.send({errMsg: err.message})
+})
+
+app.get("*", (req,res)=>{
+    res.sendFile(path.join(__dirname, "client", "dist", "index.html"))
 })
 
 app.listen(8173,()=>{
