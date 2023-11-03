@@ -79,8 +79,12 @@ top:124%;
 }
 
 @media only screen and (min-width:800px) and (max-width:1200px){
+    .secondHomeContainer{
+        position: absolute;
+        top:95%;
+    }
     .footer{
         position: absolute;
-        top:150%;
+        top:220%;
     }
 }
