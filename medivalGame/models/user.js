@@ -29,6 +29,10 @@ const userSchema = new Schema({
     characters: {
         type: Array,
         default: []
+    },
+    email: {
+        type:String,
+        required:true
     }
    
 

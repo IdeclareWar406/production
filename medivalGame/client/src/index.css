@@ -5,6 +5,7 @@
     border:red solid 3px;
     width:100%;
     height:100vh;
+    z-index: 1;
 }
 
 
@@ -14,11 +15,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
+    color:whitesmoke;
+    
 }
 .login{
     height: 10vh;
-    border: black solid 3px;
+    
+    
+    justify-content: space-evenly;
+    
 }
 .loginForm{
     display: flex;
@@ -28,4 +33,24 @@
 }
 .password{
     margin-top: 15px;
+}
+.submit{
+    border:none;
+    width:50%;
+    align-self:center;
+    margin-top:15px;
+    background-color: whitesmoke;
+    border-radius: 10px;;
+}
+.signupForm{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top:15px;
+    
+}
+.loginPhoto{
+    position:fixed;
+   z-index: -1;
 }

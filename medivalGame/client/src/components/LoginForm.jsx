@@ -8,7 +8,7 @@ export default function LoginForm(props){
             <form className="loginForm">
                 <input type="text" name="username" placeholder="username"></input>
                 <input className="password" type="password" name="password" placeholder="password"></input>
-                {isUser ? <button>Login</button> :  <button> Sign up </button>}
+               <button className="submit">Login</button>
             </form>
         </div>
         </>

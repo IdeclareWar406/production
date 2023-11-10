@@ -39,6 +39,14 @@ const characterSchema = new Schema({
     savedGame: {
         type: String,
         default: ''
+    },
+    attackDamage: {
+        type: Number,
+        default: 0
+    },
+    defenseRating: {
+        type: Number,
+        default: 0
     }
 })
 
