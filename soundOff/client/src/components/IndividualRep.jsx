@@ -22,6 +22,7 @@ export default function IndividualRep(){
         }
     })
 
+    
 
     return(
         <>

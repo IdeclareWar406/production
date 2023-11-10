@@ -1,0 +1,31 @@
+.loginParent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border:red solid 3px;
+    width:100%;
+    height:100vh;
+}
+
+
+
+.loginSignup{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+.login{
+    height: 10vh;
+    border: black solid 3px;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+.password{
+    margin-top: 15px;
+}
