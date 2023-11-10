@@ -54,6 +54,8 @@ function GameContextProvider(props){
         event.preventDefault()
         axios.post('/api/profile/login', login)
             .then(res => setUserState(prevState => {
+                localStorage.setItem('Token', res.data.token)
+                localStorage.setItem("User", JSON.stringify(res.data.user))
                 return{
                     ...prevState,
                     token: res.data.token,
@@ -82,16 +84,19 @@ function GameContextProvider(props){
 
     }
 
-
+console.log(userState)
 
 
     return(
         <GameContext.Provider value={{
          user: userState,
          handleLogin,
-         loginRequest
+         loginRequest,
+         login:login
         }}>
             {props.children}
         </GameContext.Provider>
     )
 }
+
+export {GameContext, GameContextProvider}
