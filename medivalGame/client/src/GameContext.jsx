@@ -50,6 +50,19 @@ function GameContextProvider(props){
         })
     }
 
+    function logout(){
+        localStorage.removeItem("Token")
+        localStorage.removeItem("User")
+        setUserState(prevState =>{
+            return{
+                token:  "",
+                user:  "",
+                serverMsg: "",
+                errMsg: ''
+            }
+        })
+    }
+
     function loginRequest(event){
         event.preventDefault()
         axios.post('/api/profile/login', login)
@@ -92,7 +105,8 @@ console.log(userState)
          user: userState,
          handleLogin,
          loginRequest,
-         login:login
+         login:login,
+         logout
         }}>
             {props.children}
         </GameContext.Provider>
