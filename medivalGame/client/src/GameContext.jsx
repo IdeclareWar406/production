@@ -29,8 +29,58 @@ function GameContextProvider(props){
         playerLevel: "",
         savedGame: "",
         attackDamage: "",
-        defenseRating: ""
+        defenseRating: "",
+        charModel: "",
+        charClass :''
     })
+
+    const [newCharacter, setNewCharacter] = React.useState({
+        name: "",
+        health: 100,
+        mana: 100,
+        stamina: 100,
+        inventory: [],
+        experience: 0,
+        skills: [],
+        playerLevel: 1,
+        savedGame: "",
+        attackDamage: 5,
+        defenseRating: 0,
+        charModel: "",
+        charClass :''
+    })
+    console.log(newCharacter)
+    function handleNewCharacter(event){
+        const {name, value} = event.target
+
+        setNewCharacter(prevState => {
+            return{
+                ...prevState,
+                [name]: value
+            }
+        })
+    }
+
+    function retrieveStats(newToonData){
+        setNewCharacter(prevState => {
+            return{...prevState,
+                health: newToonData.health,
+                stamina: newToonData.stamina,
+                mana: newToonData.mana
+            
+            }
+        })
+    }
+
+    function retrieveClass(character){
+        setNewCharacter(prevState => {
+            return{
+                ...prevState,
+                charClass: character.class,
+                charModel: character.model
+            }
+        })
+    }
 
     // constructor function for enemies
 
@@ -46,6 +96,19 @@ function GameContextProvider(props){
             return{
                 ...prevState,
                 [name]: value
+            }
+        })
+    }
+
+    function logout(){
+        localStorage.removeItem("Token")
+        localStorage.removeItem("User")
+        setUserState(prevState =>{
+            return{
+                token:  "",
+                user:  "",
+                serverMsg: "",
+                errMsg: ''
             }
         })
     }
@@ -92,7 +155,12 @@ console.log(userState)
          user: userState,
          handleLogin,
          loginRequest,
-         login:login
+         login:login,
+         logout,
+         newCharacter: newCharacter,
+         handleNewCharacter,
+         retrieveStats,
+         retrieveClass
         }}>
             {props.children}
         </GameContext.Provider>
