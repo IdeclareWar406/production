@@ -47,6 +47,14 @@ const characterSchema = new Schema({
     defenseRating: {
         type: Number,
         default: 0
+    },
+    charModel: {
+        type: String,
+        default: ""
+    },
+    charClass: {
+        type: String,
+        required: true
     }
 })
 

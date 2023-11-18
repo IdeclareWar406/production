@@ -1,6 +1,7 @@
 import React from "react"
 // design the home screen showing either the same image or a different image, like inside a castle and a character selection button/screen and a logout function.
 import { GameContext } from "../GameContext"
+import { Link } from "react-router-dom"
 import "../index.css"
 
 export default function Home(){
@@ -39,11 +40,14 @@ export default function Home(){
     <img className="homeImg" src="assets/images/castleCourtyard.jpg" width={width} height={height} style={{position: "fixed"}}/>
     <div className="display">
     <div>
-    { <h2>Please select a character</h2>}
+    { <h2 className="link">Please select a character</h2>}
     </div>
    <div>
     {myCharacters}
-    <h2>New Character</h2>
+    <Link className="link" to="/characterCreation" > New Character</Link>
+   </div>
+   <div>
+    <h2 className="link">Log Out</h2>
    </div>
     </div>
    
